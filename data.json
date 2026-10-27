@@ -1,12 +1,12 @@
 {
-  "generated": "2026-10-27T15:55:18.114695Z",
+  "generated": "2026-10-27T16:03:15.160245Z",
   "date": "2026-10-27",
   "snapshots": {
     "completo_2026-10-27": {
       "base": "completo",
       "fecha": "2026-10-27",
-      "cargado": "2026-10-27T15:55:18.114401Z",
-      "total": 192,
+      "cargado": "2026-10-27T16:03:15.160041Z",
+      "total": 195,
       "rows": [
         {
           "id": "871047389",
@@ -43,6 +43,16 @@
           "pr": "Prioridad 3",
           "h": false,
           "u": "2026-10-21"
+        },
+        {
+          "id": "6630668023",
+          "p": "KD-RRSS: KARENNT QUERALES MORENO",
+          "o": "770968563",
+          "c": "26-10-26 V.Ortega: NCx3 + Ya se ha revinulado y programado 8/10 Irene: llamo y salta el buzón, envío mail solicitando que vincule y que revise los cambios ya aplicados 6/10 MJ comentarios en la presentación. Se revisa y la cliente indica que no están los cambios                                                                         02.10.26 Jose Luis: Envio correo desbloquear y avanzar // 01/09 Irene: llamo y añado fdk y muevo a prod para que se ajuste la propuesta",
+          "b": [],
+          "pr": "",
+          "h": false,
+          "u": "2026-10-26"
         },
         {
           "id": "20547652812",
@@ -253,6 +263,16 @@
           "pr": "Prioridad 1",
           "h": false,
           "u": "2026-10-22"
+        },
+        {
+          "id": "122163731705",
+          "p": "KD-RRSS: CARLOS NUÑEZ ORIOL",
+          "o": "1156417481",
+          "c": "Baja de autónomo ",
+          "b": [],
+          "pr": "Prioridad 1",
+          "h": false,
+          "u": null
         },
         {
           "id": "123224132838",
@@ -539,7 +559,7 @@
           "id": "174280747240",
           "p": "KD-RRSS:  BMS by Ruben Ruiz SL",
           "o": "76412691",
-          "c": "27/10 MJ Se llama x2 al cliente NC, contestadora indica que el cliente no esta disponible.                                                  23/10 MJ llamo cliente pero al contestar me cuelga la llamada. No permite hablarle.                                                                21.10 Fran - Llamo al cliente, nc, dejo buzón de voz y mando WSP 27/07 Irene: reviso y aún no ha desistido. Insisto en los pasos a seguir si quiere desistir las RRSS y oficializar web antes de que caduque el bono",
+          "c": "27.10 Fran Llamo, nc, mando WSP 27/10 MJ Se llama x2 al cliente NC, contestadora indica que el cliente no esta disponible.                                                  23/10 MJ llamo cliente pero al contestar me cuelga la llamada. No permite hablarle.                                                                21.10 Fran - Llamo al cliente, nc, dejo buzón de voz y mando WSP 27/07 Irene: reviso y aún no ha desistido. Insisto en los pasos a seguir si quiere desistir las RRSS y oficializar w",
           "b": [
             "Falta Enlace de Cuenta de RRSS"
           ],
@@ -1127,11 +1147,11 @@
           "id": "239219328246",
           "p": "KD-RRSS: CARLOS MATEO PASCUAL VICENS",
           "o": "1053695393",
-          "c": "22/10 Mj llamo cliente, nos habilitara red social alterna para poder avanzar. quedo en llamarle en la tarde para ayudarle con el proceso                                                                            21.10 Andrea. LLamé, NC 14.10 Fran - Cliente revisando las publicaciones para dar el OK 5/10 MJ cliente vinculo pero no ha autorizado para publicar. Se ponen en borrador los post de este mes hasta la revisión del cliente                                         2/10 MJ Llamo cliente me in",
+          "c": "27/10 Mj llamo cliente, le envío todo por email para que podamos avanzar              22/10 Mj llamo cliente, nos habilitara red social alterna para poder avanzar. quedo en llamarle en la tarde para ayudarle con el proceso                                                                            21.10 Andrea. LLamé, NC 14.10 Fran - Cliente revisando las publicaciones para dar el OK 5/10 MJ cliente vinculo pero no ha autorizado para publicar. Se ponen en borrador los post de este mes hasta la re",
           "b": [],
           "pr": "Prioridad 1",
-          "h": false,
-          "u": "2026-10-22"
+          "h": true,
+          "u": "2026-10-27"
         },
         {
           "id": "239197347047",
@@ -1251,6 +1271,18 @@
           "pr": "Prioridad 1",
           "h": false,
           "u": "2026-10-21"
+        },
+        {
+          "id": "245389209804",
+          "p": "KD-RRSS: MALVA INFORMATICA SL",
+          "o": "29354388",
+          "c": "27/10/26 dikci: envio email - no habla español por lo que prefiere email. // 22/10/26 dikci: FDK en la ppt - tener en cuenta que quiere que se puede publicar el contenido de la FI cuando se realicen las correcciones que ha solicitados en esos post. La FA debe seguir la misma linea del contenido de la FI. // 21/10/26 dikci: CONTESTA - prefiere email porque no habla español // 13/10 NM escalo con Karen en prioridad slack para que se hagan cambios 05.10.26 Jose Luis: FDK Presentacion, cambios // 02",
+          "b": [
+            "GO Programación"
+          ],
+          "pr": "Prioridad 3",
+          "h": true,
+          "u": "2026-10-27"
         },
         {
           "id": "246333531346",
@@ -1384,13 +1416,13 @@
           "id": "250679781606",
           "p": "KD-RRSS: MIQUEL MONRABA EGEA",
           "o": "1053695393",
-          "c": "20/10 Irene: llamo y me dice que está muy ocupado que lo llame de nuevo el martes 27 para darme el fdk. No le gustan las publicaciones.19/10 Irene: contesta al mail de legal. Llamo y NC. Intento por mail. Me pide que lo llame el martes de 10 a 14h al teléfono 630994987GHOSTING LEGAL15/10 Irene: llamo y NC. Llamo de nuevo y NC. Intento 3ª llamada y NC. Marco como ghosting 14/10 Irene: llamo y teléfono apagado 13/10 Irene: llamo y NC, sale el teléfono apagado. Llamo de nuevo y tampoco, dejo wp de ",
+          "c": "27/10 Mj llamar a las 11 am. me agendo para llamarle      20/10 Irene: llamo y me dice que está muy ocupado que lo llame de nuevo el martes 27 para darme el fdk. No le gustan las publicaciones.19/10 Irene: contesta al mail de legal. Llamo y NC. Intento por mail. Me pide que lo llame el martes de 10 a 14h al teléfono 630994987GHOSTING LEGAL15/10 Irene: llamo y NC. Llamo de nuevo y NC. Intento 3ª llamada y NC. Marco como ghosting 14/10 Irene: llamo y teléfono apagado 13/10 Irene: llamo y NC, sale ",
           "b": [
             "Falta Vincular a Metricool"
           ],
           "pr": "Prioridad 1",
-          "h": false,
-          "u": "2026-10-20"
+          "h": true,
+          "u": "2026-10-27"
         },
         {
           "id": "250848164071",
@@ -1443,7 +1475,7 @@
           "id": "255257083098",
           "p": "KD-WEB: MAURIZIAKEZDAUINORHIL KOOP ELK TXIKIA",
           "o": "76412691",
-          "c": "27/10 MJ Llamo cliente pero NC. Se le ha llamado 2 veces email y wsp enviado NR                  26.10 Fran - Cliente cuelga cuando escucha la palabra Orbidi, no contesta mensajes tampocos 23/10/26 dikci: CONTESTA - pero me cuelga cuando le digo que soy de orbidi... no le llegan los wsp.. envios email // 19/10/26 dikci: CONTESTA - dice que lo revisa esta semana, envio email // 07/10 Aitor L: Solicito credenciales de nuevo; no son correctas.  22/09 NM credenciales dominio21/09 NM llam 7.38pm a pe",
+          "c": "27.10 Fran Llamo, nc, mando WSP 27/10 MJ Llamo cliente pero NC. Se le ha llamado 2 veces email y wsp enviado NR                  26.10 Fran - Cliente cuelga cuando escucha la palabra Orbidi, no contesta mensajes tampocos 23/10/26 dikci: CONTESTA - pero me cuelga cuando le digo que soy de orbidi... no le llegan los wsp.. envios email // 19/10/26 dikci: CONTESTA - dice que lo revisa esta semana, envio email // 07/10 Aitor L: Solicito credenciales de nuevo; no son correctas.  22/09 NM credenciales ",
           "b": [
             "Falta migración"
           ],
@@ -2093,13 +2125,13 @@
           "id": "426168675533",
           "p": "KD-SEO: AUTOS TARAHALES SL",
           "o": "76412691",
-          "c": "22-10-26 V.Ortega: Contactamos a cliente que comenta que compartirá el registro Mercal + CIF empresa + NIF representante 19.10 Fran - Llamo al cliente, nc, dejo mensaje en el buzón de voz y mando WSP06.10 Andrea. Llamé al cliente, desbloqueo ticket en clickup y avanzo 05-10-26 V.Ortega: Pedimos confirmación para implemewntar o FBK vía mail 28/08 Irene: llamo al cliente y ya no tiene la web, está caída y no puede recuperarla porque la persona que se la hizo ya no trabaja. Le propongo hacerle una ",
+          "c": "27.10 Fran - Llamo al cliente, nc, mando WSP 22-10-26 V.Ortega: Contactamos a cliente que comenta que compartirá el registro Mercal + CIF empresa + NIF representante 19.10 Fran - Llamo al cliente, nc, dejo mensaje en el buzón de voz y mando WSP06.10 Andrea. Llamé al cliente, desbloqueo ticket en clickup y avanzo 05-10-26 V.Ortega: Pedimos confirmación para implemewntar o FBK vía mail 28/08 Irene: llamo al cliente y ya no tiene la web, está caída y no puede recuperarla porque la persona que se la",
           "b": [
             "Claridad de Información."
           ],
           "pr": "Prioridad 2",
-          "h": false,
-          "u": "2026-10-22"
+          "h": true,
+          "u": "2026-10-27"
         },
         {
           "id": "427942617280",
@@ -2255,7 +2287,7 @@
     "mem1_2026-10-27": {
       "base": "mem1",
       "fecha": "2026-10-27",
-      "cargado": "2026-10-27T15:55:18.114686Z",
+      "cargado": "2026-10-27T16:03:15.160238Z",
       "total": 26,
       "rows": [
         {
@@ -2311,7 +2343,7 @@
           "id": "174280747240",
           "p": "KD-RRSS:  BMS by Ruben Ruiz SL",
           "o": "76412691",
-          "c": "27/10 MJ Se llama x2 al cliente NC, contestadora indica que el cliente no esta disponible.                                                  23/10 MJ llamo cliente pero al contestar me cuelga la llamada. No permite hablarle.                                                                21.10 Fran - Llamo al cliente, nc, dejo buzón de voz y mando WSP 27/07 Irene: reviso y aún no ha desistido. Insisto en los pasos a seguir si quiere desistir las RRSS y oficializar web antes de que caduque el bono",
+          "c": "27.10 Fran Llamo, nc, mando WSP 27/10 MJ Se llama x2 al cliente NC, contestadora indica que el cliente no esta disponible.                                                  23/10 MJ llamo cliente pero al contestar me cuelga la llamada. No permite hablarle.                                                                21.10 Fran - Llamo al cliente, nc, dejo buzón de voz y mando WSP 27/07 Irene: reviso y aún no ha desistido. Insisto en los pasos a seguir si quiere desistir las RRSS y oficializar w",
           "b": [
             "Falta Enlace de Cuenta de RRSS"
           ],
@@ -2397,7 +2429,7 @@
           "id": "255257083098",
           "p": "KD-WEB: MAURIZIAKEZDAUINORHIL KOOP ELK TXIKIA",
           "o": "76412691",
-          "c": "27/10 MJ Llamo cliente pero NC. Se le ha llamado 2 veces email y wsp enviado NR                  26.10 Fran - Cliente cuelga cuando escucha la palabra Orbidi, no contesta mensajes tampocos 23/10/26 dikci: CONTESTA - pero me cuelga cuando le digo que soy de orbidi... no le llegan los wsp.. envios email // 19/10/26 dikci: CONTESTA - dice que lo revisa esta semana, envio email // 07/10 Aitor L: Solicito credenciales de nuevo; no son correctas.  22/09 NM credenciales dominio21/09 NM llam 7.38pm a pe",
+          "c": "27.10 Fran Llamo, nc, mando WSP 27/10 MJ Llamo cliente pero NC. Se le ha llamado 2 veces email y wsp enviado NR                  26.10 Fran - Cliente cuelga cuando escucha la palabra Orbidi, no contesta mensajes tampocos 23/10/26 dikci: CONTESTA - pero me cuelga cuando le digo que soy de orbidi... no le llegan los wsp.. envios email // 19/10/26 dikci: CONTESTA - dice que lo revisa esta semana, envio email // 07/10 Aitor L: Solicito credenciales de nuevo; no son correctas.  22/09 NM credenciales ",
           "b": [
             "Falta migración"
           ],
