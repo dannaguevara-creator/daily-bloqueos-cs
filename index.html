@@ -55,7 +55,7 @@ select,input[type=date]{background:var(--surface);border:1px solid var(--line);b
 /* Scoreboard */
 .board{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,2fr);gap:18px;margin-bottom:22px}
 @media (max-width:820px){.board{grid-template-columns:1fr}}
-.score{background:var(--ink);color:var(--bg);border-radius:10px;padding:18px 20px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px 14px;align-content:start}
+.score{background:var(--ink);color:var(--bg);border-radius:10px;padding:18px 20px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px 14px;align-content:start}
 .score .big{grid-column:1/-1;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:10px}
 .score .big b{font-family:var(--cond);font-size:4.4rem;line-height:.9;font-weight:700}
 .score .big span{opacity:.8;font-size:1rem}
@@ -63,6 +63,7 @@ select,input[type=date]{background:var(--surface);border:1px solid var(--line);b
 .score .k span{font-size:.82rem;opacity:.75}
 .score .k.pend b{color:#F5B54B}
 .score .k.ok b{color:#6FD39F}
+.score .k.danger b{color:#E85D5D}
 .score .delta{grid-column:1/-1;margin-top:12px;font-size:.85rem;opacity:.8}
 .panel{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
 .panel h2{font-family:var(--cond);font-size:1.35rem;font-weight:600;margin:0 0 2px}
@@ -284,14 +285,18 @@ function metrics(snap){
   const byCS = new Map();
   const blqTotals = new Map();
   for (const r of snap.rows){
-    if(!byCS.has(r.o)) byCS.set(r.o,{cs:r.o,total:0,hoy:0,pend:0,blq:new Map()});
+    if(!byCS.has(r.o)) byCS.set(r.o,{cs:r.o,total:0,hoy:0,pend:0,stale:0,blq:new Map()});
     const c = byCS.get(r.o);
     c.total++; const called = r.u === snap.fecha; if(called) c.hoy++; else c.pend++;
+    var days = r.u ? daysBetween(r.u, snap.fecha) : 999;
+    if(days > 3) c.stale++;
     for (const b of r.b){ c.blq.set(b,(c.blq.get(b)||0)+1); blqTotals.set(b,(blqTotals.get(b)||0)+1); }
   }
   const cs = [...byCS.values()];
   const total = snap.rows.length, hoy = cs.reduce((a,c)=>a+c.hoy,0);
+  const stale = cs.reduce((a,c)=>a+c.stale,0);
   return {cs, total, hoy, pend: total-hoy, pctPend: total? (total-hoy)/total : 0,
+          stale: stale, pctStale: total ? stale/total : 0,
           bloqueos: [...blqTotals.entries()].sort((a,b)=>b[1]-a[1])};
 }
 const pct = v => Math.round(v*100) + "%";
@@ -335,10 +340,12 @@ function render(){
     deltaTxt = `Frente al ${fmtDate(prevDate)}: ${s(dt)} proyectos, ${s(dp)} puntos de % pendiente.`;
   }
   const score = el("div",{class:"score"},
-    el("div",{class:"big"}, el("b",{text:M.total}), el("span",{text:`proyectos en ${BASES[state.tab]} hoy`})),
+    el("div",{class:"big"}, el("b",{text:M.total}), el("span",{text:"proyectos en "+BASES[state.tab]})),
     el("div",{class:"k ok"}, el("b",{text:M.hoy}), el("span",{text:"llamados hoy"})),
     el("div",{class:"k pend"}, el("b",{text:M.pend}), el("span",{text:"pendientes por llamar"})),
     el("div",{class:"k pend"}, el("b",{text:pct(M.pctPend)}), el("span",{text:"sin llamar hoy"})),
+    el("div",{class:"k danger"}, el("b",{text:M.stale}), el("span",{text:"+3 dias sin llamar"})),
+    el("div",{class:"k danger"}, el("b",{text:pct(M.pctStale)}), el("span",{text:"% +3 dias sin llamar"})),
     el("div",{class:"delta",text:deltaTxt})
   );
   const trend = el("div",{class:"panel"},
@@ -353,9 +360,13 @@ function render(){
   const p1 = el("div",{class:"panel"}, el("h2",{text:"Proyectos asignados por CS"}), el("p",{class:"hint",text:"Según el campo C.S. Owner. Toca un CS para filtrar la lista de abajo."}));
   const p2 = el("div",{class:"panel"}, el("h2",{text:"Llamadas de hoy por CS"}), el("p",{class:"hint",text:"Ordenado por % pendiente, de mayor a menor."}), legend([["var(--ok)","Llamados hoy"],["var(--pend)","Pendientes"]]));
   const b1 = el("div"), b2 = el("div"); p1.append(b1); p2.append(b2);
+  const p2b = el("div",{class:"panel"}, el("h2",{text:"+3 dias sin llamar por CS"}), el("p",{class:"hint",text:"Proyectos cuya ultima llamada tiene mas de 3 dias o nunca se llamaron. Ordenado por cantidad."}), legend([["#E85D5D","+3 dias"],["var(--bar)","Resto"]]));
+  const b2b = el("div"); p2b.append(b2b);
   view.append(el("div",{class:"grid2"}, p1, p2));
+  view.append(el("div",{class:"grid2"}, p2b));
   drawAssigned(b1, M);
   drawCalls(b2, M);
+  drawStale(b2b, M);
 
   // 3
   const p3 = el("div",{class:"panel full"}, el("h2",{text:"Bloqueos por CS"}), el("p",{class:"hint",text:"Según BLOQUEO: Detalle. Un proyecto con varios bloqueos cuenta en cada uno."}));
@@ -444,6 +455,13 @@ function drawCalls(box, M){
   hbars(box, rows, {label:"Llamadas de hoy por CS", rightW:120, segs:r=>[{v:r.hoy,c:"var(--ok)"},{v:r.pend,c:"var(--pend)"}],
     right:r=> r.pend ? `${r.pend} pend. · ${pct(r.pend/r.total)}` : "al día",
     tip:r=>`${r.cs}: llamó hoy ${r.hoy} de ${r.total}. Pendientes ${r.pend} (${pct(r.pend/r.total)}).`});
+}
+function drawStale(box, M){
+  const rows = [...M.cs].sort((a,b)=>b.stale-a.stale||a.cs.localeCompare(b.cs));
+  hbars(box, rows, {label:"+3 dias sin llamar por CS", rightW:120,
+    segs:function(r){return [{v:r.stale,c:"#E85D5D"},{v:r.total-r.stale,c:"var(--bar)"}];},
+    right:function(r){return r.stale ? r.stale+" · "+pct(r.stale/r.total) : "al dia";},
+    tip:function(r){return r.cs+": "+r.stale+" de "+r.total+" sin llamar hace +3 dias ("+pct(r.stale/r.total)+")";}});
 }
 function drawHeat(box, M){
   const cols = M.bloqueos.map(b=>b[0]);
