@@ -167,10 +167,13 @@ const state = {
   tab:"mem1",
   date:{mem1:null,mem2:null},
   csFilter:null,
+  blqFilter:null,
   showAll:false,
   pending:[],
-  db:null, canWrite:true, loaded:false
+  db:null, canWrite:true, loaded:false,
+  hubspot:null
 };
+function hsLink(id){ if(!state.hubspot||!id) return null; const h=state.hubspot; return `https://${h.domain}/contacts/${h.portal}/record/${h.object}/${id}`; }
 const $ = s => document.querySelector(s);
 const el = (tag, attrs, ...kids) => {
   const n = document.createElement(tag);
@@ -440,8 +443,8 @@ function drawHeat(box, M){
     const tr = el("tr",null, el("td",{text:r.cs}));
     for (const c of cols){
       const v = r.blq.get(c)||0;
-      const td = el("td",{class: v? "c":"c z", text: v||"·"});
-      if (v){ const a = .12 + .7*v/max; td.style.background = `rgba(var(--heat-rgb),${a.toFixed(2)})`; if(a>.5) td.style.color="#fff"; bindTip(td, `${r.cs}: ${v} proyecto${v>1?"s":""} con “${c}”`); }
+      const td = el(“td”,{class: v? “c clickable”:”c z”, text: v||”·”});
+      if (v){ const a = .12 + .7*v/max; td.style.background = `rgba(var(--heat-rgb),${a.toFixed(2)})`; if(a>.5) td.style.color=”#fff”; bindTip(td, `${r.cs}: ${v} proyecto${v>1?”s”:””} con “${c}” — clic para filtrar`); td.addEventListener(“click”,()=>{ state.csFilter=r.cs; state.blqFilter=c; state.showAll=true; render(); document.querySelector(“.panel.full:last-of-type”)?.scrollIntoView({behavior:”smooth”}); }); }
       tr.append(td);
     }
     tr.append(el("td",{class:"rt",text:r.total}));
@@ -461,8 +464,9 @@ function drawList(p, snap, M){
   chips.append(mk(null,"Todos"));
   for (const c of [...M.cs].sort((a,b)=>a.cs.localeCompare(b.cs))) chips.append(mk(c.cs, `${c.cs} (${state.showAll?c.total:c.pend})`));
   p.append(chips);
-  let rows = snap.rows.filter(r=> (state.showAll || r.u!==snap.fecha) && (!state.csFilter || r.o===state.csFilter));
+  let rows = snap.rows.filter(r=> (state.showAll || r.u!==snap.fecha) && (!state.csFilter || r.o===state.csFilter) && (!state.blqFilter || r.b.includes(state.blqFilter)));
   rows.sort((a,b)=> (a.u===snap.fecha)-(b.u===snap.fecha) || (a.u||"").localeCompare(b.u||"") || a.o.localeCompare(b.o));
+  if(state.blqFilter){ const bc=el("div",{style:"margin-bottom:10px;display:flex;gap:8px;align-items:center"},el("span",{text:`Filtro bloqueo: ${state.blqFilter}`}),el("button",{class:"btn ghost small",type:"button",text:"Quitar filtro",onclick:()=>{state.blqFilter=null;render();}})); p.append(bc); }
   if (!rows.length){ p.append(el("div",{class:"empty",style:"padding:22px"}, el("b",{text:"Nada pendiente"}), state.csFilter ? `${state.csFilter} ya llamó a todos sus proyectos hoy.` : "Todo el equipo llamó a sus proyectos hoy.")); return; }
   const t = el("table",{class:"list"});
   t.append(el("thead",null, el("tr",null, ...["CS","Proyecto","Bloqueo","Prioridad","Última llamada","Días","Estado","Último comentario"].map(h=>el("th",{text:h})))));
@@ -470,8 +474,10 @@ function drawList(p, snap, M){
   for (const r of rows){
     const called = r.u===snap.fecha;
     const days = r.u ? daysBetween(r.u, snap.fecha) : null;
+    const link = hsLink(r.id);
+    const projCell = link ? el("td",{class:"p"}, el("a",{href:link,target:"_blank",rel:"noopener",text:r.p,style:"color:var(--focus);text-decoration:none;font-weight:500"})) : el("td",{class:"p",text:r.p});
     tb.append(el("tr",null,
-      el("td",{text:r.o}), el("td",{class:"p",text:r.p}), el("td",{text:r.b.join("; ")}), el("td",{text:r.pr||"—"}),
+      el("td",{text:r.o}), projCell, el("td",{text:r.b.join("; ")}), el("td",{text:r.pr||"—"}),
       el("td",{text: r.u? fmtDate(r.u) : "Sin fecha"}),
       el("td",null, el("span",{class:"days",text: days==null? "—" : days})),
       el("td",null, el("span",{class:"tag "+(called?"ok":"pend"),text: called?"Llamado hoy":"Pendiente"})),
@@ -546,6 +552,7 @@ render();
       const r = await fetch("data.json");
       if (r.ok) {
         const j = await r.json();
+        if(j.hubspot) state.hubspot = j.hubspot;
         const next = {mem1:{},mem2:{}};
         for (const [k,v] of Object.entries(j.snapshots||{})){
           if(v && next[v.base]) next[v.base][v.fecha]=v;
