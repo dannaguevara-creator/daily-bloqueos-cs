@@ -1,14 +1,42 @@
 {
-  "generated_at": null,
+  "generated_at": "2026-10-27T21:55:26+01:00",
   "tz": "Europe/Madrid",
   "agents": [
-    {"id": 23509313, "name": "Dikcibell Pantoja", "group": "CSRRSS"},
-    {"id": 23266168, "name": "Jose Luis Lopez", "group": "CSWEB"},
-    {"id": 24431781, "name": "Victor Ortega", "group": "CSWEB"},
-    {"id": 22426048, "name": "Andrea Giraldo", "group": "CSWEB"},
-    {"id": 22424628, "name": "Fran González", "group": "CSRRSS"},
-    {"id": 22424850, "name": "Nataly Molina", "group": "CSWEB"},
-    {"id": 22156106, "name": "Johanna Diaz", "group": "CSRRSS"}
+    {
+      "id": 23509313,
+      "name": "Dikcibell Pantoja",
+      "group": "CSRRSS"
+    },
+    {
+      "id": 23266168,
+      "name": "Jose Luis Lopez",
+      "group": "CSWEB"
+    },
+    {
+      "id": 24431781,
+      "name": "Victor Ortega",
+      "group": "CSWEB"
+    },
+    {
+      "id": 22426048,
+      "name": "Andrea Giraldo",
+      "group": "CSWEB"
+    },
+    {
+      "id": 22424628,
+      "name": "Fran González",
+      "group": "CSRRSS"
+    },
+    {
+      "id": 22424850,
+      "name": "Nataly Molina",
+      "group": "CSWEB"
+    },
+    {
+      "id": 22156106,
+      "name": "Johanna Diaz",
+      "group": "CSRRSS"
+    }
   ],
   "daily": [],
   "inbound": [],
