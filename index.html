@@ -188,7 +188,7 @@ const state = {
   pending:[],
   db:null, canWrite:true, loaded:false,
   hubspot:null,
-  ringover:null, rvDate:null
+  ringover:null, rvDate:null, rvMode:"day", rvWeek:null
 };
 function hsLink(id){ if(!state.hubspot||!id) return null; const h=state.hubspot; return `https://${h.domain}/contacts/${h.portal}/record/${h.object}/${id}`; }
 const $ = s => document.querySelector(s);
@@ -460,7 +460,7 @@ function hbars(box, rows, opts){
     let x = labelW;
     for (const seg of opts.segs(r)){
       const w = avail*seg.v/max; if(w<=0) continue;
-      g.append(sv("rect",{x, y:yy+5, width:w, height:rowH-12, fill:seg.c, rx:2})); x+=w;
+      g.append(sv("rect",{x, y:yy+5, width:w, height:rowH-12, fill:seg.c, rx:2, opacity: seg.o!=null?seg.o:1})); x+=w;
     }
     const lab = sv("text",{x:x+6,y:yy+rowH/2+1,"dominant-baseline":"middle","font-size":12.5,"font-weight":600}); lab.textContent = opts.right(r); g.append(lab);
     g.append(sv("rect",{x:0,y:yy,width:W,height:rowH,fill:"transparent"}));
@@ -594,12 +594,32 @@ function rvDates(){ return state.ringover ? [...new Set((state.ringover.daily||[
 function rvAgentName(id){ const a=(state.ringover&&state.ringover.agents||[]).find(a=>a.id===id); return a?a.name:("CS "+id); }
 function fmtMin(sec){ const m=Math.round((sec||0)/60); return m>=60 ? (Math.floor(m/60)+"h "+(m%60)+"m") : (m+"m"); }
 
+function weekStart(iso){ const [y,m,d]=iso.split("-").map(Number); const dt=new Date(Date.UTC(y,m-1,d)); const wd=(dt.getUTCDay()+6)%7; dt.setUTCDate(dt.getUTCDate()-wd); return dt.toISOString().slice(0,10); }
+function rvWeeks(){ return [...new Set(rvDates().map(weekStart))].sort(); }
+function weekLabel(ws){ const [y,m,d]=ws.split("-").map(Number); const end=new Date(Date.UTC(y,m-1,d)); end.setUTCDate(end.getUTCDate()+6); const ei=end.toISOString().slice(0,10); return "Semana "+fmtDate(ws)+" – "+fmtDate(ei); }
+function rvAggByAgent(rows){
+  var m={};
+  rows.forEach(function(d){
+    if(!m[d.agent_id]) m[d.agent_id]={agent_id:d.agent_id, out_total:0, out_answered:0, out_effective:0, talk_sec:0, in_total:0, in_answered:0, in_missed:0};
+    var a=m[d.agent_id];
+    a.out_total+=d.out_total||0; a.out_answered+=d.out_answered||0; a.out_effective+=d.out_effective||0;
+    a.talk_sec+=d.talk_sec||0; a.in_total+=d.in_total||0; a.in_answered+=d.in_answered||0; a.in_missed+=d.in_missed||0;
+  });
+  return Object.values(m);
+}
+
 function renderRingover(){
   const R = state.ringover;
   const dates = rvDates();
+  const weekly = state.rvMode==="week";
   const sel = $("#dateSel"); sel.textContent="";
   if(!dates.length){ sel.append(el("option",{text:"Sin datos"})); sel.disabled=true; }
-  else{
+  else if(weekly){
+    const weeks = rvWeeks();
+    if(!state.rvWeek || weeks.indexOf(state.rvWeek)<0) state.rvWeek = weeks.slice(-1)[0];
+    for(const w of [...weeks].reverse()){ const o=el("option",{value:w,text:weekLabel(w)}); if(w===state.rvWeek) o.selected=true; sel.append(o); }
+    sel.disabled=false;
+  } else {
     if(!state.rvDate || dates.indexOf(state.rvDate)<0) state.rvDate = dates.slice(-1)[0];
     for(const d of [...dates].reverse()){ const o=el("option",{value:d,text:fmtDate(d,true)}); if(d===state.rvDate) o.selected=true; sel.append(o); }
     sel.disabled=false;
@@ -611,11 +631,21 @@ function renderRingover(){
       state.loaded?"El script de Ringover aún no ha publicado datos. Cuando corra, aparecerán aquí.":""));
     return;
   }
-  const date = state.rvDate;
-  $("#subtitle").textContent = "Ringover: actividad de llamadas del "+fmtDate(date,true)+". Contactabilidad = salientes contestadas / salientes; efectivo = con +30s de conversación.";
+  // Período seleccionado
+  let periodDates, periodLabel;
+  if(weekly){ periodDates = dates.filter(d=>weekStart(d)===state.rvWeek); periodLabel = weekLabel(state.rvWeek); }
+  else { periodDates = [state.rvDate]; periodLabel = fmtDate(state.rvDate,true); }
 
-  const day = (R.daily||[]).filter(x=>x.date===date);
-  const sum = k => day.reduce((a,x)=>a+(x[k]||0),0);
+  // Toggle Día/Semana
+  const modeBtn=(mode,label)=>el("button",{class:"chip",type:"button","aria-pressed":String(state.rvMode===mode),text:label,onclick:()=>{state.rvMode=mode; render();}});
+  const modeBar=el("div",{class:"chips",style:"margin-bottom:16px"}, modeBtn("day","Por día"), modeBtn("week","Por semana"));
+  view.append(modeBar);
+
+  $("#subtitle").textContent = "Ringover: actividad de llamadas · "+periodLabel+". Contactabilidad = salientes contestadas / salientes; efectivo = con +30s de conversación.";
+
+  const periodRows = (R.daily||[]).filter(x=>periodDates.indexOf(x.date)>=0);
+  const byAgent = rvAggByAgent(periodRows);
+  const sum = k => periodRows.reduce((a,x)=>a+(x[k]||0),0);
   const outT=sum("out_total"), outA=sum("out_answered"), outE=sum("out_effective");
   const inOk=sum("in_answered"), inKo=sum("in_missed"), talk=sum("talk_sec");
   const staleN=(R.stale_clients||[]).length;
@@ -629,35 +659,43 @@ function renderRingover(){
     el("div",{class:"k danger"}, el("b",{text:staleN}), el("span",{text:"clientes sin contacto >3d"}))
   );
   const trend = el("div",{class:"panel"},
-    el("h2",{text:"Actividad diaria"}),
-    el("p",{class:"hint",text:"Salientes totales y contestadas por día. Toca un día para verlo."}),
+    el("h2",{text: weekly?"Actividad diaria de la semana":"Actividad por CS"}),
+    el("p",{class:"hint",text: weekly?"Salientes y contestadas por día de la semana. Toca un día para verlo.":"Salientes y contestadas de cada CS en el día."}),
     legend([["var(--heat)","Salientes"],["var(--ok)","Contestadas"]]));
   const trendBox=el("div",{class:"scroll"}); trend.append(trendBox);
   view.append(el("div",{class:"board"}, score, trend));
-  drawRvTrend(trendBox, dates, date);
+  if(weekly) drawRvTrend(trendBox, periodDates, null);
+  else drawRvActivityByCS(trendBox, byAgent);
 
   const p0=el("div",{class:"panel"}, el("h2",{text:"Llamadas salientes por CS"}), el("p",{class:"hint",text:"Total de llamadas salientes realizadas por cada CS."}), legend([["var(--heat)","Salientes"]]));
   const p1=el("div",{class:"panel"}, el("h2",{text:"Contactabilidad por CS"}), el("p",{class:"hint",text:"Salientes contestadas vs no contestadas. Ordenado por % contactabilidad."}), legend([["var(--ok)","Contestadas"],["var(--pend)","No contestadas"]]));
   const b0=el("div"),b1=el("div"); p0.append(b0); p1.append(b1);
   view.append(el("div",{class:"grid2"}, p0, p1));
-  drawRvVolume(b0, day);
-  drawRvContact(b1, day);
+  drawRvVolume(b0, byAgent);
+  drawRvContact(b1, byAgent);
 
-  const p2=el("div",{class:"panel"}, el("h2",{text:"Contacto efectivo por CS"}), el("p",{class:"hint",text:"Contestadas con +30s de conversación (filtra buzones y cuelgues)."}), legend([["var(--brand)","Efectivas"],["var(--bar)","Resto salientes"]]));
-  const p3=el("div",{class:"panel"}, el("h2",{text:"Entrantes por grupo"}), el("p",{class:"hint",text:"Llamadas entrantes a cada grupo CS y perdidas sin devolver en 24h."}));
-  const b2=el("div"),b3=el("div",{class:"scroll"}); p2.append(b2); p3.append(b3);
-  view.append(el("div",{class:"grid2"}, p2, p3));
-  drawRvEffective(b2, day);
-  drawRvInbound(b3, date);
+  const p2=el("div",{class:"panel full"}, el("h2",{text:"Contacto efectivo por CS"}), el("p",{class:"hint",text:"Contestadas con +30s de conversación (filtra buzones y cuelgues)."}), legend([["var(--brand)","Efectivas"],["var(--bar)","Resto salientes"]]));
+  const b2=el("div"); p2.append(b2);
+  view.append(p2);
+  drawRvEffective(b2, byAgent);
 
   const p4=el("div",{class:"panel full"}, el("h2",{text:"Actividad por hora"}), el("p",{class:"hint",text:"Salientes por hora del día en hora España (todos los CS)."}), legend([["var(--heat)","Salientes"],["var(--ok)","Contestadas"]]));
   const b4=el("div",{class:"scroll"}); p4.append(b4);
   view.append(p4);
-  drawRvHours(b4, day);
+  drawRvHours(b4, periodRows);
 
   const p5=el("div",{class:"panel full"}, el("h2",{text:"Clientes sin contacto hace +3 días"}), el("p",{class:"hint",text:"Números llamados por CS cuya última conversación efectiva es anterior a hace 3 días (o nunca). Ordenado del más antiguo."}));
   view.append(p5);
   drawRvStale(p5, R);
+}
+function drawRvActivityByCS(box, byAgent){
+  var rows = byAgent.map(function(a){ return {cs:rvAgentName(a.agent_id), total:a.out_total, ans:a.out_answered}; }).filter(function(r){return r.total>0;});
+  rows.sort(function(a,b){ return b.total-a.total||a.cs.localeCompare(b.cs); });
+  if(!rows.length){ box.append(el("div",{class:"empty",style:"padding:20px"}, el("b",{text:"Sin actividad"}))); return; }
+  hbars(box, rows, {label:"Actividad por CS", rightW:120,
+    segs:function(r){return [{v:r.ans,c:"var(--ok)"},{v:r.total-r.ans,c:"var(--heat)",o:0.28}];},
+    right:function(r){return r.ans+"/"+r.total+" · "+pct(r.ans/r.total);},
+    tip:function(r){return r.cs+": "+r.total+" salientes, "+r.ans+" contestadas ("+pct(r.ans/r.total)+")";}});
 }
 function drawRvTrend(box, dates, current){
   const W=Math.max(box.clientWidth||600,280), H=200, padL=8, padB=26, padT=18;
@@ -676,8 +714,8 @@ function drawRvTrend(box, dates, current){
     var t=sv("text",{x:cx+bw/2,y:H-padB-hgt(x.total)-5,"text-anchor":"middle","font-size":12,"font-weight":700,fill:"var(--heat)"}); t.textContent=x.total; g.append(t);
     var l=sv("text",{x:cx+bw/2,y:H-8,"text-anchor":"middle","font-size":11,fill:"var(--muted)","font-weight":x.d===current?"700":"400"}); l.textContent=fmtDate(x.d); g.append(l);
     g.append(sv("rect",{x:cx,y:padT,width:slot,height:H-padT-padB,fill:"transparent"}));
-    g.addEventListener("click",function(){ state.rvDate=x.d; render(); });
-    bindTip(g, fmtDate(x.d,true)+": "+x.total+" salientes, "+x.ans+" contestadas ("+pct(x.total?x.ans/x.total:0)+")");
+    g.addEventListener("click",function(){ state.rvDate=x.d; state.rvMode="day"; render(); });
+    bindTip(g, fmtDate(x.d,true)+": "+x.total+" salientes, "+x.ans+" contestadas ("+pct(x.total?x.ans/x.total:0)+") — clic para ver el día");
     svg.append(g);
   });
   box.append(svg);
@@ -708,23 +746,6 @@ function drawRvEffective(box, day){
     segs:function(r){return [{v:r.eff,c:"var(--brand)"},{v:r.rest,c:"var(--bar)"}];},
     right:function(r){return r.eff+"/"+r.total+" · "+pct(r.eff/r.total);},
     tip:function(r){return r.cs+": "+r.eff+" efectivas de "+r.total+" ("+pct(r.eff/r.total)+")";}});
-}
-function drawRvInbound(box, date){
-  var rows = (state.ringover.inbound||[]).filter(function(x){return x.date===date;});
-  if(!rows.length){ box.append(el("div",{class:"empty",style:"padding:20px"}, el("b",{text:"Sin entrantes"}))); return; }
-  rows.sort(function(a,b){return b.in_total-a.in_total;});
-  var t=el("table",{class:"list"});
-  t.append(el("thead",null, el("tr",null, el("th",{text:"Grupo"}),el("th",{text:"Entrantes"}),el("th",{text:"Atendidas"}),el("th",{text:"Rechazadas"}),el("th",{text:"Sin devolver 24h"}))));
-  var tb=el("tbody");
-  rows.forEach(function(r){
-    tb.append(el("tr",null,
-      el("td",{class:"p",text:r.group}),
-      el("td",{text:r.in_total}),
-      el("td",null, el("span",{class:"tag ok",text:r.in_answered})),
-      el("td",null, el("span",{class:"tag "+(r.in_missed?"pend":"ok"),text:r.in_missed})),
-      el("td",null, el("span",{class:"tag "+(r.missed_not_returned?"danger":"ok"),text:r.missed_not_returned}))));
-  });
-  t.append(tb); box.append(t);
 }
 function drawRvHours(box, day){
   var byHour={};
@@ -768,7 +789,7 @@ function drawRvStale(p, R){
 
 /* ---------- Navegación ---------- */
 document.querySelectorAll(".tab").forEach(t=>t.addEventListener("click",()=>{ state.tab=t.dataset.tab; state.csFilter=null; state.blqFilter=null; location.hash=state.tab; render(); }));
-$("#dateSel").addEventListener("change",e=>{ if(state.tab==="ringover") state.rvDate=e.target.value; else state.date[state.tab]=e.target.value; render(); });
+$("#dateSel").addEventListener("change",e=>{ if(state.tab==="ringover"){ if(state.rvMode==="week") state.rvWeek=e.target.value; else state.rvDate=e.target.value; } else state.date[state.tab]=e.target.value; render(); });
 function fromHash(){ const h=location.hash.slice(1); if(BASES[h]||h==="ringover"){ state.tab=h; state.csFilter=null; render(); } }
 addEventListener("hashchange", fromHash);
 let rz; addEventListener("resize",()=>{ clearTimeout(rz); rz=setTimeout(render,150); });
