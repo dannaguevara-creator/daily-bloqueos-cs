@@ -1,11 +1,11 @@
 {
-  "generated": "2026-10-27T16:03:23.745642Z",
+  "generated": "2026-10-27T16:10:25.201352Z",
   "date": "2026-10-27",
   "snapshots": {
     "completo_2026-10-27": {
       "base": "completo",
       "fecha": "2026-10-27",
-      "cargado": "2026-10-27T16:03:23.745296Z",
+      "cargado": "2026-10-27T16:10:25.201045Z",
       "total": 194,
       "rows": [
         {
@@ -253,16 +253,6 @@
           "pr": "Prioridad 1",
           "h": false,
           "u": "2026-10-22"
-        },
-        {
-          "id": "122163731705",
-          "p": "KD-RRSS: CARLOS NUÑEZ ORIOL",
-          "o": "Andrea Giraldo Orejuela",
-          "c": "Baja de autónomo ",
-          "b": [],
-          "pr": "Prioridad 1",
-          "h": false,
-          "u": null
         },
         {
           "id": "123224132838",
@@ -1263,18 +1253,6 @@
           "u": "2026-10-21"
         },
         {
-          "id": "245389209804",
-          "p": "KD-RRSS: MALVA INFORMATICA SL",
-          "o": "Dikcibell Pantoja Toste",
-          "c": "27/10/26 dikci: envio email - no habla español por lo que prefiere email. // 22/10/26 dikci: FDK en la ppt - tener en cuenta que quiere que se puede publicar el contenido de la FI cuando se realicen las correcciones que ha solicitados en esos post. La FA debe seguir la misma linea del contenido de la FI. // 21/10/26 dikci: CONTESTA - prefiere email porque no habla español // 13/10 NM escalo con Karen en prioridad slack para que se hagan cambios 05.10.26 Jose Luis: FDK Presentacion, cambios // 02",
-          "b": [
-            "GO Programación"
-          ],
-          "pr": "Prioridad 3",
-          "h": true,
-          "u": "2026-10-27"
-        },
-        {
           "id": "246333531346",
           "p": "KD-RRSS: NATALIA GARCIA MONTANER",
           "o": "Fran González",
@@ -1530,6 +1508,16 @@
             "Falta Vincular a Metricool",
             "Cliente rechaza propuesta RRSS"
           ],
+          "pr": "Prioridad 1",
+          "h": true,
+          "u": "2026-10-27"
+        },
+        {
+          "id": "261681206520",
+          "p": "KD-RRSS: ALFREDO MONFORT ROJO",
+          "o": "María Johanna Díaz Quinceno",
+          "c": "27/10 MJ cliente ha borrado diferentes post. Por favor en IG solo publicar lo que esta y en Facebook si dejar el resto de publicaciones.                                              07/09/26 dikci: llamada agendada para hoy -  pide que le envie la informacion en email sobre el proyecto, le he pedido que me comparta el tipo de contenido que quiere hacer y nuevas fotos // 04/09/26 dikci: se queja de que no le gusta el proyecto, no se presento a la videollamada por un problema persona y ahora se en",
+          "b": [],
           "pr": "Prioridad 1",
           "h": true,
           "u": "2026-10-27"
@@ -1971,13 +1959,13 @@
           "id": "278999929048",
           "p": "KD-RRSS: AHMED GRINI",
           "o": "Fran González",
-          "c": "15/10 Irene: llamo y está ocupado, indica que me llama luego 14/10 Irene: llamo y me contesta el asesor. Me comparte el teléfono de Ahmed: 663 004 040. El proyecto es de carpintería y la cuenta de rrss de la memoria es de veterinaria. Lo llamo y me confirma que esta noche se crea una cuenta nueva para programar contenido 08.10 Fran - Llamo al cliente, nc, el cliente lleva tiempo sin contestar llamadas, ni mensajes6/10 Irene: envío mail de vincular y fdk 02.10.26 Jose Luis: Envio correo desbloque",
+          "c": "27.10 Fran - Contacto con la asesoria del cliente, tras hablar, le mando un correo solicitando las credenciales 15/10 Irene: llamo y está ocupado, indica que me llama luego 14/10 Irene: llamo y me contesta el asesor. Me comparte el teléfono de Ahmed: 663 004 040. El proyecto es de carpintería y la cuenta de rrss de la memoria es de veterinaria. Lo llamo y me confirma que esta noche se crea una cuenta nueva para programar contenido 08.10 Fran - Llamo al cliente, nc, el cliente lleva tiempo sin co",
           "b": [
             "Falta Vincular a Metricool"
           ],
           "pr": "Prioridad 3",
-          "h": false,
-          "u": "2026-10-15"
+          "h": true,
+          "u": "2026-10-27"
         },
         {
           "id": "279302120636",
@@ -2027,6 +2015,16 @@
           "pr": "Prioridad 2",
           "h": false,
           "u": "2026-10-05"
+        },
+        {
+          "id": "281078730980",
+          "p": "KD-SEO: DAYANA BEATRIZ FARIA MONTILVA",
+          "o": "Dikcibell Pantoja Toste",
+          "c": " 27/10/26 Dikci: NO LLAMAR HASTA EL 20 DE NOVIEMBRE// 26/10/26 Dikci: NO LLAMAR HASTA EL 20 DE NOVIEMBRE // 23/10 MJ la Web estará activa en el mes de noviembre, pide que se le contacte en este mes                                                                 20/10/26 dikci: dice que puede tener la web a mediado del mes que viene. 20 de noviembre. // 28.9.2026 jorge, llamo cliente con llamada agendada, no ha creado la web, le digo que la cree, dice ok y mando mail para que en respuesta envíe l",
+          "b": [],
+          "pr": "Prioridad 3",
+          "h": true,
+          "u": "2026-10-27"
         },
         {
           "id": "281118408952",
@@ -2277,8 +2275,8 @@
     "mem1_2026-10-27": {
       "base": "mem1",
       "fecha": "2026-10-27",
-      "cargado": "2026-10-27T16:03:23.745633Z",
-      "total": 26,
+      "cargado": "2026-10-27T16:10:25.201345Z",
+      "total": 27,
       "rows": [
         {
           "id": "22678789348",
@@ -2508,6 +2506,16 @@
           "b": [
             "Falta dominio"
           ],
+          "pr": "Prioridad 3",
+          "h": true,
+          "u": "2026-10-27"
+        },
+        {
+          "id": "281078730980",
+          "p": "KD-SEO: DAYANA BEATRIZ FARIA MONTILVA",
+          "o": "Dikcibell Pantoja Toste",
+          "c": " 27/10/26 Dikci: NO LLAMAR HASTA EL 20 DE NOVIEMBRE// 26/10/26 Dikci: NO LLAMAR HASTA EL 20 DE NOVIEMBRE // 23/10 MJ la Web estará activa en el mes de noviembre, pide que se le contacte en este mes                                                                 20/10/26 dikci: dice que puede tener la web a mediado del mes que viene. 20 de noviembre. // 28.9.2026 jorge, llamo cliente con llamada agendada, no ha creado la web, le digo que la cree, dice ok y mando mail para que en respuesta envíe l",
+          "b": [],
           "pr": "Prioridad 3",
           "h": true,
           "u": "2026-10-27"
