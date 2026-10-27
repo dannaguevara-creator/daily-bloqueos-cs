@@ -541,7 +541,22 @@ render();
   let db=null;
   try { db = window.claude && window.claude.use ? await window.claude.use("db") : null; } catch(_){ db=null; }
   state.db = db;
-  if (!db){ state.loaded=true; render(); return; }
+  if (!db){
+    try {
+      const r = await fetch("data.json");
+      if (r.ok) {
+        const j = await r.json();
+        const next = {mem1:{},completo:{}};
+        for (const [k,v] of Object.entries(j.snapshots||{})){
+          if(v && next[v.base]) next[v.base][v.fecha]=v;
+        }
+        state.snaps = next;
+      }
+    } catch(_){}
+    state.loaded=true; state.canWrite=false; render();
+    const btn=$("#uploadBtn"); if(btn) btn.hidden=true;
+    return;
+  }
   try{
     const u = window.claude.use ? await window.claude.use("user") : null;
     if (u && u.can){ const c = await u.can("data.write"); if (c===false) state.canWrite=false; }
