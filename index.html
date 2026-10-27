@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Daily CS – Bloqueos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EDF0F3; --surface:#FFFFFF; --ink:#16202A; --muted:#5B6773; --line:#D5DBE1;
+  --ok:#2F8A5B; --ok-soft:#D7EFE2; --pend:#D4860B; --pend-soft:#FBEBCF;
+  --heat:#3446A8; --heat-rgb:52,70,168; --bar:#4B5B6B; --focus:#3446A8;
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  --sans:"Barlow",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --cond:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#11171D; --surface:#1A222A; --ink:#E6EBF0; --muted:#97A3AF; --line:#2C3741;
+    --ok:#4FB985; --ok-soft:#1D3A2C; --pend:#F0A93A; --pend-soft:#40311A;
+    --heat:#8C9BFF; --heat-rgb:140,155,255; --bar:#9AA8B6; --focus:#8C9BFF; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#11171D; --surface:#1A222A; --ink:#E6EBF0; --muted:#97A3AF; --line:#2C3741;
+  --ok:#4FB985; --ok-soft:#1D3A2C; --pend:#F0A93A; --pend-soft:#40311A;
+  --heat:#8C9BFF; --heat-rgb:140,155,255; --bar:#9AA8B6; --focus:#8C9BFF; color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.45}
+button,select,input{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.wrap{max-width:1180px;margin:0 auto;padding:20px 18px 48px}
+header.top{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:flex-end;justify-content:space-between;margin-bottom:18px}
+h1{font-family:var(--cond);font-weight:700;font-size:2.1rem;line-height:1;margin:0;letter-spacing:-.01em}
+.sub{color:var(--muted);margin:6px 0 0;font-size:.95rem}
+.controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.controls label{font-size:.85rem;color:var(--muted);display:flex;gap:6px;align-items:center}
+select,input[type=date]{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:7px 10px}
+.btn{background:var(--ink);color:var(--bg);border:0;border-radius:6px;padding:8px 14px;font-weight:600;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.small{padding:5px 10px;font-size:.85rem}
+.btn[disabled]{opacity:.5;cursor:default}
+
+.tabs{display:flex;gap:0;border-bottom:2px solid var(--line);margin-bottom:20px}
+.tab{background:none;border:0;padding:10px 18px 9px;margin-bottom:-2px;border-bottom:3px solid transparent;cursor:pointer;font-family:var(--cond);font-size:1.25rem;font-weight:600;color:var(--muted);display:flex;gap:8px;align-items:baseline}
+.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--ink)}
+.tab .n{font-size:.95rem;font-weight:500;color:var(--muted)}
+
+/* Scoreboard */
+.board{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,2fr);gap:18px;margin-bottom:22px}
+@media (max-width:820px){.board{grid-template-columns:1fr}}
+.score{background:var(--ink);color:var(--bg);border-radius:10px;padding:18px 20px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px 14px;align-content:start}
+.score .big{grid-column:1/-1;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:10px}
+.score .big b{font-family:var(--cond);font-size:4.4rem;line-height:.9;font-weight:700}
+.score .big span{opacity:.8;font-size:1rem}
+.score .k b{display:block;font-family:var(--cond);font-size:2rem;font-weight:700;line-height:1}
+.score .k span{font-size:.82rem;opacity:.75}
+.score .k.pend b{color:#F5B54B}
+.score .k.ok b{color:#6FD39F}
+.score .delta{grid-column:1/-1;margin-top:12px;font-size:.85rem;opacity:.8}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.panel h2{font-family:var(--cond);font-size:1.35rem;font-weight:600;margin:0 0 2px}
+.panel .hint{color:var(--muted);font-size:.86rem;margin:0 0 12px}
+.grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;margin-bottom:22px}
+@media (max-width:820px){.grid2{grid-template-columns:1fr}}
+.full{margin-bottom:22px}
+.scroll{overflow-x:auto}
+svg{display:block;max-width:100%}
+svg text{font-family:var(--sans);fill:var(--ink)}
+.legend{display:flex;gap:16px;font-size:.85rem;color:var(--muted);margin:-4px 0 10px;flex-wrap:wrap}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.clickable{cursor:pointer}
+
+/* Heatmap */
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+.heat th,.heat td{padding:7px 8px;border-bottom:1px solid var(--line);text-align:center;white-space:nowrap}
+.heat th{font-weight:600;font-size:.8rem;color:var(--muted);vertical-align:bottom;white-space:normal;min-width:84px;max-width:130px}
+.heat th:first-child,.heat td:first-child{text-align:left;position:sticky;left:0;background:var(--surface);z-index:1}
+.heat td.c{font-family:var(--cond);font-size:1.05rem;font-weight:600}
+.heat td.z{color:var(--line)}
+.heat tr.tot td{font-weight:700;border-bottom:0}
+.heat td.rt{font-weight:700}
+
+/* Pending table */
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.chip{border:1px solid var(--line);background:transparent;border-radius:999px;padding:4px 11px;font-size:.85rem;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.list th{text-align:left;font-size:.8rem;color:var(--muted);font-weight:600;padding:6px 8px;border-bottom:2px solid var(--line);white-space:nowrap}
+.list td{padding:8px;border-bottom:1px solid var(--line);vertical-align:top}
+.list td.cm{color:var(--muted);font-size:.85rem;min-width:260px;max-width:420px}
+.list td.p{min-width:200px;font-weight:500}
+.tag{display:inline-block;border-radius:4px;padding:1px 7px;font-size:.78rem;font-weight:600;white-space:nowrap}
+.tag.pend{background:var(--pend-soft);color:var(--pend)}
+.tag.ok{background:var(--ok-soft);color:var(--ok)}
+.days{font-family:var(--cond);font-weight:700;font-size:1.05rem}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.toggle{font-size:.88rem;color:var(--muted);display:flex;gap:6px;align-items:center}
+
+.empty{background:var(--surface);border:1px dashed var(--line);border-radius:10px;padding:36px 22px;text-align:center;color:var(--muted)}
+.empty b{display:block;color:var(--ink);font-size:1.15rem;margin-bottom:6px}
+
+/* Upload panel */
+#upload{display:none;background:var(--surface);border:1px solid var(--ink);border-radius:10px;padding:16px 18px;margin-bottom:20px}
+#upload.show{display:block}
+#upload h3{margin:0 0 4px;font-family:var(--cond);font-size:1.3rem}
+.up-row{display:grid;grid-template-columns:minmax(0,2fr) auto auto auto;gap:10px;align-items:center;padding:10px 0;border-top:1px solid var(--line)}
+@media (max-width:700px){.up-row{grid-template-columns:1fr 1fr}}
+.up-row .fn{font-size:.88rem;word-break:break-all}
+.up-row .fn small{display:block;color:var(--muted)}
+.up-row .err{color:var(--pend);font-size:.85rem}
+.notice{font-size:.85rem;color:var(--muted);margin-top:8px}
+#toast{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:9px 16px;border-radius:8px;font-size:.9rem;opacity:0;pointer-events:none;transition:opacity .2s}
+#toast.on{opacity:1}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--bg);font-size:.82rem;padding:6px 9px;border-radius:6px;opacity:0;z-index:20;max-width:240px}
+@media (prefers-reduced-motion:reduce){#toast{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1>Daily de bloqueos CS</h1>
+      <p class="sub" id="subtitle">Seguimiento de llamadas a partir del campo Comentario CS</p>
+    </div>
+    <div class="controls">
+      <label for="dateSel">Día
+        <select id="dateSel" aria-label="Día del informe"></select>
+      </label>
+      <button class="btn" id="uploadBtn" type="button">Cargar informes</button>
+      <input type="file" id="fileIn" accept=".csv,text/csv" multiple hidden>
+    </div>
+  </header>
+
+  <section id="upload" aria-live="polite">
+    <h3>Informes por guardar</h3>
+    <p class="hint" style="color:var(--muted);margin:0 0 6px;font-size:.88rem">Revisa a qué pestaña y día corresponde cada archivo antes de guardar. Si ya existe ese día, se reemplaza.</p>
+    <div id="upRows"></div>
+    <div style="display:flex;gap:10px;margin-top:12px">
+      <button class="btn" id="saveUp" type="button">Guardar</button>
+      <button class="btn ghost" id="cancelUp" type="button">Cancelar</button>
+    </div>
+    <p class="notice" id="upNotice"></p>
+  </section>
+
+  <nav class="tabs" role="tablist">
+    <button class="tab" role="tab" data-tab="mem1" id="tab-mem1">Mem 1 <span class="n"></span></button>
+    <button class="tab" role="tab" data-tab="completo" id="tab-completo">Completo <span class="n"></span></button>
+  </nav>
+
+  <main id="view"></main>
+</div>
+<div id="toast" role="status"></div>
+<div class="tip" id="tip"></div>
+
+<script>
+(function(){
+"use strict";
+const BASES = {mem1:"Mem 1", completo:"Completo"};
+const state = {
+  snaps:{mem1:{},completo:{}},   // base -> date -> snapshot
+  tab:"mem1",
+  date:{mem1:null,completo:null},
+  csFilter:null,
+  showAll:false,
+  pending:[],
+  db:null, canWrite:true, loaded:false
+};
+const $ = s => document.querySelector(s);
+const el = (tag, attrs, ...kids) => {
+  const n = document.createElement(tag);
+  if (attrs) for (const k in attrs){
+    if (k === "class") n.className = attrs[k];
+    else if (k === "text") n.textContent = attrs[k];
+    else if (k.startsWith("on")) n.addEventListener(k.slice(2), attrs[k]);
+    else n.setAttribute(k, attrs[k]);
+  }
+  for (const c of kids) if (c != null) n.append(c);
+  return n;
+};
+const SVGNS = "http://www.w3.org/2000/svg";
+const sv = (tag, attrs) => { const n = document.createElementNS(SVGNS, tag); for (const k in attrs||{}) n.setAttribute(k, attrs[k]); return n; };
+function toast(msg){ const t=$("#toast"); t.textContent=msg; t.classList.add("on"); clearTimeout(toast._t); toast._t=setTimeout(()=>t.classList.remove("on"),2600); }
+const tip = $("#tip");
+function showTip(e, text){ tip.textContent=text; tip.style.opacity=1; const w=tip.offsetWidth, h=tip.offsetHeight; let x=e.clientX+12, y=e.clientY-h-10; if(x+w>innerWidth-8) x=e.clientX-w-12; if(y<8) y=e.clientY+14; tip.style.left=x+"px"; tip.style.top=y+"px"; }
+function hideTip(){ tip.style.opacity=0; }
+function bindTip(node, text){ node.addEventListener("mousemove", e=>showTip(e,text)); node.addEventListener("mouseleave", hideTip); }
+
+/* ---------- Fechas ---------- */
+const MESES = ["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
+function fmtDate(iso, long){
+  if(!iso) return "—";
+  const [y,m,d] = iso.split("-").map(Number);
+  return long ? `${d} de ${["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"][m-1]} ${y}` : `${d} ${MESES[m-1]}`;
+}
+function daysBetween(a,b){ return Math.round((Date.UTC(...b.split("-").map((v,i)=>i===1?v-1:+v)) - Date.UTC(...a.split("-").map((v,i)=>i===1?v-1:+v)))/86400000); }
+const DATE_RX = /(?<!\d)(\d{1,2})\s*[\/.\-]\s*(\d{1,2})(?:[\/.\-](\d{2,4}))?(?!\d)/;
+// Fecha más reciente = la primera que aparece en el comentario
+function lastCallDate(comment, reportISO){
+  const m = DATE_RX.exec(comment || "");
+  if(!m) return null;
+  const d = +m[1], mo = +m[2];
+  if(d<1||d>31||mo<1||mo>12) return null;
+  const [ry, rm] = reportISO.split("-").map(Number);
+  let y;
+  if (m[3]) { y = +m[3]; if (y < 100) y += 2000; }
+  else y = mo > rm ? ry - 1 : ry;
+  return `${y}-${String(mo).padStart(2,"0")}-${String(d).padStart(2,"0")}`;
+}
+function firstEntry(comment){
+  const c = (comment||"").replace(/\s+/g," ").trim();
+  // corta antes de la segunda fecha (la entrada anterior)
+  const rx = new RegExp(DATE_RX.source, "g");
+  rx.exec(c); const second = rx.exec(c);
+  let s = second ? c.slice(0, second.index).trim() : c;
+  if (s.length > 220) s = s.slice(0, 217).trim() + "…";
+  return s;
+}
+
+/* ---------- CSV ---------- */
+function parseCSV(text){
+  text = text.replace(/^\uFEFF/, "");
+  const rows=[]; let row=[], f="", q=false;
+  for (let i=0;i<text.length;i++){
+    const ch=text[i];
+    if(q){
+      if(ch==='"'){ if(text[i+1]==='"'){f+='"';i++;} else q=false; }
+      else f+=ch;
+    } else if(ch==='"') q=true;
+    else if(ch===','){ row.push(f); f=""; }
+    else if(ch==='\n'||ch==='\r'){ if(ch==='\r'&&text[i+1]==='\n') i++; row.push(f); rows.push(row); row=[]; f=""; }
+    else f+=ch;
+  }
+  if(f!==""||row.length){ row.push(f); rows.push(row); }
+  const head = rows.shift() || [];
+  return {head, rows: rows.filter(r=>r.some(c=>c.trim()!==""))};
+}
+function splitBloqueos(v){
+  const parts = (v||"").split(";").map(s=>s.trim().replace(/\.$/,"")).filter(Boolean);
+  return parts.length ? parts : ["Sin bloqueo indicado"];
+}
+function buildSnapshot(text, base, dateISO){
+  const {head, rows} = parseCSV(text);
+  const ix = n => head.findIndex(h => h.trim().toLowerCase() === n.toLowerCase());
+  const need = {owner:"C.S. Owner", com:"Comentario CS", blq:"BLOQUEO: Detalle", proj:"Project name"};
+  const I = {}; const missing=[];
+  for (const k in need){ I[k]=ix(need[k]); if(I[k]<0) missing.push(need[k]); }
+  if (missing.length) throw new Error("Faltan columnas: " + missing.join(", "));
+  I.id = ix("ID de registro"); I.pr = ix("Tipo de Prioridad CS");
+  const out = rows.map(r => {
+    const com = r[I.com] || "";
+    const u = lastCallDate(com, dateISO);
+    return {
+      id: I.id>=0 ? r[I.id] : "",
+      p: (r[I.proj]||"").replace(/\s+/g," ").trim(),
+      o: (r[I.owner]||"").trim() || "Sin asignar",
+      b: splitBloqueos(r[I.blq]),
+      pr: I.pr>=0 ? (r[I.pr]||"").trim() : "",
+      u, h: u === dateISO,
+      c: firstEntry(com)
+    };
+  });
+  return {base, fecha: dateISO, total: out.length, cargado: new Date().toISOString(), rows: out};
+}
+function guessFromName(name){
+  const n = name.toLowerCase();
+  const base = /mem[\s_\-]?1/.test(n) ? "mem1" : "completo";
+  const m = n.match(/(20\d{2})-(\d{2})-(\d{2})/);
+  const today = new Date(); const pad=v=>String(v).padStart(2,"0");
+  const date = m ? `${m[1]}-${m[2]}-${m[3]}` : `${today.getFullYear()}-${pad(today.getMonth()+1)}-${pad(today.getDate())}`;
+  return {base, date};
+}
+
+/* ---------- Métricas ---------- */
+function metrics(snap){
+  const byCS = new Map();
+  const blqTotals = new Map();
+  for (const r of snap.rows){
+    if(!byCS.has(r.o)) byCS.set(r.o,{cs:r.o,total:0,hoy:0,pend:0,blq:new Map()});
+    const c = byCS.get(r.o);
+    c.total++; const called = r.u === snap.fecha; if(called) c.hoy++; else c.pend++;
+    for (const b of r.b){ c.blq.set(b,(c.blq.get(b)||0)+1); blqTotals.set(b,(blqTotals.get(b)||0)+1); }
+  }
+  const cs = [...byCS.values()];
+  const total = snap.rows.length, hoy = cs.reduce((a,c)=>a+c.hoy,0);
+  return {cs, total, hoy, pend: total-hoy, pctPend: total? (total-hoy)/total : 0,
+          bloqueos: [...blqTotals.entries()].sort((a,b)=>b[1]-a[1])};
+}
+const pct = v => Math.round(v*100) + "%";
+
+/* ---------- Render ---------- */
+function datesFor(base){ return Object.keys(state.snaps[base]).sort(); }
+function render(){
+  // pestañas
+  for (const b of Object.keys(BASES)){
+    const t = $("#tab-"+b); t.setAttribute("aria-selected", String(state.tab===b));
+    const d = state.date[b] || datesFor(b).slice(-1)[0];
+    t.querySelector(".n").textContent = d && state.snaps[b][d] ? state.snaps[b][d].total : "";
+  }
+  // selector de día
+  const dates = datesFor(state.tab);
+  if (!state.date[state.tab] || !state.snaps[state.tab][state.date[state.tab]]) state.date[state.tab] = dates.slice(-1)[0] || null;
+  const sel = $("#dateSel"); sel.textContent = "";
+  if (!dates.length) sel.append(el("option",{text:"Sin informes"}));
+  for (const d of [...dates].reverse()) { const o = el("option",{value:d,text:fmtDate(d,true)}); if(d===state.date[state.tab]) o.selected=true; sel.append(o); }
+  sel.disabled = !dates.length;
+
+  const view = $("#view"); view.textContent = "";
+  const date = state.date[state.tab];
+  if (!date){
+    view.append(el("div",{class:"empty"},
+      el("b",{text: state.loaded ? `Aún no hay informes de ${BASES[state.tab]}` : "Cargando informes guardados…"}),
+      state.loaded ? `Pulsa “Cargar informes” y sube el export de HubSpot de ${BASES[state.tab]}. Cada día queda guardado para poder compararlo.` : ""));
+    return;
+  }
+  const snap = state.snaps[state.tab][date];
+  const M = metrics(snap);
+  $("#subtitle").textContent = `${BASES[state.tab]}: informe del ${fmtDate(date,true)}. Llamado hoy = la última fecha del Comentario CS coincide con el día del informe.`;
+
+  // Marcador + evolución
+  const prevDate = dates[dates.indexOf(date)-1];
+  let deltaTxt = "Primer día registrado en esta pestaña.";
+  if (prevDate){
+    const P = metrics(state.snaps[state.tab][prevDate]);
+    const dt = M.total - P.total, dp = Math.round(M.pctPend*100) - Math.round(P.pctPend*100);
+    const s = v => (v>0?"+":"") + v;
+    deltaTxt = `Frente al ${fmtDate(prevDate)}: ${s(dt)} proyectos, ${s(dp)} puntos de % pendiente.`;
+  }
+  const score = el("div",{class:"score"},
+    el("div",{class:"big"}, el("b",{text:M.total}), el("span",{text:`proyectos en ${BASES[state.tab]} hoy`})),
+    el("div",{class:"k ok"}, el("b",{text:M.hoy}), el("span",{text:"llamados hoy"})),
+    el("div",{class:"k pend"}, el("b",{text:M.pend}), el("span",{text:"pendientes por llamar"})),
+    el("div",{class:"k pend"}, el("b",{text:pct(M.pctPend)}), el("span",{text:"sin llamar hoy"})),
+    el("div",{class:"delta",text:deltaTxt})
+  );
+  const trend = el("div",{class:"panel"},
+    el("h2",{text:"Avance diario"}),
+    el("p",{class:"hint",text:"Proyectos llamados y pendientes en cada día cargado. Toca un día para verlo."}),
+    legend([["var(--ok)","Llamados"],["var(--pend)","Pendientes"]]));
+  const trendBox = el("div",{class:"scroll"}); trend.append(trendBox);
+  view.append(el("div",{class:"board"}, score, trend));
+  drawTrend(trendBox, dates, date);
+
+  // 1 y 2
+  const p1 = el("div",{class:"panel"}, el("h2",{text:"Proyectos asignados por CS"}), el("p",{class:"hint",text:"Según el campo C.S. Owner. Toca un CS para filtrar la lista de abajo."}));
+  const p2 = el("div",{class:"panel"}, el("h2",{text:"Llamadas de hoy por CS"}), el("p",{class:"hint",text:"Ordenado por % pendiente, de mayor a menor."}), legend([["var(--ok)","Llamados hoy"],["var(--pend)","Pendientes"]]));
+  const b1 = el("div"), b2 = el("div"); p1.append(b1); p2.append(b2);
+  view.append(el("div",{class:"grid2"}, p1, p2));
+  drawAssigned(b1, M);
+  drawCalls(b2, M);
+
+  // 3
+  const p3 = el("div",{class:"panel full"}, el("h2",{text:"Bloqueos por CS"}), el("p",{class:"hint",text:"Según BLOQUEO: Detalle. Un proyecto con varios bloqueos cuenta en cada uno."}));
+  const b3 = el("div",{class:"scroll"}); p3.append(b3); view.append(p3);
+  drawHeat(b3, M);
+
+  // Lista
+  const p4 = el("div",{class:"panel full"}); view.append(p4);
+  drawList(p4, snap, M);
+
+  if (state.canWrite && state.db){
+    const del = el("button",{class:"btn ghost small",type:"button",text:`Eliminar el informe del ${fmtDate(date)}`,onclick:()=>deleteSnap(state.tab,date)});
+    view.append(el("div",{style:"text-align:right"},del));
+  }
+}
+function legend(items){ return el("div",{class:"legend"}, ...items.map(([c,t])=>el("span",null, el("i",{style:`background:${c}`}), t))); }
+
+function drawTrend(box, dates, current){
+  const W = Math.max(box.clientWidth || 600, 280), H = 190, padL=8, padB=26, padT=18;
+  const data = dates.map(d=>{ const m = metrics(state.snaps[state.tab][d]); return {d, hoy:m.hoy, pend:m.pend, total:m.total}; });
+  const max = Math.max(1, ...data.map(x=>x.total));
+  const slot = Math.min(70, (W-padL*2)/Math.max(data.length,1));
+  const bw = Math.max(14, slot*0.62);
+  const svg = sv("svg",{viewBox:`0 0 ${Math.max(W, slot*data.length+padL*2)} ${H}`, width:"100%", role:"img", "aria-label":"Avance diario de llamadas"});
+  const y = v => padT + (H-padT-padB) * (1 - v/max);
+  data.forEach((x,i)=>{
+    const cx = padL + slot*i + (slot-bw)/2;
+    const g = sv("g",{class:"clickable", opacity: x.d===current?1:.55});
+    const hOk = (H-padT-padB)*x.hoy/max, hP = (H-padT-padB)*x.pend/max;
+    g.append(sv("rect",{x:cx,y:H-padB-hOk,width:bw,height:hOk,fill:"var(--ok)",rx:2}));
+    g.append(sv("rect",{x:cx,y:H-padB-hOk-hP,width:bw,height:hP,fill:"var(--pend)",rx:2}));
+    const t = sv("text",{x:cx+bw/2,y:y(x.total)-5,"text-anchor":"middle","font-size":12,"font-weight":600}); t.textContent=x.total; g.append(t);
+    const l = sv("text",{x:cx+bw/2,y:H-8,"text-anchor":"middle","font-size":11,fill:"var(--muted)","font-weight":x.d===current?700:400}); l.textContent=fmtDate(x.d); g.append(l);
+    g.addEventListener("click",()=>{ state.date[state.tab]=x.d; render(); });
+    bindTip(g, `${fmtDate(x.d,true)}: ${x.hoy} llamados, ${x.pend} pendientes de ${x.total} (${pct(x.total? x.pend/x.total:0)} sin llamar)`);
+    svg.append(g);
+  });
+  box.append(svg);
+}
+
+function hbars(box, rows, opts){
+  const W = Math.max(box.clientWidth || 480, 280), rowH = 30, labelW = Math.min(170, W*0.38), rightW = opts.rightW || 40;
+  const H = rows.length*rowH + 6;
+  const svg = sv("svg",{viewBox:`0 0 ${W} ${H}`, width:"100%", role:"img","aria-label":opts.label});
+  const max = Math.max(1, ...rows.map(r=>r.total));
+  const avail = W - labelW - rightW - 10;
+  rows.forEach((r,i)=>{
+    const yy = i*rowH + 4;
+    const g = sv("g",{class:"clickable"});
+    const active = state.csFilter===r.cs;
+    const name = sv("text",{x:0,y:yy+rowH/2+1,"dominant-baseline":"middle","font-size":13,"font-weight":active?700:500});
+    name.textContent = r.cs.length>24 ? r.cs.slice(0,23)+"…" : r.cs; g.append(name);
+    let x = labelW;
+    for (const seg of opts.segs(r)){
+      const w = avail*seg.v/max; if(w<=0) continue;
+      g.append(sv("rect",{x, y:yy+5, width:w, height:rowH-12, fill:seg.c, rx:2})); x+=w;
+    }
+    const lab = sv("text",{x:x+6,y:yy+rowH/2+1,"dominant-baseline":"middle","font-size":12.5,"font-weight":600}); lab.textContent = opts.right(r); g.append(lab);
+    g.append(sv("rect",{x:0,y:yy,width:W,height:rowH,fill:"transparent"}));
+    g.addEventListener("click",()=>{ state.csFilter = state.csFilter===r.cs?null:r.cs; render(); });
+    bindTip(g, opts.tip(r));
+    svg.append(g);
+  });
+  box.append(svg);
+}
+function drawAssigned(box, M){
+  const rows = [...M.cs].sort((a,b)=>b.total-a.total||a.cs.localeCompare(b.cs));
+  hbars(box, rows, {label:"Proyectos asignados por CS", segs:r=>[{v:r.total,c:"var(--bar)"}], right:r=>String(r.total), tip:r=>`${r.cs}: ${r.total} proyectos asignados (${pct(r.total/M.total)} del total)`});
+}
+function drawCalls(box, M){
+  const rows = [...M.cs].sort((a,b)=>(b.pend/b.total)-(a.pend/a.total)||b.pend-a.pend);
+  hbars(box, rows, {label:"Llamadas de hoy por CS", rightW:120, segs:r=>[{v:r.hoy,c:"var(--ok)"},{v:r.pend,c:"var(--pend)"}],
+    right:r=> r.pend ? `${r.pend} pend. · ${pct(r.pend/r.total)}` : "al día",
+    tip:r=>`${r.cs}: llamó hoy ${r.hoy} de ${r.total}. Pendientes ${r.pend} (${pct(r.pend/r.total)}).`});
+}
+function drawHeat(box, M){
+  const cols = M.bloqueos.map(b=>b[0]);
+  const rows = [...M.cs].sort((a,b)=>b.total-a.total);
+  const max = Math.max(1, ...rows.flatMap(r=>[...r.blq.values()]));
+  const t = el("table",{class:"heat"});
+  const hr = el("tr",null, el("th",{text:"CS"}), ...cols.map(c=>el("th",{text:c})), el("th",{text:"Proyectos"}));
+  t.append(el("thead",null,hr));
+  const tb = el("tbody");
+  for (const r of rows){
+    const tr = el("tr",null, el("td",{text:r.cs}));
+    for (const c of cols){
+      const v = r.blq.get(c)||0;
+      const td = el("td",{class: v? "c":"c z", text: v||"·"});
+      if (v){ const a = .12 + .7*v/max; td.style.background = `rgba(var(--heat-rgb),${a.toFixed(2)})`; if(a>.5) td.style.color="#fff"; bindTip(td, `${r.cs}: ${v} proyecto${v>1?"s":""} con “${c}”`); }
+      tr.append(td);
+    }
+    tr.append(el("td",{class:"rt",text:r.total}));
+    tb.append(tr);
+  }
+  tb.append(el("tr",{class:"tot"}, el("td",{text:"Total"}), ...M.bloqueos.map(b=>el("td",{text:b[1]})), el("td",{text:M.total})));
+  t.append(tb); box.append(t);
+}
+function drawList(p, snap, M){
+  const head = el("div",{class:"toolbar"},
+    el("div",null, el("h2",{text: state.showAll ? "Todos los proyectos" : "Pendientes por llamar hoy"}),
+      el("p",{class:"hint",style:"margin:0",text: state.showAll ? "Estado de llamada de cada proyecto." : "Proyectos cuya última fecha en Comentario CS no es la del informe."})),
+    el("label",{class:"toggle"}, (()=>{ const c = el("input",{type:"checkbox"}); c.checked = state.showAll; c.addEventListener("change",()=>{state.showAll=c.checked; render();}); return c; })(), "Ver también los llamados"));
+  p.append(head);
+  const chips = el("div",{class:"chips"});
+  const mk = (cs, label) => el("button",{class:"chip",type:"button","aria-pressed":String(state.csFilter===cs),text:label,onclick:()=>{state.csFilter=cs; render();}});
+  chips.append(mk(null,"Todos"));
+  for (const c of [...M.cs].sort((a,b)=>a.cs.localeCompare(b.cs))) chips.append(mk(c.cs, `${c.cs} (${state.showAll?c.total:c.pend})`));
+  p.append(chips);
+  let rows = snap.rows.filter(r=> (state.showAll || r.u!==snap.fecha) && (!state.csFilter || r.o===state.csFilter));
+  rows.sort((a,b)=> (a.u===snap.fecha)-(b.u===snap.fecha) || (a.u||"").localeCompare(b.u||"") || a.o.localeCompare(b.o));
+  if (!rows.length){ p.append(el("div",{class:"empty",style:"padding:22px"}, el("b",{text:"Nada pendiente"}), state.csFilter ? `${state.csFilter} ya llamó a todos sus proyectos hoy.` : "Todo el equipo llamó a sus proyectos hoy.")); return; }
+  const t = el("table",{class:"list"});
+  t.append(el("thead",null, el("tr",null, ...["CS","Proyecto","Bloqueo","Prioridad","Última llamada","Días","Estado","Último comentario"].map(h=>el("th",{text:h})))));
+  const tb = el("tbody");
+  for (const r of rows){
+    const called = r.u===snap.fecha;
+    const days = r.u ? daysBetween(r.u, snap.fecha) : null;
+    tb.append(el("tr",null,
+      el("td",{text:r.o}), el("td",{class:"p",text:r.p}), el("td",{text:r.b.join("; ")}), el("td",{text:r.pr||"—"}),
+      el("td",{text: r.u? fmtDate(r.u) : "Sin fecha"}),
+      el("td",null, el("span",{class:"days",text: days==null? "—" : days})),
+      el("td",null, el("span",{class:"tag "+(called?"ok":"pend"),text: called?"Llamado hoy":"Pendiente"})),
+      el("td",{class:"cm",text:r.c||"—"})));
+  }
+  t.append(tb); p.append(el("div",{class:"scroll"},t));
+}
+
+/* ---------- Carga de archivos ---------- */
+$("#uploadBtn").addEventListener("click",()=>$("#fileIn").click());
+$("#fileIn").addEventListener("change", async e=>{
+  const files=[...e.target.files]; e.target.value="";
+  for (const f of files){
+    const g = guessFromName(f.name);
+    state.pending.push({name:f.name, text: await f.text(), base:g.base, date:g.date});
+  }
+  renderPending();
+});
+function renderPending(){
+  const box = $("#upRows"); box.textContent="";
+  $("#upload").classList.toggle("show", state.pending.length>0);
+  state.pending.forEach((p,i)=>{
+    let info="", err="";
+    try { const s = buildSnapshot(p.text, p.base, p.date); const m = metrics(s); info = `${s.total} proyectos, ${m.hoy} llamados ese día, ${m.pend} pendientes`; p.err=null; }
+    catch(x){ err = x.message; p.err = x.message; }
+    const baseSel = el("select",{"aria-label":"Pestaña"}); for (const b in BASES){ const o=el("option",{value:b,text:BASES[b]}); if(b===p.base) o.selected=true; baseSel.append(o); }
+    baseSel.addEventListener("change",()=>{p.base=baseSel.value; renderPending();});
+    const d = el("input",{type:"date",value:p.date,"aria-label":"Día del informe"}); d.addEventListener("change",()=>{ if(d.value){p.date=d.value; renderPending();} });
+    const rm = el("button",{class:"btn ghost small",type:"button",text:"Quitar",onclick:()=>{state.pending.splice(i,1); renderPending();}});
+    const exists = state.snaps[p.base][p.date] ? " Ya hay un informe de ese día: se reemplazará." : "";
+    box.append(el("div",{class:"up-row"}, el("div",{class:"fn"}, p.name, el("small",{text: err? "" : info + exists}), err? el("div",{class:"err",text:err}):null), baseSel, d, rm));
+  });
+  $("#upNotice").textContent = state.db ? "" : "Este visor no tiene almacenamiento: los informes se verán ahora pero no quedarán guardados.";
+}
+$("#cancelUp").addEventListener("click",()=>{state.pending=[]; renderPending();});
+$("#saveUp").addEventListener("click", async ()=>{
+  const btn=$("#saveUp"); btn.disabled=true;
+  let ok=0, fail=[];
+  for (const p of state.pending.filter(p=>!p.err)){
+    try{
+      const s = buildSnapshot(p.text, p.base, p.date);
+      if (state.db) await state.db.collection("snapshots").doc(`${p.base}_${p.date}`).set(s);
+      state.snaps[p.base][p.date] = s; state.date[p.base] = p.date; state.tab = p.base; ok++;
+    } catch(x){ fail.push(`${p.name}: ${x.message || x.code}`); if(x && x.code==="invalid_argument"){ state.canWrite=false; } }
+  }
+  btn.disabled=false; state.pending = []; renderPending();
+  location.hash = state.tab; render();
+  toast(fail.length ? `Guardados ${ok}. No se pudo guardar: ${fail.join("; ")}` : `${ok} informe${ok===1?"":"s"} guardado${ok===1?"":"s"}`);
+});
+async function deleteSnap(base, date){
+  if(!confirm(`¿Eliminar el informe de ${BASES[base]} del ${fmtDate(date,true)}?`)) return;
+  try{ await state.db.collection("snapshots").doc(`${base}_${date}`).delete(); delete state.snaps[base][date]; state.date[base]=null; render(); toast("Informe eliminado"); }
+  catch(x){ toast("No se pudo eliminar: " + (x.message||x.code)); }
+}
+
+/* ---------- Navegación ---------- */
+document.querySelectorAll(".tab").forEach(t=>t.addEventListener("click",()=>{ state.tab=t.dataset.tab; state.csFilter=null; location.hash=state.tab; render(); }));
+$("#dateSel").addEventListener("change",e=>{ state.date[state.tab]=e.target.value; render(); });
+function fromHash(){ const h=location.hash.slice(1); if(BASES[h]){ state.tab=h; state.csFilter=null; render(); } }
+addEventListener("hashchange", fromHash);
+let rz; addEventListener("resize",()=>{ clearTimeout(rz); rz=setTimeout(render,150); });
+{ const h=location.hash.slice(1); if(BASES[h]) state.tab=h; }
+render();
+
+/* ---------- Almacenamiento ---------- */
+(async ()=>{
+  let db=null;
+  try { db = window.claude && window.claude.use ? await window.claude.use("db") : null; } catch(_){ db=null; }
+  state.db = db;
+  if (!db){ state.loaded=true; render(); return; }
+  try{
+    const u = window.claude.use ? await window.claude.use("user") : null;
+    if (u && u.can){ const c = await u.can("data.write"); if (c===false) state.canWrite=false; }
+  }catch(_){}
+  if(!state.canWrite) $("#uploadBtn").hidden = true;
+  db.collection("snapshots").onSnapshot(snap=>{
+    const next = {mem1:{},completo:{}};
+    for (const d of snap.docs){ const v=d.data(); if(v && next[v.base]) next[v.base][v.fecha]=v; }
+    state.snaps = next; state.loaded = true; render();
+  }, err=>{ state.loaded=true; render(); toast("No se pudieron leer los informes guardados"); });
+})();
+})();
+</script>
+</body>
+</html>
