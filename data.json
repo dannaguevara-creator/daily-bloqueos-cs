@@ -1,6 +1,11 @@
 {
-  "generated": "2026-10-27T16:13:24.020613Z",
+  "generated": "2026-10-27T16:21:20.654889Z",
   "date": "2026-10-27",
+  "hubspot": {
+    "portal": "25808060",
+    "domain": "app-eu1.hubspot.com",
+    "object": "2-110970937"
+  },
   "snapshots": {
     "completo_2026-10-27": {
       "base": "completo",
@@ -2275,8 +2280,8 @@
     "mem1_2026-10-27": {
       "base": "mem1",
       "fecha": "2026-10-27",
-      "cargado": "2026-10-27T16:13:23.464072Z",
-      "total": 26,
+      "cargado": "2026-10-27T16:21:20.028634Z",
+      "total": 28,
       "rows": [
         {
           "id": "22678789348",
@@ -2450,6 +2455,18 @@
           "u": "2026-10-27"
         },
         {
+          "id": "269607228653",
+          "p": "KD-WEB: IRENE MEMBRILLA RODRIGUEZ",
+          "o": "Jose Luis Lopez Vargas",
+          "c": "27-10-26 V.Ortega: Desbloqueamos proyecto y avanzamos 23/10 MJ se relacionan accesos del dominio, cliente tiene email asi que por favor tener en cuenta al momento d emigrar y que no se pierda22/10 MJ llamo cliente, ya contacto el que llevaba la web antes, para que le de los accesos. Si no toca hacerlo ya con un dominio nuevo                                                   20/10 Mj llamo cliente pero no ha podido recuperar los accesos al dominio. Mañana definimos si se realiza con un dominio nu",
+          "b": [
+            "Falta migración"
+          ],
+          "pr": "Prioridad 3",
+          "h": true,
+          "u": "2026-10-27"
+        },
+        {
           "id": "278324009167",
           "p": "KD-SEO: DAMIEN JEAN A MOYSE",
           "o": "Jose Luis Lopez Vargas",
@@ -2506,6 +2523,16 @@
           "b": [
             "Falta dominio"
           ],
+          "pr": "Prioridad 3",
+          "h": true,
+          "u": "2026-10-27"
+        },
+        {
+          "id": "281078730980",
+          "p": "KD-SEO: DAYANA BEATRIZ FARIA MONTILVA",
+          "o": "Dikcibell Pantoja Toste",
+          "c": " 27/10/26 Dikci: NO LLAMAR HASTA EL 20 DE NOVIEMBRE// 26/10/26 Dikci: NO LLAMAR HASTA EL 20 DE NOVIEMBRE // 23/10 MJ la Web estará activa en el mes de noviembre, pide que se le contacte en este mes                                                                 20/10/26 dikci: dice que puede tener la web a mediado del mes que viene. 20 de noviembre. // 28.9.2026 jorge, llamo cliente con llamada agendada, no ha creado la web, le digo que la cree, dice ok y mando mail para que en respuesta envíe l",
+          "b": [],
           "pr": "Prioridad 3",
           "h": true,
           "u": "2026-10-27"
@@ -2600,8 +2627,8 @@
     "mem2_2026-10-27": {
       "base": "mem2",
       "fecha": "2026-10-27",
-      "cargado": "2026-10-27T16:13:23.464994Z",
-      "total": 169,
+      "cargado": "2026-10-27T16:21:20.029578Z",
+      "total": 164,
       "rows": [
         {
           "id": "871047389",
@@ -2638,16 +2665,6 @@
           "pr": "Prioridad 3",
           "h": false,
           "u": "2026-10-21"
-        },
-        {
-          "id": "6630668023",
-          "p": "KD-RRSS: KARENNT QUERALES MORENO",
-          "o": "Victor Ortega",
-          "c": "26-10-26 V.Ortega: NCx3 + Ya se ha revinulado y programado 8/10 Irene: llamo y salta el buzón, envío mail solicitando que vincule y que revise los cambios ya aplicados 6/10 MJ comentarios en la presentación. Se revisa y la cliente indica que no están los cambios                                                                         02.10.26 Jose Luis: Envio correo desbloquear y avanzar // 01/09 Irene: llamo y añado fdk y muevo a prod para que se ajuste la propuesta",
-          "b": [],
-          "pr": "",
-          "h": false,
-          "u": "2026-10-26"
         },
         {
           "id": "20547652812",
@@ -2822,16 +2839,6 @@
           "pr": "Prioridad 1",
           "h": false,
           "u": "2026-10-22"
-        },
-        {
-          "id": "122163731705",
-          "p": "KD-RRSS: CARLOS NUÑEZ ORIOL",
-          "o": "Andrea Giraldo Orejuela",
-          "c": "Baja de autónomo ",
-          "b": [],
-          "pr": "Prioridad 1",
-          "h": false,
-          "u": null
         },
         {
           "id": "123224132838",
@@ -3069,13 +3076,13 @@
           "id": "171027906749",
           "p": "KD-RRSS: CATHERINE PAMELA RODRIGUEZ CORONADO ",
           "o": "María Johanna Díaz Quinceno",
-          "c": "21/10 Mj llamo cliente, responde pero m olita que le envíe todo por emial. Le abro email y le envío información                           19/10 Mj llamo cliente NC.                           13.10.26 Jose Luis: Envio WSP externo para intentar desbloquear // 8/10 MJ llamo cliente x2 NC. No responde a los destinitos mensajes enviados y se ha intentado contactar desde ya hace varios meses. Le abro wsp 02.10.26 Jose Luis: Envio correo desbloquear y avanzar // 10/09/26 dikci: NC - ENVIO EMAIL CON REC",
+          "c": "27/10 Mj Llamo cliente NC, cuelga la llamada                         21/10 Mj llamo cliente, responde pero m olita que le envíe todo por emial. Le abro email y le envío información                           19/10 Mj llamo cliente NC.                           13.10.26 Jose Luis: Envio WSP externo para intentar desbloquear // 8/10 MJ llamo cliente x2 NC. No responde a los destinitos mensajes enviados y se ha intentado contactar desde ya hace varios meses. Le abro wsp 02.10.26 Jose Luis: Envio cor",
           "b": [
             "Falta Vincular a Metricool"
           ],
           "pr": "Prioridad 1",
-          "h": false,
-          "u": "2026-10-21"
+          "h": true,
+          "u": "2026-10-27"
         },
         {
           "id": "171887244477",
@@ -3242,13 +3249,13 @@
           "id": "204296931565",
           "p": "KD-SEO: EL CARTON PELEON SL",
           "o": "Jose Luis Lopez Vargas",
-          "c": "16.07 Andrea. Envío mail 12/06 ah se deja feedback",
+          "c": "27.10.26 Jose Luis: CONTESTA, pero no es el dueño, envio email y wsp // 16.07 Andrea. Envío mail 12/06 ah se deja feedback",
           "b": [
             "Falta Credenciales de Acceso."
           ],
           "pr": "Prioridad 2",
-          "h": false,
-          "u": "2026-07-16"
+          "h": true,
+          "u": "2026-10-27"
         },
         {
           "id": "205200316653",
@@ -3438,18 +3445,6 @@
           "pr": "Prioridad 1",
           "h": false,
           "u": "2026-10-21"
-        },
-        {
-          "id": "231586048224",
-          "p": "KD-SEO: LIBRES DEL SUR S.L",
-          "o": "Nataly molina",
-          "c": "ERROR PLATAFORMA 26/2 M: problema plataforma, derivado a red.es 23/2 M: se envía mail pasos firma memoria 11/02 ah tenemos go implementación y credenciales",
-          "b": [
-            "Sitio Web no Carga"
-          ],
-          "pr": "Prioridad 1",
-          "h": false,
-          "u": "2026-02-26"
         },
         {
           "id": "231668111547",
@@ -3770,18 +3765,6 @@
           "u": "2026-10-21"
         },
         {
-          "id": "245389209804",
-          "p": "KD-RRSS: MALVA INFORMATICA SL",
-          "o": "Dikcibell Pantoja Toste",
-          "c": "27/10/26 dikci: envio email - no habla español por lo que prefiere email. // 22/10/26 dikci: FDK en la ppt - tener en cuenta que quiere que se puede publicar el contenido de la FI cuando se realicen las correcciones que ha solicitados en esos post. La FA debe seguir la misma linea del contenido de la FI. // 21/10/26 dikci: CONTESTA - prefiere email porque no habla español // 13/10 NM escalo con Karen en prioridad slack para que se hagan cambios 05.10.26 Jose Luis: FDK Presentacion, cambios // 02",
-          "b": [
-            "GO Programación"
-          ],
-          "pr": "",
-          "h": true,
-          "u": "2026-10-27"
-        },
-        {
           "id": "246333531346",
           "p": "KD-RRSS: NATALIA GARCIA MONTANER",
           "o": "Fran González",
@@ -3935,13 +3918,13 @@
           "id": "255914535131",
           "p": "KD-RRSS: ISABEL CUESTA MARTIN",
           "o": "Fran González",
-          "c": "21/10 MJ cliente deja comentario. lo relaciono en la presentación                            21.10 Fran - En contacto con la clienta para revisar su proyecto 20/10 MJ llamo cliente NC, le abro wsp       06.10 Fran - Comentarios en la presentación 02.10.26 Jose Luis: Envio correo desbloquear y avanzar // 11/09/26 dikci: CONTESTA - Conectará la cuenta una vez se apliquen los cambios. // 10/09/26 dikci: NC - NO ESTA CONECTADA LA CUENTA // 03.09 Fran - Comentarios en la presentación 26.08 Andrea, Ll",
+          "c": "27.10 Fran - Proyecto en producción aplicando los cambios del cliente 21/10 MJ cliente deja comentario. lo relaciono en la presentación                            21.10 Fran - En contacto con la clienta para revisar su proyecto 20/10 MJ llamo cliente NC, le abro wsp       06.10 Fran - Comentarios en la presentación 02.10.26 Jose Luis: Envio correo desbloquear y avanzar // 11/09/26 dikci: CONTESTA - Conectará la cuenta una vez se apliquen los cambios. // 10/09/26 dikci: NC - NO ESTA CONECTADA LA ",
           "b": [
             "Falta Vincular a Metricool"
           ],
           "pr": "Prioridad 1",
-          "h": false,
-          "u": "2026-10-21"
+          "h": true,
+          "u": "2026-10-27"
         },
         {
           "id": "257013776578",
@@ -4006,13 +3989,13 @@
           "id": "262848559323",
           "p": "KD-RRSS: ZINK Investment Solutions EAFN, S.L.",
           "o": "Fran González",
-          "c": "21/10 MJ marco al cliente x2, Contesta pero no puede atender esta en otro país.  contactar a este numero 305 209 34 91 se llama Luciana. Llamo este numero pero no hay forma de localizarla 21.10 Fran - Llamo al cliente, nc, dejo buzón de voz y mando WSP 20/10 Mj llamo cliente NC, le abro email de nuevo                                                            8/10 MJ llamo cliente pero no puede atenderme. Le envío email                                                   02.10.26 Jose Luis: Envio ",
+          "c": "27.10 Fran - Llamo al cliente, nc, mando WSP21/10 MJ marco al cliente x2, Contesta pero no puede atender esta en otro país.  contactar a este numero 305 209 34 91 se llama Luciana. Llamo este numero pero no hay forma de localizarla 21.10 Fran - Llamo al cliente, nc, dejo buzón de voz y mando WSP 20/10 Mj llamo cliente NC, le abro email de nuevo                                                            8/10 MJ llamo cliente pero no puede atenderme. Le envío email                                 ",
           "b": [
             "Falta Vincular a Metricool"
           ],
           "pr": "Prioridad 3",
-          "h": false,
-          "u": "2026-10-21"
+          "h": true,
+          "u": "2026-10-27"
         },
         {
           "id": "262983257331",
@@ -4042,13 +4025,13 @@
           "id": "263011560678",
           "p": "KD-RRSS: BEATRIZ GUILLÉN ALONSO",
           "o": "Andrea Giraldo Orejuela",
-          "c": "19.10 Fran - Llamo al cliente, nc, dejo mensaje en el buzón de voz y mando WSP08.10 Fran - Llamo al cliente, nc. Cliente no contesta a llamadas, ni mensajes que le envíamos 02.10.26 Jose Luis: Envio correo desbloquear y avanzar // 10.09 Andrea. Llamé, NC ",
+          "c": "27.10 Andrea. Llamé, se va a buzón, envío mail 19.10 Fran - Llamo al cliente, nc, dejo mensaje en el buzón de voz y mando WSP08.10 Fran - Llamo al cliente, nc. Cliente no contesta a llamadas, ni mensajes que le envíamos 02.10.26 Jose Luis: Envio correo desbloquear y avanzar // 10.09 Andrea. Llamé, NC ",
           "b": [
             "Falta Vincular a Metricool"
           ],
           "pr": "Prioridad 2",
-          "h": false,
-          "u": "2026-10-19"
+          "h": true,
+          "u": "2026-10-27"
         },
         {
           "id": "263716629719",
@@ -4066,13 +4049,13 @@
           "id": "263974083826",
           "p": "KD-RRSS: Ahmed Ounacer",
           "o": "Andrea Giraldo Orejuela",
-          "c": "21/10 MJ llamo cliente, me pide que le envíe todo por email, ella mañana en el trabajo lo revisa para así indicarme. Pendiente de gestión                                    20/10 MJ llamo cliente NC                               14/10 Mj ratificación firmada. No gestiono ya que el documento de presentación no abre. vi comentario en clickup que se debe de replicar de nuevo                                13.10.26 Jose Luis: Envio WSP externo para intentar desbloquear // 9/10 MJ llamo cliente NC, l",
+          "c": "27.10 Andrea. Llamé, NC, pero estamos hablando por whatsapp, me enviará el número de contacto de Ahmed 21/10 MJ llamo cliente, me pide que le envíe todo por email, ella mañana en el trabajo lo revisa para así indicarme. Pendiente de gestión                                    20/10 MJ llamo cliente NC                               14/10 Mj ratificación firmada. No gestiono ya que el documento de presentación no abre. vi comentario en clickup que se debe de replicar de nuevo                       ",
           "b": [
             "Falta Vincular a Metricool"
           ],
           "pr": "Prioridad 3",
-          "h": false,
-          "u": "2026-10-21"
+          "h": true,
+          "u": "2026-10-27"
         },
         {
           "id": "263983081678",
@@ -4134,13 +4117,13 @@
           "id": "267237751021",
           "p": "KD-WEB: ELISABET STORK RUIZ",
           "o": "Andrea Giraldo Orejuela",
-          "c": "21/10 Irene: llamo a la clienta y me confirma que hablará con el banco para el tpv virtual. Pte de que nos comparta credenciales de acceso para vincular TPV 016-10-26 V.Ortega: Contactamos clienta a la que compartimos acccesos web y Academy, nos dice que no tiene más cambios y que compartirá el TPV virtual de su banco próximamente 7.10.26 Jose Luis: Envio email para corroborar FDK o Conformidad // 20/05 Juliana: Agendamiento onboarding 22 mayo 13:00 con CT 22.04 cs Fredy, solcita cambios 21.01 A",
+          "c": "27.10 Andrea. Tiene cita con el gestor para la información del banco 21/10 Irene: llamo a la clienta y me confirma que hablará con el banco para el tpv virtual. Pte de que nos comparta credenciales de acceso para vincular TPV 016-10-26 V.Ortega: Contactamos clienta a la que compartimos acccesos web y Academy, nos dice que no tiene más cambios y que compartirá el TPV virtual de su banco próximamente 7.10.26 Jose Luis: Envio email para corroborar FDK o Conformidad // 20/05 Juliana: Agendamiento on",
           "b": [
             "Falta Credenciales de Acceso."
           ],
           "pr": "Prioridad 2",
-          "h": false,
-          "u": "2026-10-21"
+          "h": true,
+          "u": "2026-10-27"
         },
         {
           "id": "267322800349",
@@ -4177,16 +4160,6 @@
           "pr": "Prioridad 3",
           "h": false,
           "u": "2026-10-26"
-        },
-        {
-          "id": "269205609661",
-          "p": "KD-RRSS: DIEGO BETANCOURT EICHELMANN",
-          "o": "Fran González",
-          "c": "27.10 Fran - Proyecto en seguimiento sin bloqueos 11.02 Andrea. Da OK para publicar 24.11 ANDRESB: Se avanza a prod2",
-          "b": [],
-          "pr": "",
-          "h": true,
-          "u": "2026-10-27"
         },
         {
           "id": "269560372423",
@@ -4429,13 +4402,13 @@
           "id": "306867503310",
           "p": "KD-RRSS: Ester García Bieco",
           "o": "María Johanna Díaz Quinceno",
-          "c": "23.10 Andrea. Llamé, NC 7/10 MJ Se vincula cuenta, Comentarios en la presentación                                                             6/10 MJ llamo NC. Dice teléfono no asignado. Le abro wsp no le llega el mensaje. le escribo al email                               02.10.26 Jose Luis: Envio correo desbloquear y avanzar // 10.09 Andrea. Llamé, NC 24.08 Andrea. Llamé, NC 30/6 MJ envío Presentación nuevamente, pendiente accesos y FDK                                  02.06.26 Jose Luis: CONTE",
+          "c": "27/10 Mj llamo cliente NC, le abro email para indicarle que ya están lo cabios y poder avanzar. pendiente de respuesta         23.10 Andrea. Llamé, NC 7/10 MJ Se vincula cuenta, Comentarios en la presentación                                                             6/10 MJ llamo NC. Dice teléfono no asignado. Le abro wsp no le llega el mensaje. le escribo al email                               02.10.26 Jose Luis: Envio correo desbloquear y avanzar // 10.09 Andrea. Llamé, NC 24.08 Andrea. Llam",
           "b": [
             "GO Programación"
           ],
           "pr": "Prioridad 2",
-          "h": false,
-          "u": "2026-10-23"
+          "h": true,
+          "u": "2026-10-27"
         },
         {
           "id": "305959506150",
