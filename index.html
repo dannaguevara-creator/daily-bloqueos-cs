@@ -112,6 +112,7 @@ table{border-collapse:collapse;width:100%;font-size:.9rem}
 .tag{display:inline-block;border-radius:4px;padding:1px 7px;font-size:.78rem;font-weight:600;white-space:nowrap}
 .tag.pend{background:var(--pend-soft);color:var(--pend)}
 .tag.ok{background:var(--ok-soft);color:var(--ok)}
+.tag.danger{background:var(--danger-soft);color:var(--danger)}
 .days{font-family:var(--cond);font-weight:700;font-size:1.05rem}
 .toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px}
 .toggle{font-size:.88rem;color:var(--muted);display:flex;gap:6px;align-items:center}
@@ -165,6 +166,7 @@ table{border-collapse:collapse;width:100%;font-size:.9rem}
   <nav class="tabs" role="tablist">
     <button class="tab" role="tab" data-tab="mem1" id="tab-mem1">Mem 1 <span class="n"></span></button>
     <button class="tab" role="tab" data-tab="mem2" id="tab-mem2">Base completa <span class="n"></span></button>
+    <button class="tab" role="tab" data-tab="ringover" id="tab-ringover">Ringover <span class="n"></span></button>
   </nav>
 
   <main id="view"></main>
@@ -185,7 +187,8 @@ const state = {
   showAll:false,
   pending:[],
   db:null, canWrite:true, loaded:false,
-  hubspot:null
+  hubspot:null,
+  ringover:null, rvDate:null
 };
 function hsLink(id){ if(!state.hubspot||!id) return null; const h=state.hubspot; return `https://${h.domain}/contacts/${h.portal}/record/${h.object}/${id}`; }
 const $ = s => document.querySelector(s);
@@ -323,6 +326,14 @@ function render(){
     const d = state.date[b] || datesFor(b).slice(-1)[0];
     t.querySelector(".n").textContent = d && state.snaps[b][d] ? state.snaps[b][d].total : "";
   }
+  const rvTab = $("#tab-ringover");
+  if(rvTab){
+    rvTab.setAttribute("aria-selected", String(state.tab==="ringover"));
+    let rvN = "";
+    if(state.ringover && state.rvDate){ rvN = (state.ringover.daily||[]).filter(x=>x.date===state.rvDate).reduce((a,x)=>a+(x.out_total||0),0); }
+    rvTab.querySelector(".n").textContent = rvN || "";
+  }
+  if(state.tab==="ringover"){ renderRingover(); return; }
   // selector de día
   const dates = datesFor(state.tab);
   if (!state.date[state.tab] || !state.snaps[state.tab][state.date[state.tab]]) state.date[state.tab] = dates.slice(-1)[0] || null;
@@ -578,13 +589,177 @@ async function deleteSnap(base, date){
   catch(x){ toast("No se pudo eliminar: " + (x.message||x.code)); }
 }
 
+/* ---------- Ringover ---------- */
+function rvDates(){ return state.ringover ? [...new Set((state.ringover.daily||[]).map(x=>x.date))].sort() : []; }
+function rvAgentName(id){ const a=(state.ringover&&state.ringover.agents||[]).find(a=>a.id===id); return a?a.name:("CS "+id); }
+function fmtMin(sec){ const m=Math.round((sec||0)/60); return m>=60 ? (Math.floor(m/60)+"h "+(m%60)+"m") : (m+"m"); }
+
+function renderRingover(){
+  const R = state.ringover;
+  const dates = rvDates();
+  const sel = $("#dateSel"); sel.textContent="";
+  if(!dates.length){ sel.append(el("option",{text:"Sin datos"})); sel.disabled=true; }
+  else{
+    if(!state.rvDate || dates.indexOf(state.rvDate)<0) state.rvDate = dates.slice(-1)[0];
+    for(const d of [...dates].reverse()){ const o=el("option",{value:d,text:fmtDate(d,true)}); if(d===state.rvDate) o.selected=true; sel.append(o); }
+    sel.disabled=false;
+  }
+  const view=$("#view"); view.textContent="";
+  if(!R || !dates.length){
+    view.append(el("div",{class:"empty"},
+      el("b",{text: state.loaded?"Aún no hay datos de Ringover":"Cargando…"}),
+      state.loaded?"El script de Ringover aún no ha publicado datos. Cuando corra, aparecerán aquí.":""));
+    return;
+  }
+  const date = state.rvDate;
+  $("#subtitle").textContent = "Ringover: actividad de llamadas del "+fmtDate(date,true)+". Contactabilidad = salientes contestadas / salientes; efectivo = con +30s de conversación.";
+
+  const day = (R.daily||[]).filter(x=>x.date===date);
+  const sum = k => day.reduce((a,x)=>a+(x[k]||0),0);
+  const outT=sum("out_total"), outA=sum("out_answered"), outE=sum("out_effective");
+  const inOk=sum("in_answered"), inKo=sum("in_missed"), talk=sum("talk_sec");
+  const staleN=(R.stale_clients||[]).length;
+
+  const score = el("div",{class:"score"},
+    el("div",{class:"big"}, el("b",{text:outT}), el("span",{text:"llamadas salientes · "+fmtMin(talk)+" en conversación"})),
+    el("div",{class:"k ok"}, el("b",{text:pct(outT?outA/outT:0)}), el("span",{text:"contactabilidad"})),
+    el("div",{class:"k ok"}, el("b",{text:pct(outT?outE/outT:0)}), el("span",{text:"contacto efectivo"})),
+    el("div",{class:"k"}, el("b",{text:inOk}), el("span",{text:"entrantes atendidas"})),
+    el("div",{class:"k pend"}, el("b",{text:inKo}), el("span",{text:"entrantes rechazadas"})),
+    el("div",{class:"k danger"}, el("b",{text:staleN}), el("span",{text:"clientes sin contacto >3d"}))
+  );
+  const trend = el("div",{class:"panel"},
+    el("h2",{text:"Actividad diaria"}),
+    el("p",{class:"hint",text:"Salientes totales y contestadas por día. Toca un día para verlo."}),
+    legend([["var(--heat)","Salientes"],["var(--ok)","Contestadas"]]));
+  const trendBox=el("div",{class:"scroll"}); trend.append(trendBox);
+  view.append(el("div",{class:"board"}, score, trend));
+  drawRvTrend(trendBox, dates, date);
+
+  const p1=el("div",{class:"panel"}, el("h2",{text:"Contactabilidad por CS"}), el("p",{class:"hint",text:"Salientes contestadas vs no contestadas. Ordenado por % contactabilidad."}), legend([["var(--ok)","Contestadas"],["var(--pend)","No contestadas"]]));
+  const p2=el("div",{class:"panel"}, el("h2",{text:"Contacto efectivo por CS"}), el("p",{class:"hint",text:"Contestadas con +30s de conversación (filtra buzones y cuelgues)."}), legend([["var(--brand)","Efectivas"],["var(--bar)","Resto salientes"]]));
+  const b1=el("div"),b2=el("div"); p1.append(b1); p2.append(b2);
+  view.append(el("div",{class:"grid2"}, p1, p2));
+  drawRvContact(b1, day);
+  drawRvEffective(b2, day);
+
+  const p3=el("div",{class:"panel"}, el("h2",{text:"Entrantes por grupo"}), el("p",{class:"hint",text:"Llamadas entrantes a cada grupo CS y perdidas sin devolver en 24h."}));
+  const b3=el("div",{class:"scroll"}); p3.append(b3);
+  const p4=el("div",{class:"panel"}, el("h2",{text:"Actividad por hora"}), el("p",{class:"hint",text:"Salientes por hora del día (todos los CS)."}), legend([["var(--heat)","Salientes"],["var(--ok)","Contestadas"]]));
+  const b4=el("div",{class:"scroll"}); p4.append(b4);
+  view.append(el("div",{class:"grid2"}, p3, p4));
+  drawRvInbound(b3, date);
+  drawRvHours(b4, day);
+
+  const p5=el("div",{class:"panel full"}, el("h2",{text:"Clientes sin contacto hace +3 días"}), el("p",{class:"hint",text:"Números llamados por CS cuya última conversación efectiva es anterior a hace 3 días (o nunca). Ordenado del más antiguo."}));
+  view.append(p5);
+  drawRvStale(p5, R);
+}
+function drawRvTrend(box, dates, current){
+  const W=Math.max(box.clientWidth||600,280), H=200, padL=8, padB=26, padT=18;
+  const data = dates.map(function(d){ var dd=(state.ringover.daily||[]).filter(function(x){return x.date===d;}); return {d:d, total:dd.reduce(function(a,x){return a+(x.out_total||0);},0), ans:dd.reduce(function(a,x){return a+(x.out_answered||0);},0)}; });
+  const max=Math.max(1,...data.map(function(x){return x.total;}));
+  const slot=Math.min(70,(W-padL*2)/Math.max(data.length,1));
+  const bw=Math.max(14,slot*0.62);
+  const svgW=Math.max(W,slot*data.length+padL*2);
+  const svg=sv("svg",{viewBox:"0 0 "+svgW+" "+H,width:"100%",role:"img","aria-label":"Actividad diaria"});
+  const hgt=function(v){return (H-padT-padB)*v/max;};
+  data.forEach(function(x,i){
+    var cx=padL+slot*i+(slot-bw)/2;
+    var g=sv("g",{class:"clickable",opacity:x.d===current?"1":"0.55"});
+    g.append(sv("rect",{x:cx,y:H-padB-hgt(x.total),width:bw,height:hgt(x.total),fill:"var(--heat)",opacity:"0.28",rx:2}));
+    g.append(sv("rect",{x:cx,y:H-padB-hgt(x.ans),width:bw,height:hgt(x.ans),fill:"var(--ok)",rx:2}));
+    var t=sv("text",{x:cx+bw/2,y:H-padB-hgt(x.total)-5,"text-anchor":"middle","font-size":12,"font-weight":700,fill:"var(--heat)"}); t.textContent=x.total; g.append(t);
+    var l=sv("text",{x:cx+bw/2,y:H-8,"text-anchor":"middle","font-size":11,fill:"var(--muted)","font-weight":x.d===current?"700":"400"}); l.textContent=fmtDate(x.d); g.append(l);
+    g.append(sv("rect",{x:cx,y:padT,width:slot,height:H-padT-padB,fill:"transparent"}));
+    g.addEventListener("click",function(){ state.rvDate=x.d; render(); });
+    bindTip(g, fmtDate(x.d,true)+": "+x.total+" salientes, "+x.ans+" contestadas ("+pct(x.total?x.ans/x.total:0)+")");
+    svg.append(g);
+  });
+  box.append(svg);
+}
+function drawRvContact(box, day){
+  var rows = day.map(function(d){ return {cs:rvAgentName(d.agent_id), total:d.out_total, ans:d.out_answered, noans:d.out_total-d.out_answered}; }).filter(function(r){return r.total>0;});
+  rows.sort(function(a,b){ return (b.ans/b.total)-(a.ans/a.total)||b.total-a.total; });
+  if(!rows.length){ box.append(el("div",{class:"empty",style:"padding:20px"}, el("b",{text:"Sin salientes"}), "Ningún CS registró llamadas salientes este día.")); return; }
+  hbars(box, rows, {label:"Contactabilidad por CS", rightW:130,
+    segs:function(r){return [{v:r.ans,c:"var(--ok)"},{v:r.noans,c:"var(--pend)"}];},
+    right:function(r){return r.ans+"/"+r.total+" · "+pct(r.ans/r.total);},
+    tip:function(r){return r.cs+": "+r.ans+" de "+r.total+" contestadas ("+pct(r.ans/r.total)+")";}});
+}
+function drawRvEffective(box, day){
+  var rows = day.map(function(d){ return {cs:rvAgentName(d.agent_id), total:d.out_total, eff:d.out_effective, rest:d.out_total-d.out_effective}; }).filter(function(r){return r.total>0;});
+  rows.sort(function(a,b){ return (b.eff/b.total)-(a.eff/a.total)||b.eff-a.eff; });
+  if(!rows.length){ box.append(el("div",{class:"empty",style:"padding:20px"}, el("b",{text:"Sin datos"}))); return; }
+  hbars(box, rows, {label:"Contacto efectivo por CS", rightW:120,
+    segs:function(r){return [{v:r.eff,c:"var(--brand)"},{v:r.rest,c:"var(--bar)"}];},
+    right:function(r){return r.eff+" · "+pct(r.eff/r.total);},
+    tip:function(r){return r.cs+": "+r.eff+" efectivas de "+r.total+" ("+pct(r.eff/r.total)+")";}});
+}
+function drawRvInbound(box, date){
+  var rows = (state.ringover.inbound||[]).filter(function(x){return x.date===date;});
+  if(!rows.length){ box.append(el("div",{class:"empty",style:"padding:20px"}, el("b",{text:"Sin entrantes"}))); return; }
+  rows.sort(function(a,b){return b.in_total-a.in_total;});
+  var t=el("table",{class:"list"});
+  t.append(el("thead",null, el("tr",null, el("th",{text:"Grupo"}),el("th",{text:"Entrantes"}),el("th",{text:"Atendidas"}),el("th",{text:"Rechazadas"}),el("th",{text:"Sin devolver 24h"}))));
+  var tb=el("tbody");
+  rows.forEach(function(r){
+    tb.append(el("tr",null,
+      el("td",{class:"p",text:r.group}),
+      el("td",{text:r.in_total}),
+      el("td",null, el("span",{class:"tag ok",text:r.in_answered})),
+      el("td",null, el("span",{class:"tag "+(r.in_missed?"pend":"ok"),text:r.in_missed})),
+      el("td",null, el("span",{class:"tag "+(r.missed_not_returned?"danger":"ok"),text:r.missed_not_returned}))));
+  });
+  t.append(tb); box.append(t);
+}
+function drawRvHours(box, day){
+  var byHour={};
+  day.forEach(function(d){ var bh=d.by_hour||{}; for(var h in bh){ if(!byHour[h]) byHour[h]={total:0,ans:0}; byHour[h].total+=bh[h].total||0; byHour[h].ans+=bh[h].answered||0; } });
+  var hours=Object.keys(byHour).map(Number);
+  if(!hours.length){ box.append(el("div",{class:"empty",style:"padding:20px"}, el("b",{text:"Sin actividad"}))); return; }
+  var minH=Math.min.apply(null,hours), maxH=Math.max.apply(null,hours), allHours=[];
+  for(var hh=minH; hh<=maxH; hh++) allHours.push(hh);
+  var W=Math.max(box.clientWidth||480,280), H=180, padB=24, padT=16, padL=6;
+  var max=Math.max(1,...allHours.map(function(h){return (byHour[h]||{total:0}).total;}));
+  var slot=(W-padL*2)/allHours.length, bw=Math.max(8,slot*0.7);
+  var svg=sv("svg",{viewBox:"0 0 "+W+" "+H,width:"100%",role:"img","aria-label":"Actividad por hora"});
+  var barh=function(v){return (H-padT-padB)*v/max;};
+  allHours.forEach(function(h,i){
+    var o=byHour[h]||{total:0,ans:0}, cx=padL+slot*i+(slot-bw)/2, g=sv("g",{class:"clickable"});
+    g.append(sv("rect",{x:cx,y:H-padB-barh(o.total),width:bw,height:barh(o.total),fill:"var(--heat)",opacity:"0.28",rx:2}));
+    g.append(sv("rect",{x:cx,y:H-padB-barh(o.ans),width:bw,height:barh(o.ans),fill:"var(--ok)",rx:2}));
+    if(allHours.length<=14 || h%2===0){ var l=sv("text",{x:cx+bw/2,y:H-8,"text-anchor":"middle","font-size":10,fill:"var(--muted)"}); l.textContent=h+"h"; g.append(l); }
+    g.append(sv("rect",{x:cx,y:padT,width:slot,height:H-padT-padB,fill:"transparent"}));
+    bindTip(g, h+":00 — "+o.total+" salientes, "+o.ans+" contestadas");
+    svg.append(g);
+  });
+  box.append(svg);
+}
+function drawRvStale(p, R){
+  var rows = R.stale_clients||[];
+  if(!rows.length){ p.append(el("div",{class:"empty",style:"padding:22px"}, el("b",{text:"Sin clientes rezagados"}), "Todos los clientes llamados tienen contacto efectivo reciente.")); return; }
+  var t=el("table",{class:"list"});
+  t.append(el("thead",null, el("tr",null, el("th",{text:"Número"}),el("th",{text:"CS"}),el("th",{text:"Último contacto"}),el("th",{text:"Intentos desde"}),el("th",{text:"Último estado"}))));
+  var tb=el("tbody");
+  rows.forEach(function(r){
+    tb.append(el("tr",null,
+      el("td",{class:"p",text:r.number}),
+      el("td",{text:rvAgentName(r.agent_id)}),
+      el("td",{text: r.last_contact? fmtDate(r.last_contact,true):"Sin contacto efectivo"}),
+      el("td",null, el("span",{class:"days",text:r.attempts_since})),
+      el("td",null, el("span",{class:"tag pend",text:r.last_state||"—"}))));
+  });
+  t.append(tb); p.append(el("div",{class:"scroll"},t));
+}
+
 /* ---------- Navegación ---------- */
-document.querySelectorAll(".tab").forEach(t=>t.addEventListener("click",()=>{ state.tab=t.dataset.tab; state.csFilter=null; location.hash=state.tab; render(); }));
-$("#dateSel").addEventListener("change",e=>{ state.date[state.tab]=e.target.value; render(); });
-function fromHash(){ const h=location.hash.slice(1); if(BASES[h]){ state.tab=h; state.csFilter=null; render(); } }
+document.querySelectorAll(".tab").forEach(t=>t.addEventListener("click",()=>{ state.tab=t.dataset.tab; state.csFilter=null; state.blqFilter=null; location.hash=state.tab; render(); }));
+$("#dateSel").addEventListener("change",e=>{ if(state.tab==="ringover") state.rvDate=e.target.value; else state.date[state.tab]=e.target.value; render(); });
+function fromHash(){ const h=location.hash.slice(1); if(BASES[h]||h==="ringover"){ state.tab=h; state.csFilter=null; render(); } }
 addEventListener("hashchange", fromHash);
 let rz; addEventListener("resize",()=>{ clearTimeout(rz); rz=setTimeout(render,150); });
-{ const h=location.hash.slice(1); if(BASES[h]) state.tab=h; }
+{ const h=location.hash.slice(1); if(BASES[h]||h==="ringover") state.tab=h; }
 render();
 
 /* ---------- Almacenamiento ---------- */
@@ -592,6 +767,10 @@ render();
   let db=null;
   try { db = window.claude && window.claude.use ? await window.claude.use("db") : null; } catch(_){ db=null; }
   state.db = db;
+  // Ringover siempre desde JSON estático (generado por Windmill -> GitHub)
+  fetch("ringover.json").then(r=>r.ok?r.json():null).then(j=>{
+    if(j){ state.ringover=j; const ds=[...new Set((j.daily||[]).map(x=>x.date))].sort(); if(!state.rvDate) state.rvDate=ds.slice(-1)[0]||null; render(); }
+  }).catch(()=>{});
   if (!db){
     try {
       const r = await fetch("data.json");

@@ -1,0 +1,4290 @@
+{
+  "generated_at": "2026-10-26T16:00:00-05:00",
+  "tz": "America/Bogota",
+  "_sample": true,
+  "agents": [
+    {
+      "id": 23509313,
+      "name": "Dikcibell Pantoja",
+      "group": "CSRRSS"
+    },
+    {
+      "id": 23266168,
+      "name": "Jose Luis Lopez",
+      "group": "CSWEB"
+    },
+    {
+      "id": 24431781,
+      "name": "Victor Ortega",
+      "group": "CSWEB"
+    },
+    {
+      "id": 22426048,
+      "name": "Andrea Giraldo",
+      "group": "CSWEB"
+    },
+    {
+      "id": 22424628,
+      "name": "Fran Gonzalez",
+      "group": "CSRRSS"
+    },
+    {
+      "id": 22424850,
+      "name": "Nataly Molina",
+      "group": "CSWEB"
+    },
+    {
+      "id": 22156106,
+      "name": "Johanna Diaz",
+      "group": "CSRRSS"
+    }
+  ],
+  "daily": [
+    {
+      "date": "2026-10-13",
+      "agent_id": 23509313,
+      "out_total": 68,
+      "out_answered": 27,
+      "out_effective": 22,
+      "talk_sec": 3344,
+      "in_total": 11,
+      "in_answered": 7,
+      "in_missed": 4,
+      "unique_numbers": 60,
+      "unique_contacted": 22,
+      "by_hour": {
+        "9": {
+          "total": 1,
+          "answered": 0
+        },
+        "10": {
+          "total": 9,
+          "answered": 6
+        },
+        "12": {
+          "total": 1,
+          "answered": 0
+        },
+        "13": {
+          "total": 3,
+          "answered": 0
+        },
+        "14": {
+          "total": 8,
+          "answered": 3
+        },
+        "15": {
+          "total": 11,
+          "answered": 10
+        },
+        "16": {
+          "total": 11,
+          "answered": 8
+        },
+        "17": {
+          "total": 6,
+          "answered": 1
+        },
+        "18": {
+          "total": 18,
+          "answered": 0
+        }
+      },
+      "by_state": {
+        "Contestada": 27,
+        "No contesta": 30,
+        "Buzon de voz": 9,
+        "Ocupado / fallida": 2
+      }
+    },
+    {
+      "date": "2026-10-13",
+      "agent_id": 23266168,
+      "out_total": 55,
+      "out_answered": 26,
+      "out_effective": 17,
+      "talk_sec": 2992,
+      "in_total": 7,
+      "in_answered": 4,
+      "in_missed": 3,
+      "unique_numbers": 50,
+      "unique_contacted": 22,
+      "by_hour": {
+        "9": {
+          "total": 1,
+          "answered": 1
+        },
+        "10": {
+          "total": 5,
+          "answered": 4
+        },
+        "11": {
+          "total": 4,
+          "answered": 0
+        },
+        "12": {
+          "total": 7,
+          "answered": 1
+        },
+        "13": {
+          "total": 6,
+          "answered": 0
+        },
+        "14": {
+          "total": 8,
+          "answered": 4
+        },
+        "15": {
+          "total": 5,
+          "answered": 4
+        },
+        "16": {
+          "total": 3,
+          "answered": 0
+        },
+        "18": {
+          "total": 16,
+          "answered": 12
+        }
+      },
+      "by_state": {
+        "Contestada": 26,
+        "No contesta": 26,
+        "Buzon de voz": 2,
+        "Cancelada": 1
+      }
+    },
+    {
+      "date": "2026-10-13",
+      "agent_id": 24431781,
+      "out_total": 57,
+      "out_answered": 31,
+      "out_effective": 22,
+      "talk_sec": 4048,
+      "in_total": 15,
+      "in_answered": 10,
+      "in_missed": 5,
+      "unique_numbers": 52,
+      "unique_contacted": 28,
+      "by_hour": {
+        "9": {
+          "total": 4,
+          "answered": 0
+        },
+        "10": {
+          "total": 2,
+          "answered": 2
+        },
+        "11": {
+          "total": 3,
+          "answered": 1
+        },
+        "12": {
+          "total": 7,
+          "answered": 6
+        },
+        "13": {
+          "total": 4,
+          "answered": 4
+        },
+        "14": {
+          "total": 3,
+          "answered": 2
+        },
+        "16": {
+          "total": 13,
+          "answered": 0
+        },
+        "17": {
+          "total": 12,
+          "answered": 5
+        },
+        "18": {
+          "total": 9,
+          "answered": 9
+        }
+      },
+      "by_state": {
+        "Contestada": 31,
+        "No contesta": 18,
+        "Buzon de voz": 4,
+        "Ocupado / fallida": 1,
+        "Cancelada": 3
+      }
+    },
+    {
+      "date": "2026-10-13",
+      "agent_id": 22426048,
+      "out_total": 73,
+      "out_answered": 34,
+      "out_effective": 27,
+      "talk_sec": 5157,
+      "in_total": 18,
+      "in_answered": 11,
+      "in_missed": 7,
+      "unique_numbers": 58,
+      "unique_contacted": 31,
+      "by_hour": {
+        "9": {
+          "total": 2,
+          "answered": 0
+        },
+        "10": {
+          "total": 8,
+          "answered": 8
+        },
+        "11": {
+          "total": 4,
+          "answered": 4
+        },
+        "12": {
+          "total": 6,
+          "answered": 4
+        },
+        "13": {
+          "total": 6,
+          "answered": 2
+        },
+        "14": {
+          "total": 3,
+          "answered": 1
+        },
+        "15": {
+          "total": 8,
+          "answered": 7
+        },
+        "16": {
+          "total": 1,
+          "answered": 0
+        },
+        "17": {
+          "total": 3,
+          "answered": 1
+        },
+        "18": {
+          "total": 32,
+          "answered": 7
+        }
+      },
+      "by_state": {
+        "Contestada": 34,
+        "No contesta": 11,
+        "Buzon de voz": 25,
+        "Ocupado / fallida": 3
+      }
+    },
+    {
+      "date": "2026-10-13",
+      "agent_id": 22424628,
+      "out_total": 57,
+      "out_answered": 30,
+      "out_effective": 26,
+      "talk_sec": 2392,
+      "in_total": 7,
+      "in_answered": 5,
+      "in_missed": 2,
+      "unique_numbers": 42,
+      "unique_contacted": 29,
+      "by_hour": {
+        "9": {
+          "total": 4,
+          "answered": 2
+        },
+        "10": {
+          "total": 1,
+          "answered": 1
+        },
+        "11": {
+          "total": 6,
+          "answered": 1
+        },
+        "12": {
+          "total": 7,
+          "answered": 0
+        },
+        "13": {
+          "total": 4,
+          "answered": 4
+        },
+        "14": {
+          "total": 2,
+          "answered": 2
+        },
+        "15": {
+          "total": 1,
+          "answered": 1
+        },
+        "16": {
+          "total": 10,
+          "answered": 8
+        },
+        "17": {
+          "total": 9,
+          "answered": 3
+        },
+        "18": {
+          "total": 13,
+          "answered": 8
+        }
+      },
+      "by_state": {
+        "Contestada": 30,
+        "No contesta": 4,
+        "Buzon de voz": 11,
+        "Ocupado / fallida": 12
+      }
+    },
+    {
+      "date": "2026-10-13",
+      "agent_id": 22424850,
+      "out_total": 61,
+      "out_answered": 38,
+      "out_effective": 29,
+      "talk_sec": 6235,
+      "in_total": 4,
+      "in_answered": 2,
+      "in_missed": 2,
+      "unique_numbers": 53,
+      "unique_contacted": 31,
+      "by_hour": {
+        "9": {
+          "total": 5,
+          "answered": 2
+        },
+        "10": {
+          "total": 3,
+          "answered": 0
+        },
+        "11": {
+          "total": 3,
+          "answered": 0
+        },
+        "12": {
+          "total": 1,
+          "answered": 1
+        },
+        "13": {
+          "total": 1,
+          "answered": 0
+        },
+        "14": {
+          "total": 2,
+          "answered": 2
+        },
+        "15": {
+          "total": 7,
+          "answered": 2
+        },
+        "16": {
+          "total": 8,
+          "answered": 8
+        },
+        "17": {
+          "total": 13,
+          "answered": 3
+        },
+        "18": {
+          "total": 18,
+          "answered": 18
+        }
+      },
+      "by_state": {
+        "Contestada": 38,
+        "No contesta": 17,
+        "Buzon de voz": 6
+      }
+    },
+    {
+      "date": "2026-10-13",
+      "agent_id": 22156106,
+      "out_total": 47,
+      "out_answered": 23,
+      "out_effective": 18,
+      "talk_sec": 3330,
+      "in_total": 18,
+      "in_answered": 15,
+      "in_missed": 3,
+      "unique_numbers": 40,
+      "unique_contacted": 19,
+      "by_hour": {
+        "9": {
+          "total": 3,
+          "answered": 0
+        },
+        "10": {
+          "total": 1,
+          "answered": 0
+        },
+        "11": {
+          "total": 1,
+          "answered": 1
+        },
+        "13": {
+          "total": 9,
+          "answered": 3
+        },
+        "15": {
+          "total": 10,
+          "answered": 0
+        },
+        "16": {
+          "total": 3,
+          "answered": 0
+        },
+        "18": {
+          "total": 20,
+          "answered": 19
+        }
+      },
+      "by_state": {
+        "Contestada": 23,
+        "No contesta": 5,
+        "Buzon de voz": 16,
+        "Ocupado / fallida": 1,
+        "Cancelada": 2
+      }
+    },
+    {
+      "date": "2026-10-14",
+      "agent_id": 23509313,
+      "out_total": 36,
+      "out_answered": 20,
+      "out_effective": 17,
+      "talk_sec": 4029,
+      "in_total": 19,
+      "in_answered": 12,
+      "in_missed": 7,
+      "unique_numbers": 30,
+      "unique_contacted": 16,
+      "by_hour": {
+        "9": {
+          "total": 3,
+          "answered": 3
+        },
+        "10": {
+          "total": 1,
+          "answered": 0
+        },
+        "12": {
+          "total": 2,
+          "answered": 1
+        },
+        "13": {
+          "total": 6,
+          "answered": 3
+        },
+        "14": {
+          "total": 6,
+          "answered": 5
+        },
+        "17": {
+          "total": 11,
+          "answered": 5
+        },
+        "18": {
+          "total": 7,
+          "answered": 3
+        }
+      },
+      "by_state": {
+        "Contestada": 20,
+        "No contesta": 7,
+        "Buzon de voz": 3,
+        "Ocupado / fallida": 3,
+        "Cancelada": 3
+      }
+    },
+    {
+      "date": "2026-10-14",
+      "agent_id": 23266168,
+      "out_total": 39,
+      "out_answered": 17,
+      "out_effective": 11,
+      "talk_sec": 1199,
+      "in_total": 18,
+      "in_answered": 15,
+      "in_missed": 3,
+      "unique_numbers": 28,
+      "unique_contacted": 14,
+      "by_hour": {
+        "9": {
+          "total": 4,
+          "answered": 0
+        },
+        "12": {
+          "total": 2,
+          "answered": 1
+        },
+        "13": {
+          "total": 7,
+          "answered": 7
+        },
+        "14": {
+          "total": 3,
+          "answered": 3
+        },
+        "16": {
+          "total": 6,
+          "answered": 0
+        },
+        "17": {
+          "total": 6,
+          "answered": 2
+        },
+        "18": {
+          "total": 11,
+          "answered": 4
+        }
+      },
+      "by_state": {
+        "Contestada": 17,
+        "No contesta": 14,
+        "Buzon de voz": 4,
+        "Ocupado / fallida": 3,
+        "Cancelada": 1
+      }
+    },
+    {
+      "date": "2026-10-14",
+      "agent_id": 24431781,
+      "out_total": 31,
+      "out_answered": 16,
+      "out_effective": 12,
+      "talk_sec": 2040,
+      "in_total": 5,
+      "in_answered": 3,
+      "in_missed": 2,
+      "unique_numbers": 26,
+      "unique_contacted": 14,
+      "by_hour": {
+        "9": {
+          "total": 3,
+          "answered": 1
+        },
+        "11": {
+          "total": 1,
+          "answered": 0
+        },
+        "12": {
+          "total": 4,
+          "answered": 0
+        },
+        "13": {
+          "total": 5,
+          "answered": 1
+        },
+        "14": {
+          "total": 3,
+          "answered": 0
+        },
+        "15": {
+          "total": 4,
+          "answered": 1
+        },
+        "16": {
+          "total": 4,
+          "answered": 4
+        },
+        "18": {
+          "total": 7,
+          "answered": 7
+        }
+      },
+      "by_state": {
+        "Contestada": 16,
+        "No contesta": 13,
+        "Buzon de voz": 2
+      }
+    },
+    {
+      "date": "2026-10-14",
+      "agent_id": 22426048,
+      "out_total": 44,
+      "out_answered": 19,
+      "out_effective": 15,
+      "talk_sec": 2265,
+      "in_total": 12,
+      "in_answered": 8,
+      "in_missed": 4,
+      "unique_numbers": 39,
+      "unique_contacted": 17,
+      "by_hour": {
+        "9": {
+          "total": 5,
+          "answered": 5
+        },
+        "10": {
+          "total": 2,
+          "answered": 1
+        },
+        "11": {
+          "total": 2,
+          "answered": 0
+        },
+        "13": {
+          "total": 1,
+          "answered": 0
+        },
+        "14": {
+          "total": 8,
+          "answered": 3
+        },
+        "15": {
+          "total": 8,
+          "answered": 4
+        },
+        "16": {
+          "total": 2,
+          "answered": 1
+        },
+        "17": {
+          "total": 1,
+          "answered": 0
+        },
+        "18": {
+          "total": 15,
+          "answered": 5
+        }
+      },
+      "by_state": {
+        "Contestada": 19,
+        "No contesta": 12,
+        "Buzon de voz": 4,
+        "Ocupado / fallida": 2,
+        "Cancelada": 7
+      }
+    },
+    {
+      "date": "2026-10-14",
+      "agent_id": 22424628,
+      "out_total": 67,
+      "out_answered": 43,
+      "out_effective": 36,
+      "talk_sec": 8100,
+      "in_total": 4,
+      "in_answered": 3,
+      "in_missed": 1,
+      "unique_numbers": 60,
+      "unique_contacted": 34,
+      "by_hour": {
+        "9": {
+          "total": 8,
+          "answered": 4
+        },
+        "10": {
+          "total": 1,
+          "answered": 0
+        },
+        "11": {
+          "total": 4,
+          "answered": 0
+        },
+        "12": {
+          "total": 1,
+          "answered": 0
+        },
+        "13": {
+          "total": 4,
+          "answered": 2
+        },
+        "14": {
+          "total": 9,
+          "answered": 3
+        },
+        "15": {
+          "total": 11,
+          "answered": 5
+        },
+        "16": {
+          "total": 3,
+          "answered": 2
+        },
+        "17": {
+          "total": 15,
+          "answered": 8
+        },
+        "18": {
+          "total": 11,
+          "answered": 11
+        }
+      },
+      "by_state": {
+        "Contestada": 43,
+        "No contesta": 1,
+        "Buzon de voz": 2,
+        "Ocupado / fallida": 20,
+        "Cancelada": 1
+      }
+    },
+    {
+      "date": "2026-10-14",
+      "agent_id": 22424850,
+      "out_total": 49,
+      "out_answered": 29,
+      "out_effective": 23,
+      "talk_sec": 3611,
+      "in_total": 9,
+      "in_answered": 7,
+      "in_missed": 2,
+      "unique_numbers": 42,
+      "unique_contacted": 25,
+      "by_hour": {
+        "9": {
+          "total": 4,
+          "answered": 3
+        },
+        "11": {
+          "total": 1,
+          "answered": 0
+        },
+        "12": {
+          "total": 8,
+          "answered": 0
+        },
+        "13": {
+          "total": 5,
+          "answered": 4
+        },
+        "14": {
+          "total": 8,
+          "answered": 2
+        },
+        "15": {
+          "total": 6,
+          "answered": 1
+        },
+        "17": {
+          "total": 5,
+          "answered": 0
+        },
+        "18": {
+          "total": 12,
+          "answered": 12
+        }
+      },
+      "by_state": {
+        "Contestada": 29,
+        "No contesta": 12,
+        "Buzon de voz": 3,
+        "Ocupado / fallida": 5
+      }
+    },
+    {
+      "date": "2026-10-14",
+      "agent_id": 22156106,
+      "out_total": 63,
+      "out_answered": 39,
+      "out_effective": 28,
+      "talk_sec": 3612,
+      "in_total": 11,
+      "in_answered": 9,
+      "in_missed": 2,
+      "unique_numbers": 54,
+      "unique_contacted": 34,
+      "by_hour": {
+        "9": {
+          "total": 2,
+          "answered": 1
+        },
+        "11": {
+          "total": 5,
+          "answered": 3
+        },
+        "12": {
+          "total": 10,
+          "answered": 3
+        },
+        "13": {
+          "total": 4,
+          "answered": 1
+        },
+        "14": {
+          "total": 1,
+          "answered": 1
+        },
+        "16": {
+          "total": 7,
+          "answered": 3
+        },
+        "17": {
+          "total": 14,
+          "answered": 5
+        },
+        "18": {
+          "total": 20,
+          "answered": 20
+        }
+      },
+      "by_state": {
+        "Contestada": 39,
+        "No contesta": 14,
+        "Buzon de voz": 7,
+        "Ocupado / fallida": 3
+      }
+    },
+    {
+      "date": "2026-10-15",
+      "agent_id": 23509313,
+      "out_total": 45,
+      "out_answered": 27,
+      "out_effective": 24,
+      "talk_sec": 3864,
+      "in_total": 15,
+      "in_answered": 12,
+      "in_missed": 3,
+      "unique_numbers": 33,
+      "unique_contacted": 21,
+      "by_hour": {
+        "9": {
+          "total": 3,
+          "answered": 2
+        },
+        "11": {
+          "total": 4,
+          "answered": 1
+        },
+        "12": {
+          "total": 4,
+          "answered": 0
+        },
+        "13": {
+          "total": 1,
+          "answered": 1
+        },
+        "14": {
+          "total": 5,
+          "answered": 5
+        },
+        "15": {
+          "total": 5,
+          "answered": 3
+        },
+        "16": {
+          "total": 9,
+          "answered": 8
+        },
+        "17": {
+          "total": 1,
+          "answered": 1
+        },
+        "18": {
+          "total": 13,
+          "answered": 6
+        }
+      },
+      "by_state": {
+        "Contestada": 27,
+        "No contesta": 18
+      }
+    },
+    {
+      "date": "2026-10-15",
+      "agent_id": 23266168,
+      "out_total": 55,
+      "out_answered": 20,
+      "out_effective": 17,
+      "talk_sec": 3859,
+      "in_total": 10,
+      "in_answered": 7,
+      "in_missed": 3,
+      "unique_numbers": 44,
+      "unique_contacted": 19,
+      "by_hour": {
+        "9": {
+          "total": 1,
+          "answered": 1
+        },
+        "10": {
+          "total": 5,
+          "answered": 5
+        },
+        "11": {
+          "total": 1,
+          "answered": 1
+        },
+        "12": {
+          "total": 8,
+          "answered": 4
+        },
+        "13": {
+          "total": 6,
+          "answered": 2
+        },
+        "14": {
+          "total": 6,
+          "answered": 5
+        },
+        "15": {
+          "total": 4,
+          "answered": 4
+        },
+        "16": {
+          "total": 2,
+          "answered": 0
+        },
+        "17": {
+          "total": 6,
+          "answered": 5
+        },
+        "18": {
+          "total": 16,
+          "answered": 0
+        }
+      },
+      "by_state": {
+        "Contestada": 20,
+        "No contesta": 24,
+        "Buzon de voz": 10,
+        "Cancelada": 1
+      }
+    },
+    {
+      "date": "2026-10-15",
+      "agent_id": 24431781,
+      "out_total": 47,
+      "out_answered": 21,
+      "out_effective": 15,
+      "talk_sec": 3570,
+      "in_total": 14,
+      "in_answered": 10,
+      "in_missed": 4,
+      "unique_numbers": 42,
+      "unique_contacted": 17,
+      "by_hour": {
+        "9": {
+          "total": 3,
+          "answered": 1
+        },
+        "10": {
+          "total": 4,
+          "answered": 3
+        },
+        "11": {
+          "total": 2,
+          "answered": 2
+        },
+        "12": {
+          "total": 1,
+          "answered": 1
+        },
+        "13": {
+          "total": 8,
+          "answered": 5
+        },
+        "14": {
+          "total": 1,
+          "answered": 0
+        },
+        "15": {
+          "total": 4,
+          "answered": 1
+        },
+        "16": {
+          "total": 3,
+          "answered": 1
+        },
+        "18": {
+          "total": 21,
+          "answered": 7
+        }
+      },
+      "by_state": {
+        "Contestada": 21,
+        "No contesta": 7,
+        "Buzon de voz": 15,
+        "Ocupado / fallida": 4
+      }
+    },
+    {
+      "date": "2026-10-15",
+      "agent_id": 22426048,
+      "out_total": 54,
+      "out_answered": 33,
+      "out_effective": 25,
+      "talk_sec": 4700,
+      "in_total": 19,
+      "in_answered": 13,
+      "in_missed": 6,
+      "unique_numbers": 49,
+      "unique_contacted": 31,
+      "by_hour": {
+        "9": {
+          "total": 2,
+          "answered": 2
+        },
+        "11": {
+          "total": 6,
+          "answered": 1
+        },
+        "12": {
+          "total": 2,
+          "answered": 2
+        },
+        "13": {
+          "total": 8,
+          "answered": 7
+        },
+        "15": {
+          "total": 1,
+          "answered": 1
+        },
+        "16": {
+          "total": 2,
+          "answered": 1
+        },
+        "17": {
+          "total": 16,
+          "answered": 10
+        },
+        "18": {
+          "total": 17,
+          "answered": 9
+        }
+      },
+      "by_state": {
+        "Contestada": 33,
+        "No contesta": 14,
+        "Buzon de voz": 6,
+        "Ocupado / fallida": 1
+      }
+    },
+    {
+      "date": "2026-10-15",
+      "agent_id": 22424628,
+      "out_total": 58,
+      "out_answered": 29,
+      "out_effective": 24,
+      "talk_sec": 3840,
+      "in_total": 20,
+      "in_answered": 15,
+      "in_missed": 5,
+      "unique_numbers": 48,
+      "unique_contacted": 25,
+      "by_hour": {
+        "9": {
+          "total": 3,
+          "answered": 2
+        },
+        "10": {
+          "total": 7,
+          "answered": 1
+        },
+        "11": {
+          "total": 4,
+          "answered": 1
+        },
+        "12": {
+          "total": 4,
+          "answered": 2
+        },
+        "13": {
+          "total": 5,
+          "answered": 4
+        },
+        "14": {
+          "total": 1,
+          "answered": 0
+        },
+        "15": {
+          "total": 2,
+          "answered": 0
+        },
+        "16": {
+          "total": 6,
+          "answered": 5
+        },
+        "17": {
+          "total": 4,
+          "answered": 1
+        },
+        "18": {
+          "total": 22,
+          "answered": 13
+        }
+      },
+      "by_state": {
+        "Contestada": 29,
+        "No contesta": 5,
+        "Buzon de voz": 13,
+        "Ocupado / fallida": 6,
+        "Cancelada": 5
+      }
+    },
+    {
+      "date": "2026-10-15",
+      "agent_id": 22424850,
+      "out_total": 41,
+      "out_answered": 25,
+      "out_effective": 18,
+      "talk_sec": 4302,
+      "in_total": 4,
+      "in_answered": 3,
+      "in_missed": 1,
+      "unique_numbers": 28,
+      "unique_contacted": 21,
+      "by_hour": {
+        "9": {
+          "total": 6,
+          "answered": 4
+        },
+        "10": {
+          "total": 3,
+          "answered": 3
+        },
+        "12": {
+          "total": 2,
+          "answered": 1
+        },
+        "13": {
+          "total": 6,
+          "answered": 4
+        },
+        "14": {
+          "total": 5,
+          "answered": 5
+        },
+        "15": {
+          "total": 4,
+          "answered": 4
+        },
+        "16": {
+          "total": 3,
+          "answered": 3
+        },
+        "17": {
+          "total": 3,
+          "answered": 2
+        },
+        "18": {
+          "total": 9,
+          "answered": 0
+        }
+      },
+      "by_state": {
+        "Contestada": 25,
+        "No contesta": 13,
+        "Buzon de voz": 3
+      }
+    },
+    {
+      "date": "2026-10-15",
+      "agent_id": 22156106,
+      "out_total": 71,
+      "out_answered": 42,
+      "out_effective": 34,
+      "talk_sec": 7106,
+      "in_total": 8,
+      "in_answered": 7,
+      "in_missed": 1,
+      "unique_numbers": 54,
+      "unique_contacted": 34,
+      "by_hour": {
+        "9": {
+          "total": 8,
+          "answered": 0
+        },
+        "10": {
+          "total": 6,
+          "answered": 4
+        },
+        "11": {
+          "total": 9,
+          "answered": 0
+        },
+        "12": {
+          "total": 1,
+          "answered": 1
+        },
+        "13": {
+          "total": 2,
+          "answered": 1
+        },
+        "14": {
+          "total": 2,
+          "answered": 0
+        },
+        "15": {
+          "total": 4,
+          "answered": 3
+        },
+        "16": {
+          "total": 10,
+          "answered": 3
+        },
+        "17": {
+          "total": 14,
+          "answered": 5
+        },
+        "18": {
+          "total": 15,
+          "answered": 15
+        }
+      },
+      "by_state": {
+        "Contestada": 42,
+        "No contesta": 10,
+        "Buzon de voz": 12,
+        "Ocupado / fallida": 4,
+        "Cancelada": 3
+      }
+    },
+    {
+      "date": "2026-10-16",
+      "agent_id": 23509313,
+      "out_total": 29,
+      "out_answered": 17,
+      "out_effective": 10,
+      "talk_sec": 1790,
+      "in_total": 11,
+      "in_answered": 8,
+      "in_missed": 3,
+      "unique_numbers": 26,
+      "unique_contacted": 16,
+      "by_hour": {
+        "10": {
+          "total": 1,
+          "answered": 0
+        },
+        "12": {
+          "total": 1,
+          "answered": 0
+        },
+        "13": {
+          "total": 3,
+          "answered": 0
+        },
+        "14": {
+          "total": 4,
+          "answered": 1
+        },
+        "15": {
+          "total": 7,
+          "answered": 4
+        },
+        "16": {
+          "total": 6,
+          "answered": 2
+        },
+        "17": {
+          "total": 1,
+          "answered": 0
+        },
+        "18": {
+          "total": 6,
+          "answered": 6
+        }
+      },
+      "by_state": {
+        "Contestada": 17,
+        "No contesta": 12
+      }
+    },
+    {
+      "date": "2026-10-16",
+      "agent_id": 23266168,
+      "out_total": 34,
+      "out_answered": 18,
+      "out_effective": 15,
+      "talk_sec": 3555,
+      "in_total": 16,
+      "in_answered": 11,
+      "in_missed": 5,
+      "unique_numbers": 24,
+      "unique_contacted": 17,
+      "by_hour": {
+        "9": {
+          "total": 5,
+          "answered": 1
+        },
+        "12": {
+          "total": 6,
+          "answered": 5
+        },
+        "13": {
+          "total": 4,
+          "answered": 0
+        },
+        "14": {
+          "total": 4,
+          "answered": 0
+        },
+        "15": {
+          "total": 2,
+          "answered": 2
+        },
+        "16": {
+          "total": 3,
+          "answered": 2
+        },
+        "17": {
+          "total": 1,
+          "answered": 1
+        },
+        "18": {
+          "total": 9,
+          "answered": 7
+        }
+      },
+      "by_state": {
+        "Contestada": 18,
+        "Buzon de voz": 13,
+        "Ocupado / fallida": 3
+      }
+    },
+    {
+      "date": "2026-10-16",
+      "agent_id": 24431781,
+      "out_total": 68,
+      "out_answered": 42,
+      "out_effective": 31,
+      "talk_sec": 3999,
+      "in_total": 17,
+      "in_answered": 11,
+      "in_missed": 6,
+      "unique_numbers": 50,
+      "unique_contacted": 35,
+      "by_hour": {
+        "9": {
+          "total": 8,
+          "answered": 4
+        },
+        "10": {
+          "total": 8,
+          "answered": 7
+        },
+        "11": {
+          "total": 7,
+          "answered": 6
+        },
+        "12": {
+          "total": 4,
+          "answered": 2
+        },
+        "13": {
+          "total": 3,
+          "answered": 0
+        },
+        "14": {
+          "total": 4,
+          "answered": 3
+        },
+        "15": {
+          "total": 3,
+          "answered": 3
+        },
+        "16": {
+          "total": 9,
+          "answered": 9
+        },
+        "17": {
+          "total": 10,
+          "answered": 6
+        },
+        "18": {
+          "total": 12,
+          "answered": 2
+        }
+      },
+      "by_state": {
+        "Contestada": 42,
+        "No contesta": 10,
+        "Ocupado / fallida": 15,
+        "Cancelada": 1
+      }
+    },
+    {
+      "date": "2026-10-16",
+      "agent_id": 22426048,
+      "out_total": 44,
+      "out_answered": 20,
+      "out_effective": 17,
+      "talk_sec": 2720,
+      "in_total": 21,
+      "in_answered": 12,
+      "in_missed": 9,
+      "unique_numbers": 34,
+      "unique_contacted": 19,
+      "by_hour": {
+        "9": {
+          "total": 1,
+          "answered": 0
+        },
+        "10": {
+          "total": 1,
+          "answered": 1
+        },
+        "11": {
+          "total": 7,
+          "answered": 3
+        },
+        "12": {
+          "total": 7,
+          "answered": 7
+        },
+        "13": {
+          "total": 3,
+          "answered": 0
+        },
+        "14": {
+          "total": 1,
+          "answered": 1
+        },
+        "15": {
+          "total": 3,
+          "answered": 3
+        },
+        "16": {
+          "total": 3,
+          "answered": 2
+        },
+        "17": {
+          "total": 10,
+          "answered": 9
+        },
+        "18": {
+          "total": 8,
+          "answered": 0
+        }
+      },
+      "by_state": {
+        "Contestada": 20,
+        "No contesta": 11,
+        "Buzon de voz": 7,
+        "Ocupado / fallida": 4,
+        "Cancelada": 2
+      }
+    },
+    {
+      "date": "2026-10-16",
+      "agent_id": 22424628,
+      "out_total": 63,
+      "out_answered": 29,
+      "out_effective": 23,
+      "talk_sec": 3657,
+      "in_total": 13,
+      "in_answered": 8,
+      "in_missed": 5,
+      "unique_numbers": 55,
+      "unique_contacted": 23,
+      "by_hour": {
+        "9": {
+          "total": 1,
+          "answered": 0
+        },
+        "10": {
+          "total": 5,
+          "answered": 0
+        },
+        "11": {
+          "total": 8,
+          "answered": 2
+        },
+        "12": {
+          "total": 3,
+          "answered": 1
+        },
+        "13": {
+          "total": 7,
+          "answered": 4
+        },
+        "14": {
+          "total": 9,
+          "answered": 8
+        },
+        "15": {
+          "total": 9,
+          "answered": 4
+        },
+        "16": {
+          "total": 1,
+          "answered": 0
+        },
+        "17": {
+          "total": 4,
+          "answered": 1
+        },
+        "18": {
+          "total": 16,
+          "answered": 9
+        }
+      },
+      "by_state": {
+        "Contestada": 29,
+        "No contesta": 28,
+        "Buzon de voz": 2,
+        "Ocupado / fallida": 4
+      }
+    },
+    {
+      "date": "2026-10-16",
+      "agent_id": 22424850,
+      "out_total": 30,
+      "out_answered": 19,
+      "out_effective": 14,
+      "talk_sec": 1708,
+      "in_total": 19,
+      "in_answered": 12,
+      "in_missed": 7,
+      "unique_numbers": 21,
+      "unique_contacted": 18,
+      "by_hour": {
+        "10": {
+          "total": 3,
+          "answered": 3
+        },
+        "11": {
+          "total": 3,
+          "answered": 2
+        },
+        "12": {
+          "total": 1,
+          "answered": 0
+        },
+        "13": {
+          "total": 2,
+          "answered": 1
+        },
+        "15": {
+          "total": 6,
+          "answered": 3
+        },
+        "16": {
+          "total": 1,
+          "answered": 0
+        },
+        "17": {
+          "total": 2,
+          "answered": 0
+        },
+        "18": {
+          "total": 12,
+          "answered": 10
+        }
+      },
+      "by_state": {
+        "Contestada": 19,
+        "No contesta": 10,
+        "Buzon de voz": 1
+      }
+    },
+    {
+      "date": "2026-10-16",
+      "agent_id": 22156106,
+      "out_total": 66,
+      "out_answered": 36,
+      "out_effective": 28,
+      "talk_sec": 6244,
+      "in_total": 16,
+      "in_answered": 11,
+      "in_missed": 5,
+      "unique_numbers": 46,
+      "unique_contacted": 30,
+      "by_hour": {
+        "9": {
+          "total": 7,
+          "answered": 4
+        },
+        "10": {
+          "total": 6,
+          "answered": 2
+        },
+        "12": {
+          "total": 3,
+          "answered": 1
+        },
+        "13": {
+          "total": 4,
+          "answered": 0
+        },
+        "14": {
+          "total": 2,
+          "answered": 0
+        },
+        "15": {
+          "total": 2,
+          "answered": 2
+        },
+        "16": {
+          "total": 2,
+          "answered": 0
+        },
+        "18": {
+          "total": 40,
+          "answered": 27
+        }
+      },
+      "by_state": {
+        "Contestada": 36,
+        "No contesta": 14,
+        "Buzon de voz": 15,
+        "Ocupado / fallida": 1
+      }
+    },
+    {
+      "date": "2026-10-19",
+      "agent_id": 23509313,
+      "out_total": 46,
+      "out_answered": 26,
+      "out_effective": 19,
+      "talk_sec": 2831,
+      "in_total": 12,
+      "in_answered": 10,
+      "in_missed": 2,
+      "unique_numbers": 40,
+      "unique_contacted": 24,
+      "by_hour": {
+        "9": {
+          "total": 5,
+          "answered": 4
+        },
+        "10": {
+          "total": 5,
+          "answered": 1
+        },
+        "11": {
+          "total": 3,
+          "answered": 0
+        },
+        "12": {
+          "total": 4,
+          "answered": 1
+        },
+        "13": {
+          "total": 5,
+          "answered": 1
+        },
+        "14": {
+          "total": 2,
+          "answered": 0
+        },
+        "15": {
+          "total": 1,
+          "answered": 0
+        },
+        "16": {
+          "total": 2,
+          "answered": 1
+        },
+        "17": {
+          "total": 9,
+          "answered": 9
+        },
+        "18": {
+          "total": 10,
+          "answered": 9
+        }
+      },
+      "by_state": {
+        "Contestada": 26,
+        "No contesta": 10,
+        "Buzon de voz": 7,
+        "Cancelada": 3
+      }
+    },
+    {
+      "date": "2026-10-19",
+      "agent_id": 23266168,
+      "out_total": 45,
+      "out_answered": 23,
+      "out_effective": 17,
+      "talk_sec": 1870,
+      "in_total": 5,
+      "in_answered": 4,
+      "in_missed": 1,
+      "unique_numbers": 35,
+      "unique_contacted": 19,
+      "by_hour": {
+        "9": {
+          "total": 5,
+          "answered": 2
+        },
+        "10": {
+          "total": 4,
+          "answered": 2
+        },
+        "12": {
+          "total": 3,
+          "answered": 0
+        },
+        "13": {
+          "total": 4,
+          "answered": 4
+        },
+        "15": {
+          "total": 7,
+          "answered": 7
+        },
+        "16": {
+          "total": 4,
+          "answered": 1
+        },
+        "17": {
+          "total": 9,
+          "answered": 6
+        },
+        "18": {
+          "total": 9,
+          "answered": 1
+        }
+      },
+      "by_state": {
+        "Contestada": 23,
+        "No contesta": 20,
+        "Buzon de voz": 1,
+        "Cancelada": 1
+      }
+    },
+    {
+      "date": "2026-10-19",
+      "agent_id": 24431781,
+      "out_total": 70,
+      "out_answered": 28,
+      "out_effective": 18,
+      "talk_sec": 3510,
+      "in_total": 19,
+      "in_answered": 13,
+      "in_missed": 6,
+      "unique_numbers": 59,
+      "unique_contacted": 25,
+      "by_hour": {
+        "9": {
+          "total": 6,
+          "answered": 6
+        },
+        "10": {
+          "total": 8,
+          "answered": 0
+        },
+        "11": {
+          "total": 7,
+          "answered": 1
+        },
+        "12": {
+          "total": 5,
+          "answered": 2
+        },
+        "13": {
+          "total": 5,
+          "answered": 0
+        },
+        "14": {
+          "total": 6,
+          "answered": 6
+        },
+        "15": {
+          "total": 8,
+          "answered": 0
+        },
+        "16": {
+          "total": 10,
+          "answered": 8
+        },
+        "17": {
+          "total": 7,
+          "answered": 6
+        },
+        "18": {
+          "total": 8,
+          "answered": 0
+        }
+      },
+      "by_state": {
+        "Contestada": 28,
+        "No contesta": 9,
+        "Buzon de voz": 12,
+        "Ocupado / fallida": 16,
+        "Cancelada": 5
+      }
+    },
+    {
+      "date": "2026-10-19",
+      "agent_id": 22426048,
+      "out_total": 56,
+      "out_answered": 33,
+      "out_effective": 22,
+      "talk_sec": 5060,
+      "in_total": 8,
+      "in_answered": 7,
+      "in_missed": 1,
+      "unique_numbers": 50,
+      "unique_contacted": 32,
+      "by_hour": {
+        "9": {
+          "total": 7,
+          "answered": 7
+        },
+        "10": {
+          "total": 1,
+          "answered": 0
+        },
+        "11": {
+          "total": 3,
+          "answered": 1
+        },
+        "12": {
+          "total": 4,
+          "answered": 4
+        },
+        "14": {
+          "total": 1,
+          "answered": 0
+        },
+        "15": {
+          "total": 1,
+          "answered": 1
+        },
+        "16": {
+          "total": 3,
+          "answered": 1
+        },
+        "17": {
+          "total": 15,
+          "answered": 9
+        },
+        "18": {
+          "total": 21,
+          "answered": 10
+        }
+      },
+      "by_state": {
+        "Contestada": 33,
+        "No contesta": 16,
+        "Buzon de voz": 4,
+        "Ocupado / fallida": 3
+      }
+    },
+    {
+      "date": "2026-10-19",
+      "agent_id": 22424628,
+      "out_total": 43,
+      "out_answered": 21,
+      "out_effective": 13,
+      "talk_sec": 1794,
+      "in_total": 20,
+      "in_answered": 16,
+      "in_missed": 4,
+      "unique_numbers": 34,
+      "unique_contacted": 20,
+      "by_hour": {
+        "9": {
+          "total": 1,
+          "answered": 0
+        },
+        "10": {
+          "total": 2,
+          "answered": 1
+        },
+        "11": {
+          "total": 5,
+          "answered": 4
+        },
+        "12": {
+          "total": 4,
+          "answered": 0
+        },
+        "13": {
+          "total": 4,
+          "answered": 2
+        },
+        "14": {
+          "total": 7,
+          "answered": 2
+        },
+        "15": {
+          "total": 7,
+          "answered": 7
+        },
+        "16": {
+          "total": 2,
+          "answered": 1
+        },
+        "17": {
+          "total": 6,
+          "answered": 3
+        },
+        "18": {
+          "total": 5,
+          "answered": 1
+        }
+      },
+      "by_state": {
+        "Contestada": 21,
+        "No contesta": 12,
+        "Buzon de voz": 3,
+        "Ocupado / fallida": 3,
+        "Cancelada": 4
+      }
+    },
+    {
+      "date": "2026-10-19",
+      "agent_id": 22424850,
+      "out_total": 54,
+      "out_answered": 21,
+      "out_effective": 17,
+      "talk_sec": 3179,
+      "in_total": 16,
+      "in_answered": 14,
+      "in_missed": 2,
+      "unique_numbers": 49,
+      "unique_contacted": 20,
+      "by_hour": {
+        "9": {
+          "total": 2,
+          "answered": 1
+        },
+        "11": {
+          "total": 8,
+          "answered": 5
+        },
+        "12": {
+          "total": 1,
+          "answered": 1
+        },
+        "13": {
+          "total": 1,
+          "answered": 1
+        },
+        "15": {
+          "total": 6,
+          "answered": 6
+        },
+        "16": {
+          "total": 10,
+          "answered": 2
+        },
+        "17": {
+          "total": 2,
+          "answered": 1
+        },
+        "18": {
+          "total": 24,
+          "answered": 4
+        }
+      },
+      "by_state": {
+        "Contestada": 21,
+        "No contesta": 17,
+        "Buzon de voz": 10,
+        "Ocupado / fallida": 6
+      }
+    },
+    {
+      "date": "2026-10-19",
+      "agent_id": 22156106,
+      "out_total": 62,
+      "out_answered": 30,
+      "out_effective": 21,
+      "talk_sec": 4494,
+      "in_total": 21,
+      "in_answered": 12,
+      "in_missed": 9,
+      "unique_numbers": 51,
+      "unique_contacted": 27,
+      "by_hour": {
+        "9": {
+          "total": 1,
+          "answered": 0
+        },
+        "10": {
+          "total": 4,
+          "answered": 1
+        },
+        "11": {
+          "total": 1,
+          "answered": 1
+        },
+        "12": {
+          "total": 1,
+          "answered": 0
+        },
+        "13": {
+          "total": 7,
+          "answered": 2
+        },
+        "14": {
+          "total": 11,
+          "answered": 4
+        },
+        "16": {
+          "total": 5,
+          "answered": 0
+        },
+        "17": {
+          "total": 9,
+          "answered": 5
+        },
+        "18": {
+          "total": 23,
+          "answered": 17
+        }
+      },
+      "by_state": {
+        "Contestada": 30,
+        "No contesta": 25,
+        "Buzon de voz": 6,
+        "Ocupado / fallida": 1
+      }
+    },
+    {
+      "date": "2026-10-20",
+      "agent_id": 23509313,
+      "out_total": 78,
+      "out_answered": 33,
+      "out_effective": 22,
+      "talk_sec": 4114,
+      "in_total": 11,
+      "in_answered": 8,
+      "in_missed": 3,
+      "unique_numbers": 63,
+      "unique_contacted": 28,
+      "by_hour": {
+        "9": {
+          "total": 9,
+          "answered": 2
+        },
+        "10": {
+          "total": 3,
+          "answered": 3
+        },
+        "11": {
+          "total": 10,
+          "answered": 4
+        },
+        "12": {
+          "total": 7,
+          "answered": 4
+        },
+        "13": {
+          "total": 10,
+          "answered": 0
+        },
+        "14": {
+          "total": 7,
+          "answered": 4
+        },
+        "15": {
+          "total": 10,
+          "answered": 8
+        },
+        "16": {
+          "total": 2,
+          "answered": 0
+        },
+        "17": {
+          "total": 7,
+          "answered": 5
+        },
+        "18": {
+          "total": 13,
+          "answered": 3
+        }
+      },
+      "by_state": {
+        "Contestada": 33,
+        "No contesta": 37,
+        "Buzon de voz": 4,
+        "Ocupado / fallida": 3,
+        "Cancelada": 1
+      }
+    },
+    {
+      "date": "2026-10-20",
+      "agent_id": 23266168,
+      "out_total": 52,
+      "out_answered": 32,
+      "out_effective": 20,
+      "talk_sec": 3740,
+      "in_total": 22,
+      "in_answered": 15,
+      "in_missed": 7,
+      "unique_numbers": 40,
+      "unique_contacted": 28,
+      "by_hour": {
+        "9": {
+          "total": 4,
+          "answered": 2
+        },
+        "11": {
+          "total": 4,
+          "answered": 0
+        },
+        "13": {
+          "total": 4,
+          "answered": 1
+        },
+        "14": {
+          "total": 9,
+          "answered": 5
+        },
+        "15": {
+          "total": 3,
+          "answered": 1
+        },
+        "16": {
+          "total": 9,
+          "answered": 4
+        },
+        "17": {
+          "total": 10,
+          "answered": 10
+        },
+        "18": {
+          "total": 9,
+          "answered": 9
+        }
+      },
+      "by_state": {
+        "Contestada": 32,
+        "No contesta": 7,
+        "Buzon de voz": 3,
+        "Ocupado / fallida": 10
+      }
+    },
+    {
+      "date": "2026-10-20",
+      "agent_id": 24431781,
+      "out_total": 65,
+      "out_answered": 31,
+      "out_effective": 20,
+      "talk_sec": 3300,
+      "in_total": 14,
+      "in_answered": 11,
+      "in_missed": 3,
+      "unique_numbers": 51,
+      "unique_contacted": 29,
+      "by_hour": {
+        "9": {
+          "total": 2,
+          "answered": 0
+        },
+        "10": {
+          "total": 2,
+          "answered": 2
+        },
+        "11": {
+          "total": 5,
+          "answered": 4
+        },
+        "12": {
+          "total": 8,
+          "answered": 4
+        },
+        "13": {
+          "total": 2,
+          "answered": 1
+        },
+        "14": {
+          "total": 7,
+          "answered": 4
+        },
+        "15": {
+          "total": 11,
+          "answered": 5
+        },
+        "16": {
+          "total": 1,
+          "answered": 1
+        },
+        "17": {
+          "total": 2,
+          "answered": 0
+        },
+        "18": {
+          "total": 25,
+          "answered": 10
+        }
+      },
+      "by_state": {
+        "Contestada": 31,
+        "No contesta": 14,
+        "Buzon de voz": 12,
+        "Ocupado / fallida": 8
+      }
+    },
+    {
+      "date": "2026-10-20",
+      "agent_id": 22426048,
+      "out_total": 28,
+      "out_answered": 12,
+      "out_effective": 7,
+      "talk_sec": 1288,
+      "in_total": 12,
+      "in_answered": 9,
+      "in_missed": 3,
+      "unique_numbers": 20,
+      "unique_contacted": 11,
+      "by_hour": {
+        "9": {
+          "total": 2,
+          "answered": 0
+        },
+        "10": {
+          "total": 1,
+          "answered": 1
+        },
+        "12": {
+          "total": 4,
+          "answered": 1
+        },
+        "13": {
+          "total": 5,
+          "answered": 0
+        },
+        "14": {
+          "total": 5,
+          "answered": 3
+        },
+        "15": {
+          "total": 2,
+          "answered": 2
+        },
+        "16": {
+          "total": 3,
+          "answered": 0
+        },
+        "17": {
+          "total": 1,
+          "answered": 0
+        },
+        "18": {
+          "total": 5,
+          "answered": 5
+        }
+      },
+      "by_state": {
+        "Contestada": 12,
+        "No contesta": 4,
+        "Buzon de voz": 9,
+        "Ocupado / fallida": 3
+      }
+    },
+    {
+      "date": "2026-10-20",
+      "agent_id": 22424628,
+      "out_total": 36,
+      "out_answered": 17,
+      "out_effective": 12,
+      "talk_sec": 2736,
+      "in_total": 17,
+      "in_answered": 13,
+      "in_missed": 4,
+      "unique_numbers": 28,
+      "unique_contacted": 14,
+      "by_hour": {
+        "9": {
+          "total": 5,
+          "answered": 1
+        },
+        "10": {
+          "total": 3,
+          "answered": 0
+        },
+        "11": {
+          "total": 3,
+          "answered": 3
+        },
+        "12": {
+          "total": 2,
+          "answered": 0
+        },
+        "13": {
+          "total": 5,
+          "answered": 2
+        },
+        "14": {
+          "total": 1,
+          "answered": 1
+        },
+        "15": {
+          "total": 3,
+          "answered": 1
+        },
+        "16": {
+          "total": 6,
+          "answered": 2
+        },
+        "18": {
+          "total": 8,
+          "answered": 7
+        }
+      },
+      "by_state": {
+        "Contestada": 17,
+        "No contesta": 17,
+        "Buzon de voz": 2
+      }
+    },
+    {
+      "date": "2026-10-20",
+      "agent_id": 22424850,
+      "out_total": 40,
+      "out_answered": 26,
+      "out_effective": 23,
+      "talk_sec": 4738,
+      "in_total": 6,
+      "in_answered": 4,
+      "in_missed": 2,
+      "unique_numbers": 35,
+      "unique_contacted": 21,
+      "by_hour": {
+        "9": {
+          "total": 5,
+          "answered": 5
+        },
+        "10": {
+          "total": 4,
+          "answered": 0
+        },
+        "12": {
+          "total": 1,
+          "answered": 0
+        },
+        "13": {
+          "total": 3,
+          "answered": 0
+        },
+        "14": {
+          "total": 3,
+          "answered": 1
+        },
+        "15": {
+          "total": 3,
+          "answered": 2
+        },
+        "16": {
+          "total": 2,
+          "answered": 2
+        },
+        "18": {
+          "total": 19,
+          "answered": 16
+        }
+      },
+      "by_state": {
+        "Contestada": 26,
+        "No contesta": 13,
+        "Cancelada": 1
+      }
+    },
+    {
+      "date": "2026-10-20",
+      "agent_id": 22156106,
+      "out_total": 29,
+      "out_answered": 12,
+      "out_effective": 8,
+      "talk_sec": 1200,
+      "in_total": 22,
+      "in_answered": 15,
+      "in_missed": 7,
+      "unique_numbers": 22,
+      "unique_contacted": 11,
+      "by_hour": {
+        "9": {
+          "total": 1,
+          "answered": 1
+        },
+        "11": {
+          "total": 5,
+          "answered": 3
+        },
+        "12": {
+          "total": 4,
+          "answered": 0
+        },
+        "13": {
+          "total": 5,
+          "answered": 0
+        },
+        "14": {
+          "total": 3,
+          "answered": 3
+        },
+        "15": {
+          "total": 2,
+          "answered": 2
+        },
+        "16": {
+          "total": 4,
+          "answered": 0
+        },
+        "17": {
+          "total": 3,
+          "answered": 1
+        },
+        "18": {
+          "total": 2,
+          "answered": 2
+        }
+      },
+      "by_state": {
+        "Contestada": 12,
+        "No contesta": 1,
+        "Buzon de voz": 16
+      }
+    },
+    {
+      "date": "2026-10-21",
+      "agent_id": 23509313,
+      "out_total": 29,
+      "out_answered": 11,
+      "out_effective": 8,
+      "talk_sec": 1536,
+      "in_total": 17,
+      "in_answered": 13,
+      "in_missed": 4,
+      "unique_numbers": 26,
+      "unique_contacted": 10,
+      "by_hour": {
+        "9": {
+          "total": 3,
+          "answered": 3
+        },
+        "11": {
+          "total": 2,
+          "answered": 2
+        },
+        "12": {
+          "total": 1,
+          "answered": 0
+        },
+        "13": {
+          "total": 1,
+          "answered": 1
+        },
+        "14": {
+          "total": 4,
+          "answered": 4
+        },
+        "15": {
+          "total": 4,
+          "answered": 2
+        },
+        "16": {
+          "total": 3,
+          "answered": 2
+        },
+        "17": {
+          "total": 7,
+          "answered": 6
+        },
+        "18": {
+          "total": 4,
+          "answered": 0
+        }
+      },
+      "by_state": {
+        "Contestada": 11,
+        "No contesta": 3,
+        "Buzon de voz": 3,
+        "Ocupado / fallida": 10,
+        "Cancelada": 2
+      }
+    },
+    {
+      "date": "2026-10-21",
+      "agent_id": 23266168,
+      "out_total": 41,
+      "out_answered": 20,
+      "out_effective": 17,
+      "talk_sec": 3315,
+      "in_total": 14,
+      "in_answered": 12,
+      "in_missed": 2,
+      "unique_numbers": 29,
+      "unique_contacted": 19,
+      "by_hour": {
+        "9": {
+          "total": 3,
+          "answered": 3
+        },
+        "10": {
+          "total": 5,
+          "answered": 0
+        },
+        "11": {
+          "total": 2,
+          "answered": 1
+        },
+        "12": {
+          "total": 2,
+          "answered": 2
+        },
+        "13": {
+          "total": 2,
+          "answered": 1
+        },
+        "14": {
+          "total": 2,
+          "answered": 2
+        },
+        "15": {
+          "total": 7,
+          "answered": 1
+        },
+        "16": {
+          "total": 1,
+          "answered": 0
+        },
+        "17": {
+          "total": 1,
+          "answered": 1
+        },
+        "18": {
+          "total": 16,
+          "answered": 9
+        }
+      },
+      "by_state": {
+        "Contestada": 20,
+        "No contesta": 4,
+        "Buzon de voz": 11,
+        "Ocupado / fallida": 2,
+        "Cancelada": 4
+      }
+    },
+    {
+      "date": "2026-10-21",
+      "agent_id": 24431781,
+      "out_total": 63,
+      "out_answered": 29,
+      "out_effective": 18,
+      "talk_sec": 3240,
+      "in_total": 17,
+      "in_answered": 14,
+      "in_missed": 3,
+      "unique_numbers": 44,
+      "unique_contacted": 24,
+      "by_hour": {
+        "10": {
+          "total": 9,
+          "answered": 4
+        },
+        "11": {
+          "total": 5,
+          "answered": 0
+        },
+        "12": {
+          "total": 9,
+          "answered": 8
+        },
+        "13": {
+          "total": 3,
+          "answered": 1
+        },
+        "14": {
+          "total": 7,
+          "answered": 3
+        },
+        "15": {
+          "total": 1,
+          "answered": 1
+        },
+        "16": {
+          "total": 8,
+          "answered": 5
+        },
+        "17": {
+          "total": 1,
+          "answered": 1
+        },
+        "18": {
+          "total": 20,
+          "answered": 6
+        }
+      },
+      "by_state": {
+        "Contestada": 29,
+        "No contesta": 17,
+        "Buzon de voz": 13,
+        "Cancelada": 4
+      }
+    },
+    {
+      "date": "2026-10-21",
+      "agent_id": 22426048,
+      "out_total": 76,
+      "out_answered": 35,
+      "out_effective": 25,
+      "talk_sec": 2275,
+      "in_total": 9,
+      "in_answered": 7,
+      "in_missed": 2,
+      "unique_numbers": 66,
+      "unique_contacted": 29,
+      "by_hour": {
+        "9": {
+          "total": 9,
+          "answered": 6
+        },
+        "10": {
+          "total": 1,
+          "answered": 0
+        },
+        "11": {
+          "total": 10,
+          "answered": 0
+        },
+        "12": {
+          "total": 1,
+          "answered": 0
+        },
+        "13": {
+          "total": 6,
+          "answered": 3
+        },
+        "14": {
+          "total": 7,
+          "answered": 5
+        },
+        "15": {
+          "total": 2,
+          "answered": 1
+        },
+        "16": {
+          "total": 9,
+          "answered": 5
+        },
+        "17": {
+          "total": 2,
+          "answered": 0
+        },
+        "18": {
+          "total": 29,
+          "answered": 15
+        }
+      },
+      "by_state": {
+        "Contestada": 35,
+        "No contesta": 12,
+        "Buzon de voz": 10,
+        "Ocupado / fallida": 19
+      }
+    },
+    {
+      "date": "2026-10-21",
+      "agent_id": 22424628,
+      "out_total": 70,
+      "out_answered": 34,
+      "out_effective": 26,
+      "talk_sec": 5096,
+      "in_total": 12,
+      "in_answered": 8,
+      "in_missed": 4,
+      "unique_numbers": 62,
+      "unique_contacted": 29,
+      "by_hour": {
+        "9": {
+          "total": 8,
+          "answered": 1
+        },
+        "10": {
+          "total": 5,
+          "answered": 3
+        },
+        "11": {
+          "total": 1,
+          "answered": 1
+        },
+        "12": {
+          "total": 10,
+          "answered": 10
+        },
+        "13": {
+          "total": 9,
+          "answered": 7
+        },
+        "14": {
+          "total": 8,
+          "answered": 4
+        },
+        "16": {
+          "total": 6,
+          "answered": 4
+        },
+        "18": {
+          "total": 23,
+          "answered": 4
+        }
+      },
+      "by_state": {
+        "Contestada": 34,
+        "No contesta": 22,
+        "Buzon de voz": 9,
+        "Ocupado / fallida": 3,
+        "Cancelada": 2
+      }
+    },
+    {
+      "date": "2026-10-21",
+      "agent_id": 22424850,
+      "out_total": 35,
+      "out_answered": 13,
+      "out_effective": 10,
+      "talk_sec": 1340,
+      "in_total": 8,
+      "in_answered": 5,
+      "in_missed": 3,
+      "unique_numbers": 30,
+      "unique_contacted": 11,
+      "by_hour": {
+        "9": {
+          "total": 5,
+          "answered": 1
+        },
+        "10": {
+          "total": 4,
+          "answered": 4
+        },
+        "11": {
+          "total": 5,
+          "answered": 2
+        },
+        "13": {
+          "total": 5,
+          "answered": 0
+        },
+        "14": {
+          "total": 3,
+          "answered": 0
+        },
+        "15": {
+          "total": 3,
+          "answered": 0
+        },
+        "16": {
+          "total": 2,
+          "answered": 2
+        },
+        "17": {
+          "total": 3,
+          "answered": 3
+        },
+        "18": {
+          "total": 5,
+          "answered": 1
+        }
+      },
+      "by_state": {
+        "Contestada": 13,
+        "No contesta": 22
+      }
+    },
+    {
+      "date": "2026-10-21",
+      "agent_id": 22156106,
+      "out_total": 53,
+      "out_answered": 20,
+      "out_effective": 14,
+      "talk_sec": 2898,
+      "in_total": 15,
+      "in_answered": 9,
+      "in_missed": 6,
+      "unique_numbers": 49,
+      "unique_contacted": 18,
+      "by_hour": {
+        "9": {
+          "total": 1,
+          "answered": 0
+        },
+        "10": {
+          "total": 6,
+          "answered": 4
+        },
+        "11": {
+          "total": 6,
+          "answered": 4
+        },
+        "12": {
+          "total": 1,
+          "answered": 1
+        },
+        "13": {
+          "total": 4,
+          "answered": 2
+        },
+        "14": {
+          "total": 3,
+          "answered": 2
+        },
+        "15": {
+          "total": 2,
+          "answered": 0
+        },
+        "16": {
+          "total": 8,
+          "answered": 1
+        },
+        "17": {
+          "total": 8,
+          "answered": 8
+        },
+        "18": {
+          "total": 14,
+          "answered": 0
+        }
+      },
+      "by_state": {
+        "Contestada": 20,
+        "No contesta": 12,
+        "Buzon de voz": 11,
+        "Ocupado / fallida": 5,
+        "Cancelada": 5
+      }
+    },
+    {
+      "date": "2026-10-22",
+      "agent_id": 23509313,
+      "out_total": 37,
+      "out_answered": 16,
+      "out_effective": 10,
+      "talk_sec": 1400,
+      "in_total": 9,
+      "in_answered": 7,
+      "in_missed": 2,
+      "unique_numbers": 29,
+      "unique_contacted": 13,
+      "by_hour": {
+        "9": {
+          "total": 5,
+          "answered": 0
+        },
+        "10": {
+          "total": 1,
+          "answered": 1
+        },
+        "11": {
+          "total": 3,
+          "answered": 3
+        },
+        "12": {
+          "total": 5,
+          "answered": 4
+        },
+        "13": {
+          "total": 5,
+          "answered": 5
+        },
+        "14": {
+          "total": 4,
+          "answered": 2
+        },
+        "15": {
+          "total": 5,
+          "answered": 2
+        },
+        "16": {
+          "total": 1,
+          "answered": 1
+        },
+        "18": {
+          "total": 8,
+          "answered": 0
+        }
+      },
+      "by_state": {
+        "Contestada": 16,
+        "No contesta": 15,
+        "Buzon de voz": 4,
+        "Ocupado / fallida": 2
+      }
+    },
+    {
+      "date": "2026-10-22",
+      "agent_id": 23266168,
+      "out_total": 57,
+      "out_answered": 28,
+      "out_effective": 17,
+      "talk_sec": 2771,
+      "in_total": 6,
+      "in_answered": 4,
+      "in_missed": 2,
+      "unique_numbers": 47,
+      "unique_contacted": 25,
+      "by_hour": {
+        "9": {
+          "total": 1,
+          "answered": 1
+        },
+        "10": {
+          "total": 7,
+          "answered": 0
+        },
+        "11": {
+          "total": 7,
+          "answered": 3
+        },
+        "12": {
+          "total": 5,
+          "answered": 4
+        },
+        "13": {
+          "total": 7,
+          "answered": 2
+        },
+        "15": {
+          "total": 1,
+          "answered": 1
+        },
+        "16": {
+          "total": 11,
+          "answered": 1
+        },
+        "17": {
+          "total": 8,
+          "answered": 2
+        },
+        "18": {
+          "total": 10,
+          "answered": 10
+        }
+      },
+      "by_state": {
+        "Contestada": 28,
+        "No contesta": 1,
+        "Buzon de voz": 7,
+        "Ocupado / fallida": 14,
+        "Cancelada": 7
+      }
+    },
+    {
+      "date": "2026-10-22",
+      "agent_id": 24431781,
+      "out_total": 51,
+      "out_answered": 24,
+      "out_effective": 16,
+      "talk_sec": 3104,
+      "in_total": 14,
+      "in_answered": 11,
+      "in_missed": 3,
+      "unique_numbers": 47,
+      "unique_contacted": 20,
+      "by_hour": {
+        "10": {
+          "total": 1,
+          "answered": 1
+        },
+        "11": {
+          "total": 1,
+          "answered": 1
+        },
+        "12": {
+          "total": 4,
+          "answered": 2
+        },
+        "13": {
+          "total": 9,
+          "answered": 2
+        },
+        "14": {
+          "total": 5,
+          "answered": 0
+        },
+        "15": {
+          "total": 9,
+          "answered": 2
+        },
+        "16": {
+          "total": 5,
+          "answered": 2
+        },
+        "17": {
+          "total": 10,
+          "answered": 10
+        },
+        "18": {
+          "total": 7,
+          "answered": 4
+        }
+      },
+      "by_state": {
+        "Contestada": 24,
+        "No contesta": 12,
+        "Buzon de voz": 4,
+        "Ocupado / fallida": 9,
+        "Cancelada": 2
+      }
+    },
+    {
+      "date": "2026-10-22",
+      "agent_id": 22426048,
+      "out_total": 52,
+      "out_answered": 29,
+      "out_effective": 20,
+      "talk_sec": 2440,
+      "in_total": 20,
+      "in_answered": 12,
+      "in_missed": 8,
+      "unique_numbers": 47,
+      "unique_contacted": 28,
+      "by_hour": {
+        "9": {
+          "total": 6,
+          "answered": 4
+        },
+        "10": {
+          "total": 5,
+          "answered": 0
+        },
+        "11": {
+          "total": 5,
+          "answered": 2
+        },
+        "12": {
+          "total": 2,
+          "answered": 0
+        },
+        "13": {
+          "total": 5,
+          "answered": 3
+        },
+        "14": {
+          "total": 3,
+          "answered": 1
+        },
+        "15": {
+          "total": 2,
+          "answered": 0
+        },
+        "16": {
+          "total": 1,
+          "answered": 1
+        },
+        "17": {
+          "total": 13,
+          "answered": 12
+        },
+        "18": {
+          "total": 10,
+          "answered": 6
+        }
+      },
+      "by_state": {
+        "Contestada": 29,
+        "No contesta": 3,
+        "Buzon de voz": 16,
+        "Ocupado / fallida": 4
+      }
+    },
+    {
+      "date": "2026-10-22",
+      "agent_id": 22424628,
+      "out_total": 30,
+      "out_answered": 16,
+      "out_effective": 13,
+      "talk_sec": 1599,
+      "in_total": 16,
+      "in_answered": 10,
+      "in_missed": 6,
+      "unique_numbers": 27,
+      "unique_contacted": 13,
+      "by_hour": {
+        "9": {
+          "total": 1,
+          "answered": 0
+        },
+        "10": {
+          "total": 5,
+          "answered": 3
+        },
+        "12": {
+          "total": 2,
+          "answered": 2
+        },
+        "13": {
+          "total": 5,
+          "answered": 1
+        },
+        "14": {
+          "total": 3,
+          "answered": 2
+        },
+        "15": {
+          "total": 5,
+          "answered": 3
+        },
+        "16": {
+          "total": 1,
+          "answered": 0
+        },
+        "17": {
+          "total": 2,
+          "answered": 1
+        },
+        "18": {
+          "total": 6,
+          "answered": 4
+        }
+      },
+      "by_state": {
+        "Contestada": 16,
+        "No contesta": 14
+      }
+    },
+    {
+      "date": "2026-10-22",
+      "agent_id": 22424850,
+      "out_total": 64,
+      "out_answered": 41,
+      "out_effective": 30,
+      "talk_sec": 4860,
+      "in_total": 16,
+      "in_answered": 12,
+      "in_missed": 4,
+      "unique_numbers": 52,
+      "unique_contacted": 35,
+      "by_hour": {
+        "9": {
+          "total": 6,
+          "answered": 1
+        },
+        "10": {
+          "total": 3,
+          "answered": 1
+        },
+        "11": {
+          "total": 4,
+          "answered": 0
+        },
+        "12": {
+          "total": 7,
+          "answered": 5
+        },
+        "13": {
+          "total": 8,
+          "answered": 1
+        },
+        "14": {
+          "total": 8,
+          "answered": 1
+        },
+        "15": {
+          "total": 4,
+          "answered": 0
+        },
+        "16": {
+          "total": 2,
+          "answered": 1
+        },
+        "17": {
+          "total": 7,
+          "answered": 2
+        },
+        "18": {
+          "total": 15,
+          "answered": 15
+        }
+      },
+      "by_state": {
+        "Contestada": 41,
+        "No contesta": 13,
+        "Buzon de voz": 1,
+        "Ocupado / fallida": 3,
+        "Cancelada": 6
+      }
+    },
+    {
+      "date": "2026-10-22",
+      "agent_id": 22156106,
+      "out_total": 29,
+      "out_answered": 14,
+      "out_effective": 10,
+      "talk_sec": 1850,
+      "in_total": 11,
+      "in_answered": 7,
+      "in_missed": 4,
+      "unique_numbers": 21,
+      "unique_contacted": 11,
+      "by_hour": {
+        "10": {
+          "total": 1,
+          "answered": 0
+        },
+        "11": {
+          "total": 2,
+          "answered": 0
+        },
+        "12": {
+          "total": 5,
+          "answered": 5
+        },
+        "13": {
+          "total": 2,
+          "answered": 0
+        },
+        "14": {
+          "total": 1,
+          "answered": 0
+        },
+        "15": {
+          "total": 2,
+          "answered": 1
+        },
+        "16": {
+          "total": 2,
+          "answered": 2
+        },
+        "17": {
+          "total": 7,
+          "answered": 7
+        },
+        "18": {
+          "total": 7,
+          "answered": 0
+        }
+      },
+      "by_state": {
+        "Contestada": 14,
+        "Buzon de voz": 2,
+        "Cancelada": 4,
+        "No contesta": 9
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "agent_id": 23509313,
+      "out_total": 74,
+      "out_answered": 40,
+      "out_effective": 29,
+      "talk_sec": 4727,
+      "in_total": 11,
+      "in_answered": 7,
+      "in_missed": 4,
+      "unique_numbers": 59,
+      "unique_contacted": 37,
+      "by_hour": {
+        "10": {
+          "total": 6,
+          "answered": 5
+        },
+        "11": {
+          "total": 9,
+          "answered": 7
+        },
+        "12": {
+          "total": 1,
+          "answered": 0
+        },
+        "13": {
+          "total": 7,
+          "answered": 0
+        },
+        "14": {
+          "total": 10,
+          "answered": 8
+        },
+        "15": {
+          "total": 9,
+          "answered": 3
+        },
+        "16": {
+          "total": 11,
+          "answered": 2
+        },
+        "17": {
+          "total": 4,
+          "answered": 3
+        },
+        "18": {
+          "total": 17,
+          "answered": 12
+        }
+      },
+      "by_state": {
+        "Contestada": 40,
+        "Buzon de voz": 22,
+        "Ocupado / fallida": 3,
+        "Cancelada": 9
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "agent_id": 23266168,
+      "out_total": 33,
+      "out_answered": 17,
+      "out_effective": 12,
+      "talk_sec": 2688,
+      "in_total": 21,
+      "in_answered": 16,
+      "in_missed": 5,
+      "unique_numbers": 29,
+      "unique_contacted": 14,
+      "by_hour": {
+        "9": {
+          "total": 4,
+          "answered": 4
+        },
+        "11": {
+          "total": 3,
+          "answered": 0
+        },
+        "12": {
+          "total": 5,
+          "answered": 3
+        },
+        "13": {
+          "total": 2,
+          "answered": 1
+        },
+        "14": {
+          "total": 5,
+          "answered": 0
+        },
+        "15": {
+          "total": 2,
+          "answered": 0
+        },
+        "16": {
+          "total": 2,
+          "answered": 0
+        },
+        "17": {
+          "total": 1,
+          "answered": 1
+        },
+        "18": {
+          "total": 9,
+          "answered": 8
+        }
+      },
+      "by_state": {
+        "Contestada": 17,
+        "No contesta": 6,
+        "Ocupado / fallida": 5,
+        "Cancelada": 5
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "agent_id": 24431781,
+      "out_total": 77,
+      "out_answered": 44,
+      "out_effective": 39,
+      "talk_sec": 8268,
+      "in_total": 9,
+      "in_answered": 7,
+      "in_missed": 2,
+      "unique_numbers": 59,
+      "unique_contacted": 42,
+      "by_hour": {
+        "9": {
+          "total": 1,
+          "answered": 1
+        },
+        "11": {
+          "total": 3,
+          "answered": 0
+        },
+        "12": {
+          "total": 12,
+          "answered": 3
+        },
+        "14": {
+          "total": 14,
+          "answered": 4
+        },
+        "15": {
+          "total": 8,
+          "answered": 6
+        },
+        "16": {
+          "total": 15,
+          "answered": 8
+        },
+        "18": {
+          "total": 24,
+          "answered": 22
+        }
+      },
+      "by_state": {
+        "Contestada": 44,
+        "No contesta": 20,
+        "Buzon de voz": 11,
+        "Cancelada": 2
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "agent_id": 22426048,
+      "out_total": 55,
+      "out_answered": 34,
+      "out_effective": 28,
+      "talk_sec": 5264,
+      "in_total": 14,
+      "in_answered": 12,
+      "in_missed": 2,
+      "unique_numbers": 40,
+      "unique_contacted": 30,
+      "by_hour": {
+        "9": {
+          "total": 7,
+          "answered": 7
+        },
+        "10": {
+          "total": 5,
+          "answered": 4
+        },
+        "11": {
+          "total": 4,
+          "answered": 0
+        },
+        "12": {
+          "total": 6,
+          "answered": 0
+        },
+        "13": {
+          "total": 6,
+          "answered": 4
+        },
+        "14": {
+          "total": 2,
+          "answered": 2
+        },
+        "15": {
+          "total": 4,
+          "answered": 2
+        },
+        "16": {
+          "total": 1,
+          "answered": 0
+        },
+        "17": {
+          "total": 5,
+          "answered": 5
+        },
+        "18": {
+          "total": 15,
+          "answered": 10
+        }
+      },
+      "by_state": {
+        "Contestada": 34,
+        "No contesta": 9,
+        "Buzon de voz": 4,
+        "Ocupado / fallida": 7,
+        "Cancelada": 1
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "agent_id": 22424628,
+      "out_total": 56,
+      "out_answered": 21,
+      "out_effective": 18,
+      "talk_sec": 3240,
+      "in_total": 17,
+      "in_answered": 11,
+      "in_missed": 6,
+      "unique_numbers": 41,
+      "unique_contacted": 18,
+      "by_hour": {
+        "10": {
+          "total": 6,
+          "answered": 2
+        },
+        "11": {
+          "total": 8,
+          "answered": 2
+        },
+        "13": {
+          "total": 9,
+          "answered": 7
+        },
+        "15": {
+          "total": 1,
+          "answered": 0
+        },
+        "16": {
+          "total": 12,
+          "answered": 10
+        },
+        "17": {
+          "total": 5,
+          "answered": 2
+        },
+        "18": {
+          "total": 15,
+          "answered": 0
+        }
+      },
+      "by_state": {
+        "Contestada": 21,
+        "No contesta": 24,
+        "Buzon de voz": 9,
+        "Cancelada": 2
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "agent_id": 22424850,
+      "out_total": 51,
+      "out_answered": 24,
+      "out_effective": 20,
+      "talk_sec": 4720,
+      "in_total": 8,
+      "in_answered": 6,
+      "in_missed": 2,
+      "unique_numbers": 36,
+      "unique_contacted": 20,
+      "by_hour": {
+        "9": {
+          "total": 6,
+          "answered": 2
+        },
+        "10": {
+          "total": 4,
+          "answered": 1
+        },
+        "11": {
+          "total": 1,
+          "answered": 0
+        },
+        "12": {
+          "total": 2,
+          "answered": 1
+        },
+        "13": {
+          "total": 8,
+          "answered": 6
+        },
+        "14": {
+          "total": 8,
+          "answered": 1
+        },
+        "15": {
+          "total": 4,
+          "answered": 2
+        },
+        "16": {
+          "total": 7,
+          "answered": 3
+        },
+        "17": {
+          "total": 4,
+          "answered": 3
+        },
+        "18": {
+          "total": 7,
+          "answered": 5
+        }
+      },
+      "by_state": {
+        "Contestada": 24,
+        "No contesta": 7,
+        "Buzon de voz": 3,
+        "Ocupado / fallida": 4,
+        "Cancelada": 13
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "agent_id": 22156106,
+      "out_total": 73,
+      "out_answered": 36,
+      "out_effective": 23,
+      "talk_sec": 3933,
+      "in_total": 15,
+      "in_answered": 12,
+      "in_missed": 3,
+      "unique_numbers": 57,
+      "unique_contacted": 34,
+      "by_hour": {
+        "9": {
+          "total": 8,
+          "answered": 8
+        },
+        "10": {
+          "total": 4,
+          "answered": 2
+        },
+        "11": {
+          "total": 2,
+          "answered": 2
+        },
+        "12": {
+          "total": 10,
+          "answered": 2
+        },
+        "13": {
+          "total": 5,
+          "answered": 4
+        },
+        "14": {
+          "total": 3,
+          "answered": 0
+        },
+        "15": {
+          "total": 3,
+          "answered": 1
+        },
+        "16": {
+          "total": 3,
+          "answered": 3
+        },
+        "18": {
+          "total": 35,
+          "answered": 14
+        }
+      },
+      "by_state": {
+        "Contestada": 36,
+        "No contesta": 35,
+        "Buzon de voz": 2
+      }
+    },
+    {
+      "date": "2026-10-26",
+      "agent_id": 23509313,
+      "out_total": 63,
+      "out_answered": 26,
+      "out_effective": 22,
+      "talk_sec": 2332,
+      "in_total": 13,
+      "in_answered": 9,
+      "in_missed": 4,
+      "unique_numbers": 52,
+      "unique_contacted": 22,
+      "by_hour": {
+        "9": {
+          "total": 7,
+          "answered": 6
+        },
+        "10": {
+          "total": 6,
+          "answered": 6
+        },
+        "11": {
+          "total": 1,
+          "answered": 0
+        },
+        "12": {
+          "total": 5,
+          "answered": 5
+        },
+        "13": {
+          "total": 1,
+          "answered": 1
+        },
+        "14": {
+          "total": 7,
+          "answered": 5
+        },
+        "15": {
+          "total": 2,
+          "answered": 2
+        },
+        "16": {
+          "total": 10,
+          "answered": 9
+        },
+        "17": {
+          "total": 2,
+          "answered": 0
+        },
+        "18": {
+          "total": 22,
+          "answered": 0
+        }
+      },
+      "by_state": {
+        "Contestada": 26,
+        "No contesta": 29,
+        "Buzon de voz": 8
+      }
+    },
+    {
+      "date": "2026-10-26",
+      "agent_id": 23266168,
+      "out_total": 38,
+      "out_answered": 17,
+      "out_effective": 13,
+      "talk_sec": 2314,
+      "in_total": 20,
+      "in_answered": 17,
+      "in_missed": 3,
+      "unique_numbers": 32,
+      "unique_contacted": 13,
+      "by_hour": {
+        "10": {
+          "total": 1,
+          "answered": 1
+        },
+        "11": {
+          "total": 1,
+          "answered": 1
+        },
+        "12": {
+          "total": 1,
+          "answered": 0
+        },
+        "13": {
+          "total": 2,
+          "answered": 0
+        },
+        "14": {
+          "total": 5,
+          "answered": 4
+        },
+        "16": {
+          "total": 1,
+          "answered": 0
+        },
+        "17": {
+          "total": 8,
+          "answered": 3
+        },
+        "18": {
+          "total": 19,
+          "answered": 8
+        }
+      },
+      "by_state": {
+        "Contestada": 17,
+        "No contesta": 18,
+        "Buzon de voz": 3
+      }
+    },
+    {
+      "date": "2026-10-26",
+      "agent_id": 24431781,
+      "out_total": 68,
+      "out_answered": 36,
+      "out_effective": 28,
+      "talk_sec": 4676,
+      "in_total": 19,
+      "in_answered": 12,
+      "in_missed": 7,
+      "unique_numbers": 56,
+      "unique_contacted": 29,
+      "by_hour": {
+        "9": {
+          "total": 6,
+          "answered": 2
+        },
+        "10": {
+          "total": 7,
+          "answered": 1
+        },
+        "12": {
+          "total": 7,
+          "answered": 6
+        },
+        "13": {
+          "total": 7,
+          "answered": 7
+        },
+        "14": {
+          "total": 3,
+          "answered": 2
+        },
+        "15": {
+          "total": 9,
+          "answered": 2
+        },
+        "16": {
+          "total": 5,
+          "answered": 5
+        },
+        "17": {
+          "total": 5,
+          "answered": 5
+        },
+        "18": {
+          "total": 19,
+          "answered": 6
+        }
+      },
+      "by_state": {
+        "Contestada": 36,
+        "No contesta": 23,
+        "Buzon de voz": 6,
+        "Ocupado / fallida": 1,
+        "Cancelada": 2
+      }
+    },
+    {
+      "date": "2026-10-26",
+      "agent_id": 22426048,
+      "out_total": 43,
+      "out_answered": 21,
+      "out_effective": 14,
+      "talk_sec": 2142,
+      "in_total": 8,
+      "in_answered": 5,
+      "in_missed": 3,
+      "unique_numbers": 35,
+      "unique_contacted": 20,
+      "by_hour": {
+        "9": {
+          "total": 2,
+          "answered": 1
+        },
+        "10": {
+          "total": 6,
+          "answered": 4
+        },
+        "11": {
+          "total": 3,
+          "answered": 1
+        },
+        "12": {
+          "total": 6,
+          "answered": 1
+        },
+        "13": {
+          "total": 6,
+          "answered": 2
+        },
+        "14": {
+          "total": 4,
+          "answered": 2
+        },
+        "15": {
+          "total": 1,
+          "answered": 0
+        },
+        "16": {
+          "total": 7,
+          "answered": 7
+        },
+        "17": {
+          "total": 3,
+          "answered": 2
+        },
+        "18": {
+          "total": 5,
+          "answered": 1
+        }
+      },
+      "by_state": {
+        "Contestada": 21,
+        "No contesta": 18,
+        "Ocupado / fallida": 1,
+        "Cancelada": 3
+      }
+    },
+    {
+      "date": "2026-10-26",
+      "agent_id": 22424628,
+      "out_total": 41,
+      "out_answered": 22,
+      "out_effective": 13,
+      "talk_sec": 2106,
+      "in_total": 19,
+      "in_answered": 15,
+      "in_missed": 4,
+      "unique_numbers": 31,
+      "unique_contacted": 19,
+      "by_hour": {
+        "9": {
+          "total": 6,
+          "answered": 5
+        },
+        "10": {
+          "total": 5,
+          "answered": 3
+        },
+        "11": {
+          "total": 2,
+          "answered": 2
+        },
+        "13": {
+          "total": 3,
+          "answered": 1
+        },
+        "14": {
+          "total": 4,
+          "answered": 2
+        },
+        "15": {
+          "total": 6,
+          "answered": 2
+        },
+        "18": {
+          "total": 15,
+          "answered": 7
+        }
+      },
+      "by_state": {
+        "Contestada": 22,
+        "No contesta": 11,
+        "Buzon de voz": 8
+      }
+    },
+    {
+      "date": "2026-10-26",
+      "agent_id": 22424850,
+      "out_total": 56,
+      "out_answered": 33,
+      "out_effective": 23,
+      "talk_sec": 2760,
+      "in_total": 8,
+      "in_answered": 7,
+      "in_missed": 1,
+      "unique_numbers": 51,
+      "unique_contacted": 27,
+      "by_hour": {
+        "9": {
+          "total": 6,
+          "answered": 2
+        },
+        "10": {
+          "total": 5,
+          "answered": 4
+        },
+        "11": {
+          "total": 5,
+          "answered": 1
+        },
+        "12": {
+          "total": 3,
+          "answered": 3
+        },
+        "13": {
+          "total": 8,
+          "answered": 0
+        },
+        "15": {
+          "total": 2,
+          "answered": 2
+        },
+        "16": {
+          "total": 5,
+          "answered": 3
+        },
+        "17": {
+          "total": 8,
+          "answered": 7
+        },
+        "18": {
+          "total": 14,
+          "answered": 11
+        }
+      },
+      "by_state": {
+        "Contestada": 33,
+        "No contesta": 4,
+        "Buzon de voz": 19
+      }
+    },
+    {
+      "date": "2026-10-26",
+      "agent_id": 22156106,
+      "out_total": 67,
+      "out_answered": 31,
+      "out_effective": 22,
+      "talk_sec": 3652,
+      "in_total": 22,
+      "in_answered": 15,
+      "in_missed": 7,
+      "unique_numbers": 49,
+      "unique_contacted": 29,
+      "by_hour": {
+        "9": {
+          "total": 8,
+          "answered": 8
+        },
+        "10": {
+          "total": 7,
+          "answered": 4
+        },
+        "11": {
+          "total": 7,
+          "answered": 0
+        },
+        "12": {
+          "total": 5,
+          "answered": 2
+        },
+        "13": {
+          "total": 1,
+          "answered": 1
+        },
+        "14": {
+          "total": 9,
+          "answered": 4
+        },
+        "16": {
+          "total": 4,
+          "answered": 4
+        },
+        "17": {
+          "total": 7,
+          "answered": 0
+        },
+        "18": {
+          "total": 19,
+          "answered": 8
+        }
+      },
+      "by_state": {
+        "Contestada": 31,
+        "No contesta": 30,
+        "Buzon de voz": 1,
+        "Ocupado / fallida": 4,
+        "Cancelada": 1
+      }
+    }
+  ],
+  "inbound": [
+    {
+      "date": "2026-10-13",
+      "group": "CSWEB",
+      "in_total": 20,
+      "in_answered": 15,
+      "in_missed": 5,
+      "missed_not_returned": 1
+    },
+    {
+      "date": "2026-10-13",
+      "group": "CSRRSS",
+      "in_total": 30,
+      "in_answered": 18,
+      "in_missed": 12,
+      "missed_not_returned": 2
+    },
+    {
+      "date": "2026-10-14",
+      "group": "CSWEB",
+      "in_total": 27,
+      "in_answered": 19,
+      "in_missed": 8,
+      "missed_not_returned": 1
+    },
+    {
+      "date": "2026-10-14",
+      "group": "CSRRSS",
+      "in_total": 50,
+      "in_answered": 41,
+      "in_missed": 9,
+      "missed_not_returned": 4
+    },
+    {
+      "date": "2026-10-15",
+      "group": "CSWEB",
+      "in_total": 21,
+      "in_answered": 17,
+      "in_missed": 4,
+      "missed_not_returned": 1
+    },
+    {
+      "date": "2026-10-15",
+      "group": "CSRRSS",
+      "in_total": 53,
+      "in_answered": 37,
+      "in_missed": 16,
+      "missed_not_returned": 5
+    },
+    {
+      "date": "2026-10-16",
+      "group": "CSWEB",
+      "in_total": 51,
+      "in_answered": 37,
+      "in_missed": 14,
+      "missed_not_returned": 6
+    },
+    {
+      "date": "2026-10-16",
+      "group": "CSRRSS",
+      "in_total": 47,
+      "in_answered": 41,
+      "in_missed": 6,
+      "missed_not_returned": 1
+    },
+    {
+      "date": "2026-10-19",
+      "group": "CSWEB",
+      "in_total": 40,
+      "in_answered": 32,
+      "in_missed": 8,
+      "missed_not_returned": 3
+    },
+    {
+      "date": "2026-10-19",
+      "group": "CSRRSS",
+      "in_total": 34,
+      "in_answered": 26,
+      "in_missed": 8,
+      "missed_not_returned": 1
+    },
+    {
+      "date": "2026-10-20",
+      "group": "CSWEB",
+      "in_total": 33,
+      "in_answered": 23,
+      "in_missed": 10,
+      "missed_not_returned": 2
+    },
+    {
+      "date": "2026-10-20",
+      "group": "CSRRSS",
+      "in_total": 37,
+      "in_answered": 30,
+      "in_missed": 7,
+      "missed_not_returned": 2
+    },
+    {
+      "date": "2026-10-21",
+      "group": "CSWEB",
+      "in_total": 49,
+      "in_answered": 34,
+      "in_missed": 15,
+      "missed_not_returned": 3
+    },
+    {
+      "date": "2026-10-21",
+      "group": "CSRRSS",
+      "in_total": 35,
+      "in_answered": 24,
+      "in_missed": 11,
+      "missed_not_returned": 3
+    },
+    {
+      "date": "2026-10-22",
+      "group": "CSWEB",
+      "in_total": 52,
+      "in_answered": 37,
+      "in_missed": 15,
+      "missed_not_returned": 7
+    },
+    {
+      "date": "2026-10-22",
+      "group": "CSRRSS",
+      "in_total": 40,
+      "in_answered": 35,
+      "in_missed": 5,
+      "missed_not_returned": 2
+    },
+    {
+      "date": "2026-10-23",
+      "group": "CSWEB",
+      "in_total": 36,
+      "in_answered": 22,
+      "in_missed": 14,
+      "missed_not_returned": 6
+    },
+    {
+      "date": "2026-10-23",
+      "group": "CSRRSS",
+      "in_total": 23,
+      "in_answered": 16,
+      "in_missed": 7,
+      "missed_not_returned": 1
+    },
+    {
+      "date": "2026-10-26",
+      "group": "CSWEB",
+      "in_total": 34,
+      "in_answered": 28,
+      "in_missed": 6,
+      "missed_not_returned": 1
+    },
+    {
+      "date": "2026-10-26",
+      "group": "CSRRSS",
+      "in_total": 52,
+      "in_answered": 36,
+      "in_missed": 16,
+      "missed_not_returned": 5
+    }
+  ],
+  "stale_clients": [
+    {
+      "number": "+34682634772",
+      "agent_id": 24431781,
+      "last_contact": null,
+      "attempts_since": 6,
+      "last_state": "Ocupado / fallida"
+    },
+    {
+      "number": "+34689903592",
+      "agent_id": 23266168,
+      "last_contact": null,
+      "attempts_since": 5,
+      "last_state": "No contesta"
+    },
+    {
+      "number": "+34613448342",
+      "agent_id": 22424850,
+      "last_contact": null,
+      "attempts_since": 4,
+      "last_state": "Buzon de voz"
+    },
+    {
+      "number": "+34677058874",
+      "agent_id": 22156106,
+      "last_contact": null,
+      "attempts_since": 2,
+      "last_state": "Ocupado / fallida"
+    },
+    {
+      "number": "+34644968591",
+      "agent_id": 22424628,
+      "last_contact": null,
+      "attempts_since": 3,
+      "last_state": "Buzon de voz"
+    },
+    {
+      "number": "+34615119192",
+      "agent_id": 24431781,
+      "last_contact": null,
+      "attempts_since": 3,
+      "last_state": "No contesta"
+    },
+    {
+      "number": "+34664082055",
+      "agent_id": 22426048,
+      "last_contact": "2026-10-07",
+      "attempts_since": 6,
+      "last_state": "No contesta"
+    },
+    {
+      "number": "+34618012011",
+      "agent_id": 22424850,
+      "last_contact": "2026-10-07",
+      "attempts_since": 5,
+      "last_state": "Buzon de voz"
+    },
+    {
+      "number": "+34666489301",
+      "agent_id": 23509313,
+      "last_contact": "2026-10-10",
+      "attempts_since": 2,
+      "last_state": "Ocupado / fallida"
+    },
+    {
+      "number": "+34638307798",
+      "agent_id": 22156106,
+      "last_contact": "2026-10-12",
+      "attempts_since": 6,
+      "last_state": "No contesta"
+    },
+    {
+      "number": "+34696448614",
+      "agent_id": 22424850,
+      "last_contact": "2026-10-14",
+      "attempts_since": 2,
+      "last_state": "No contesta"
+    },
+    {
+      "number": "+34600695441",
+      "agent_id": 22424850,
+      "last_contact": "2026-10-18",
+      "attempts_since": 5,
+      "last_state": "No contesta"
+    },
+    {
+      "number": "+34623496796",
+      "agent_id": 22424850,
+      "last_contact": "2026-10-21",
+      "attempts_since": 4,
+      "last_state": "No contesta"
+    },
+    {
+      "number": "+34601243818",
+      "agent_id": 22156106,
+      "last_contact": "2026-10-21",
+      "attempts_since": 3,
+      "last_state": "Ocupado / fallida"
+    }
+  ]
+}
