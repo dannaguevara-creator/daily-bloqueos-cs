@@ -150,7 +150,7 @@ table{border-collapse:collapse;width:100%;font-size:.9rem}
 
   <nav class="tabs" role="tablist">
     <button class="tab" role="tab" data-tab="mem1" id="tab-mem1">Mem 1 <span class="n"></span></button>
-    <button class="tab" role="tab" data-tab="completo" id="tab-completo">Completo <span class="n"></span></button>
+    <button class="tab" role="tab" data-tab="mem2" id="tab-mem2">Mem 2 <span class="n"></span></button>
   </nav>
 
   <main id="view"></main>
@@ -161,11 +161,11 @@ table{border-collapse:collapse;width:100%;font-size:.9rem}
 <script>
 (function(){
 "use strict";
-const BASES = {mem1:"Mem 1", completo:"Completo"};
+const BASES = {mem1:"Mem 1", mem2:"Mem 2"};
 const state = {
-  snaps:{mem1:{},completo:{}},   // base -> date -> snapshot
+  snaps:{mem1:{},mem2:{}},   // base -> date -> snapshot
   tab:"mem1",
-  date:{mem1:null,completo:null},
+  date:{mem1:null,mem2:null},
   csFilter:null,
   showAll:false,
   pending:[],
@@ -269,7 +269,7 @@ function buildSnapshot(text, base, dateISO){
 }
 function guessFromName(name){
   const n = name.toLowerCase();
-  const base = /mem[\s_\-]?1/.test(n) ? "mem1" : "completo";
+  const base = /mem[\s_\-]?1/.test(n) ? "mem1" : "mem2";
   const m = n.match(/(20\d{2})-(\d{2})-(\d{2})/);
   const today = new Date(); const pad=v=>String(v).padStart(2,"0");
   const date = m ? `${m[1]}-${m[2]}-${m[3]}` : `${today.getFullYear()}-${pad(today.getMonth()+1)}-${pad(today.getDate())}`;
@@ -546,7 +546,7 @@ render();
       const r = await fetch("data.json");
       if (r.ok) {
         const j = await r.json();
-        const next = {mem1:{},completo:{}};
+        const next = {mem1:{},mem2:{}};
         for (const [k,v] of Object.entries(j.snapshots||{})){
           if(v && next[v.base]) next[v.base][v.fecha]=v;
         }
@@ -563,7 +563,7 @@ render();
   }catch(_){}
   if(!state.canWrite) $("#uploadBtn").hidden = true;
   db.collection("snapshots").onSnapshot(snap=>{
-    const next = {mem1:{},completo:{}};
+    const next = {mem1:{},mem2:{}};
     for (const d of snap.docs){ const v=d.data(); if(v && next[v.base]) next[v.base][v.fecha]=v; }
     state.snaps = next; state.loaded = true; render();
   }, err=>{ state.loaded=true; render(); toast("No se pudieron leer los informes guardados"); });
