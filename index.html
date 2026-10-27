@@ -164,7 +164,7 @@ table{border-collapse:collapse;width:100%;font-size:.9rem}
 
   <nav class="tabs" role="tablist">
     <button class="tab" role="tab" data-tab="mem1" id="tab-mem1">Mem 1 <span class="n"></span></button>
-    <button class="tab" role="tab" data-tab="mem2" id="tab-mem2">Mem 2 <span class="n"></span></button>
+    <button class="tab" role="tab" data-tab="mem2" id="tab-mem2">Base completa <span class="n"></span></button>
   </nav>
 
   <main id="view"></main>
@@ -175,7 +175,7 @@ table{border-collapse:collapse;width:100%;font-size:.9rem}
 <script>
 (function(){
 "use strict";
-const BASES = {mem1:"Mem 1", mem2:"Mem 2"};
+const BASES = {mem1:"Mem 1", mem2:"Base completa"};
 const state = {
   snaps:{mem1:{},mem2:{}},   // base -> date -> snapshot
   tab:"mem1",
@@ -514,11 +514,11 @@ function drawList(p, snap, M){
   if(state.blqFilter){ const bc=el("div",{style:"margin-bottom:10px;display:flex;gap:8px;align-items:center"},el("span",{text:`Filtro bloqueo: ${state.blqFilter}`}),el("button",{class:"btn ghost small",type:"button",text:"Quitar filtro",onclick:()=>{state.blqFilter=null;render();}})); p.append(bc); }
   if (!rows.length){ p.append(el("div",{class:"empty",style:"padding:22px"}, el("b",{text:"Nada pendiente"}), state.csFilter ? `${state.csFilter} ya llamó a todos sus proyectos hoy.` : "Todo el equipo llamó a sus proyectos hoy.")); return; }
   const t = el("table",{class:"list"});
-  t.append(el("thead",null, el("tr",null, ...["CS","Proyecto","Bloqueo","Prioridad","Última llamada","Días","Estado","Último comentario"].map(h=>el("th",{text:h})))));
+  t.append(el("thead",null, el("tr",null, ...["CS","Proyecto","Bloqueo","Prioridad","Última llamada","# Días sin contacto","Estado","Último comentario"].map(h=>el("th",{text:h})))));
   const tb = el("tbody");
   for (const r of rows){
     const called = r.u===snap.fecha;
-    const days = r.u ? daysBetween(r.u, snap.fecha) : null;
+    const days = r.u ? Math.max(0, daysBetween(r.u, snap.fecha)) : null;
     const link = hsLink(r.id);
     const projCell = link ? el("td",{class:"p"}, el("a",{href:link,target:"_blank",rel:"noopener",text:r.p,style:"color:var(--focus);text-decoration:none;font-weight:500"})) : el("td",{class:"p",text:r.p});
     tb.append(el("tr",null,
