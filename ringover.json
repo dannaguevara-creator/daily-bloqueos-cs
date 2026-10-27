@@ -1,44 +1,915 @@
 {
-  "generated_at": "2026-10-27T21:56:07+01:00",
+  "generated_at": "2026-10-27T22:24:37+01:00",
   "tz": "Europe/Madrid",
   "agents": [
     {
-      "id": 23509313,
+      "id": 23519313,
       "name": "Dikcibell Pantoja",
       "group": "CSRRSS"
     },
     {
-      "id": 23266168,
+      "id": 23276168,
       "name": "Jose Luis Lopez",
       "group": "CSWEB"
     },
     {
-      "id": 24431781,
+      "id": 24441781,
       "name": "Victor Ortega",
       "group": "CSWEB"
     },
     {
-      "id": 22426048,
+      "id": 22436048,
       "name": "Andrea Giraldo",
       "group": "CSWEB"
     },
     {
-      "id": 22424628,
+      "id": 22434628,
       "name": "Fran González",
       "group": "CSRRSS"
     },
     {
-      "id": 22424850,
+      "id": 22434850,
       "name": "Nataly Molina",
       "group": "CSWEB"
     },
     {
-      "id": 22156106,
+      "id": 22166106,
       "name": "Johanna Diaz",
       "group": "CSRRSS"
     }
   ],
-  "daily": [],
-  "inbound": [],
-  "stale_clients": []
+  "daily": [
+    {
+      "date": "2026-10-27",
+      "agent_id": 22166106,
+      "out_total": 60,
+      "out_answered": 41,
+      "out_effective": 21,
+      "talk_sec": 2701,
+      "in_total": 5,
+      "in_answered": 4,
+      "in_missed": 1,
+      "unique_numbers": 45,
+      "unique_contacted": 35,
+      "by_hour": {
+        "11": {
+          "total": 1,
+          "answered": 0
+        },
+        "12": {
+          "total": 12,
+          "answered": 9
+        },
+        "13": {
+          "total": 12,
+          "answered": 5
+        },
+        "14": {
+          "total": 7,
+          "answered": 4
+        },
+        "15": {
+          "total": 5,
+          "answered": 2
+        },
+        "16": {
+          "total": 7,
+          "answered": 7
+        },
+        "17": {
+          "total": 7,
+          "answered": 6
+        },
+        "18": {
+          "total": 9,
+          "answered": 8
+        }
+      },
+      "by_state": {
+        "Cancelada": 6,
+        "Contestada": 41,
+        "Ocupado / fallida": 13
+      }
+    },
+    {
+      "date": "2026-10-27",
+      "agent_id": 22434628,
+      "out_total": 35,
+      "out_answered": 15,
+      "out_effective": 11,
+      "talk_sec": 1121,
+      "in_total": 2,
+      "in_answered": 2,
+      "in_missed": 0,
+      "unique_numbers": 26,
+      "unique_contacted": 14,
+      "by_hour": {
+        "9": {
+          "total": 10,
+          "answered": 3
+        },
+        "11": {
+          "total": 3,
+          "answered": 1
+        },
+        "12": {
+          "total": 1,
+          "answered": 1
+        },
+        "13": {
+          "total": 6,
+          "answered": 6
+        },
+        "16": {
+          "total": 7,
+          "answered": 1
+        },
+        "17": {
+          "total": 5,
+          "answered": 3
+        },
+        "18": {
+          "total": 3,
+          "answered": 0
+        }
+      },
+      "by_state": {
+        "Cancelada": 18,
+        "Ocupado / fallida": 2,
+        "Contestada": 15
+      }
+    },
+    {
+      "date": "2026-10-27",
+      "agent_id": 22434850,
+      "out_total": 19,
+      "out_answered": 11,
+      "out_effective": 6,
+      "talk_sec": 1231,
+      "in_total": 8,
+      "in_answered": 6,
+      "in_missed": 2,
+      "unique_numbers": 13,
+      "unique_contacted": 9,
+      "by_hour": {
+        "12": {
+          "total": 5,
+          "answered": 0
+        },
+        "13": {
+          "total": 1,
+          "answered": 1
+        },
+        "15": {
+          "total": 4,
+          "answered": 3
+        },
+        "16": {
+          "total": 4,
+          "answered": 3
+        },
+        "17": {
+          "total": 3,
+          "answered": 3
+        },
+        "19": {
+          "total": 2,
+          "answered": 1
+        }
+      },
+      "by_state": {
+        "Cancelada": 8,
+        "Contestada": 11
+      }
+    },
+    {
+      "date": "2026-10-27",
+      "agent_id": 22436048,
+      "out_total": 48,
+      "out_answered": 30,
+      "out_effective": 15,
+      "talk_sec": 2565,
+      "in_total": 4,
+      "in_answered": 3,
+      "in_missed": 1,
+      "unique_numbers": 32,
+      "unique_contacted": 23,
+      "by_hour": {
+        "11": {
+          "total": 3,
+          "answered": 0
+        },
+        "12": {
+          "total": 10,
+          "answered": 6
+        },
+        "13": {
+          "total": 2,
+          "answered": 2
+        },
+        "14": {
+          "total": 3,
+          "answered": 1
+        },
+        "15": {
+          "total": 3,
+          "answered": 3
+        },
+        "16": {
+          "total": 9,
+          "answered": 7
+        },
+        "17": {
+          "total": 17,
+          "answered": 10
+        },
+        "19": {
+          "total": 1,
+          "answered": 1
+        }
+      },
+      "by_state": {
+        "Cancelada": 18,
+        "Contestada": 30
+      }
+    },
+    {
+      "date": "2026-10-27",
+      "agent_id": 23276168,
+      "out_total": 17,
+      "out_answered": 11,
+      "out_effective": 7,
+      "talk_sec": 1377,
+      "in_total": 3,
+      "in_answered": 3,
+      "in_missed": 0,
+      "unique_numbers": 12,
+      "unique_contacted": 9,
+      "by_hour": {
+        "9": {
+          "total": 1,
+          "answered": 1
+        },
+        "10": {
+          "total": 1,
+          "answered": 1
+        },
+        "12": {
+          "total": 4,
+          "answered": 3
+        },
+        "15": {
+          "total": 1,
+          "answered": 1
+        },
+        "16": {
+          "total": 2,
+          "answered": 1
+        },
+        "17": {
+          "total": 6,
+          "answered": 4
+        },
+        "18": {
+          "total": 2,
+          "answered": 0
+        }
+      },
+      "by_state": {
+        "Contestada": 11,
+        "Cancelada": 3,
+        "Ocupado / fallida": 3
+      }
+    },
+    {
+      "date": "2026-10-27",
+      "agent_id": 23519313,
+      "out_total": 22,
+      "out_answered": 16,
+      "out_effective": 6,
+      "talk_sec": 870,
+      "in_total": 0,
+      "in_answered": 0,
+      "in_missed": 0,
+      "unique_numbers": 18,
+      "unique_contacted": 14,
+      "by_hour": {
+        "10": {
+          "total": 8,
+          "answered": 4
+        },
+        "11": {
+          "total": 4,
+          "answered": 4
+        },
+        "12": {
+          "total": 2,
+          "answered": 1
+        },
+        "13": {
+          "total": 4,
+          "answered": 3
+        },
+        "14": {
+          "total": 3,
+          "answered": 3
+        },
+        "15": {
+          "total": 1,
+          "answered": 1
+        }
+      },
+      "by_state": {
+        "Ocupado / fallida": 3,
+        "Cancelada": 3,
+        "Contestada": 16
+      }
+    },
+    {
+      "date": "2026-10-27",
+      "agent_id": 24441781,
+      "out_total": 20,
+      "out_answered": 12,
+      "out_effective": 9,
+      "talk_sec": 3285,
+      "in_total": 4,
+      "in_answered": 2,
+      "in_missed": 2,
+      "unique_numbers": 12,
+      "unique_contacted": 11,
+      "by_hour": {
+        "9": {
+          "total": 5,
+          "answered": 2
+        },
+        "10": {
+          "total": 1,
+          "answered": 1
+        },
+        "11": {
+          "total": 2,
+          "answered": 2
+        },
+        "12": {
+          "total": 3,
+          "answered": 0
+        },
+        "13": {
+          "total": 1,
+          "answered": 1
+        },
+        "14": {
+          "total": 2,
+          "answered": 1
+        },
+        "15": {
+          "total": 1,
+          "answered": 1
+        },
+        "17": {
+          "total": 4,
+          "answered": 3
+        },
+        "18": {
+          "total": 1,
+          "answered": 1
+        }
+      },
+      "by_state": {
+        "Cancelada": 8,
+        "Contestada": 12
+      }
+    }
+  ],
+  "inbound": [
+    {
+      "date": "2026-10-27",
+      "group": "CSRRSS",
+      "in_total": 7,
+      "in_answered": 6,
+      "in_missed": 1,
+      "missed_not_returned": 1
+    },
+    {
+      "date": "2026-10-27",
+      "group": "CSWEB",
+      "in_total": 19,
+      "in_answered": 14,
+      "in_missed": 5,
+      "missed_not_returned": 3
+    }
+  ],
+  "stale_clients": [
+    {
+      "number": "+34609654760",
+      "agent_id": 22434628,
+      "last_contact": null,
+      "attempts_since": 2,
+      "last_state": "Cancelada"
+    },
+    {
+      "number": "+34667519769",
+      "agent_id": 24441781,
+      "last_contact": null,
+      "attempts_since": 3,
+      "last_state": "Cancelada"
+    },
+    {
+      "number": "+34629547279",
+      "agent_id": 22434628,
+      "last_contact": null,
+      "attempts_since": 1,
+      "last_state": "Cancelada"
+    },
+    {
+      "number": "+34639915490",
+      "agent_id": 22434628,
+      "last_contact": null,
+      "attempts_since": 1,
+      "last_state": "Cancelada"
+    },
+    {
+      "number": "+34696451916",
+      "agent_id": 22434628,
+      "last_contact": null,
+      "attempts_since": 2,
+      "last_state": "Cancelada"
+    },
+    {
+      "number": "+34649929939",
+      "agent_id": 23519313,
+      "last_contact": null,
+      "attempts_since": 1,
+      "last_state": "Ocupado / fallida"
+    },
+    {
+      "number": "+34615609537",
+      "agent_id": 23519313,
+      "last_contact": null,
+      "attempts_since": 2,
+      "last_state": "Cancelada"
+    },
+    {
+      "number": "+34657666206",
+      "agent_id": 23519313,
+      "last_contact": null,
+      "attempts_since": 2,
+      "last_state": "Cancelada"
+    },
+    {
+      "number": "+34677150688",
+      "agent_id": 23519313,
+      "last_contact": null,
+      "attempts_since": 1,
+      "last_state": "Contestada"
+    },
+    {
+      "number": "+34640615699",
+      "agent_id": 22434628,
+      "last_contact": null,
+      "attempts_since": 3,
+      "last_state": "Cancelada"
+    },
+    {
+      "number": "+34658168000",
+      "agent_id": 22434628,
+      "last_contact": null,
+      "attempts_since": 2,
+      "last_state": "Cancelada"
+    },
+    {
+      "number": "+34677523626",
+      "agent_id": 22436048,
+      "last_contact": null,
+      "attempts_since": 3,
+      "last_state": "Cancelada"
+    },
+    {
+      "number": "+34696462001",
+      "agent_id": 24441781,
+      "last_contact": null,
+      "attempts_since": 1,
+      "last_state": "Contestada"
+    },
+    {
+      "number": "+34635891535",
+      "agent_id": 23519313,
+      "last_contact": null,
+      "attempts_since": 2,
+      "last_state": "Contestada"
+    },
+    {
+      "number": "+34665842417",
+      "agent_id": 22166106,
+      "last_contact": null,
+      "attempts_since": 1,
+      "last_state": "Cancelada"
+    },
+    {
+      "number": "+34635735656",
+      "agent_id": 23519313,
+      "last_contact": null,
+      "attempts_since": 1,
+      "last_state": "Contestada"
+    },
+    {
+      "number": "+34600282820",
+      "agent_id": 22166106,
+      "last_contact": null,
+      "attempts_since": 2,
+      "last_state": "Ocupado / fallida"
+    },
+    {
+      "number": "+34689130917",
+      "agent_id": 22166106,
+      "last_contact": null,
+      "attempts_since": 1,
+      "last_state": "Contestada"
+    },
+    {
+      "number": "+34617599701",
+      "agent_id": 22166106,
+      "last_contact": null,
+      "attempts_since": 2,
+      "last_state": "Contestada"
+    },
+    {
+      "number": "+34636517212",
+      "agent_id": 23519313,
+      "last_contact": null,
+      "attempts_since": 1,
+      "last_state": "Cancelada"
+    },
+    {
+      "number": "+34613526242",
+      "agent_id": 22166106,
+      "last_contact": null,
+      "attempts_since": 2,
+      "last_state": "Contestada"
+    },
+    {
+      "number": "+34676483204",
+      "agent_id": 22434628,
+      "last_contact": null,
+      "attempts_since": 3,
+      "last_state": "Cancelada"
+    },
+    {
+      "number": "+34616703943",
+      "agent_id": 23519313,
+      "last_contact": null,
+      "attempts_since": 1,
+      "last_state": "Contestada"
+    },
+    {
+      "number": "+34686720720",
+      "agent_id": 22434628,
+      "last_contact": null,
+      "attempts_since": 4,
+      "last_state": "Cancelada"
+    },
+    {
+      "number": "+34605986374",
+      "agent_id": 22166106,
+      "last_contact": null,
+      "attempts_since": 2,
+      "last_state": "Contestada"
+    },
+    {
+      "number": "+34626535629",
+      "agent_id": 22434850,
+      "last_contact": null,
+      "attempts_since": 3,
+      "last_state": "Cancelada"
+    },
+    {
+      "number": "+34652996347",
+      "agent_id": 22436048,
+      "last_contact": null,
+      "attempts_since": 1,
+      "last_state": "Contestada"
+    },
+    {
+      "number": "+34673939953",
+      "agent_id": 22434850,
+      "last_contact": null,
+      "attempts_since": 3,
+      "last_state": "Cancelada"
+    },
+    {
+      "number": "+34657191767",
+      "agent_id": 22434850,
+      "last_contact": null,
+      "attempts_since": 2,
+      "last_state": "Cancelada"
+    },
+    {
+      "number": "+34615980867",
+      "agent_id": 22166106,
+      "last_contact": null,
+      "attempts_since": 1,
+      "last_state": "Contestada"
+    },
+    {
+      "number": "+34652927469",
+      "agent_id": 22166106,
+      "last_contact": null,
+      "attempts_since": 2,
+      "last_state": "Ocupado / fallida"
+    },
+    {
+      "number": "+34605850058",
+      "agent_id": 23519313,
+      "last_contact": null,
+      "attempts_since": 1,
+      "last_state": "Ocupado / fallida"
+    },
+    {
+      "number": "+34627687436",
+      "agent_id": 22166106,
+      "last_contact": null,
+      "attempts_since": 1,
+      "last_state": "Contestada"
+    },
+    {
+      "number": "+34660339288",
+      "agent_id": 22166106,
+      "last_contact": null,
+      "attempts_since": 2,
+      "last_state": "Ocupado / fallida"
+    },
+    {
+      "number": "+34633193088",
+      "agent_id": 22434628,
+      "last_contact": null,
+      "attempts_since": 1,
+      "last_state": "Contestada"
+    },
+    {
+      "number": "+34634317433",
+      "agent_id": 22434628,
+      "last_contact": null,
+      "attempts_since": 1,
+      "last_state": "Contestada"
+    },
+    {
+      "number": "+34600608540",
+      "agent_id": 22434850,
+      "last_contact": null,
+      "attempts_since": 1,
+      "last_state": "Contestada"
+    },
+    {
+      "number": "+34663565034",
+      "agent_id": 23519313,
+      "last_contact": null,
+      "attempts_since": 1,
+      "last_state": "Contestada"
+    },
+    {
+      "number": "+34628310101",
+      "agent_id": 23519313,
+      "last_contact": null,
+      "attempts_since": 2,
+      "last_state": "Contestada"
+    },
+    {
+      "number": "+34679967279",
+      "agent_id": 22166106,
+      "last_contact": null,
+      "attempts_since": 2,
+      "last_state": "Contestada"
+    },
+    {
+      "number": "+34626021555",
+      "agent_id": 22166106,
+      "last_contact": null,
+      "attempts_since": 2,
+      "last_state": "Ocupado / fallida"
+    },
+    {
+      "number": "+34684289042",
+      "agent_id": 22166106,
+      "last_contact": null,
+      "attempts_since": 1,
+      "last_state": "Ocupado / fallida"
+    },
+    {
+      "number": "+34603370425",
+      "agent_id": 22166106,
+      "last_contact": null,
+      "attempts_since": 2,
+      "last_state": "Ocupado / fallida"
+    },
+    {
+      "number": "+34605588920",
+      "agent_id": 22436048,
+      "last_contact": null,
+      "attempts_since": 2,
+      "last_state": "Contestada"
+    },
+    {
+      "number": "+34633281347",
+      "agent_id": 22434850,
+      "last_contact": null,
+      "attempts_since": 1,
+      "last_state": "Contestada"
+    },
+    {
+      "number": "+34608051456",
+      "agent_id": 23276168,
+      "last_contact": null,
+      "attempts_since": 2,
+      "last_state": "Contestada"
+    },
+    {
+      "number": "+34606356363",
+      "agent_id": 22434850,
+      "last_contact": null,
+      "attempts_since": 2,
+      "last_state": "Contestada"
+    },
+    {
+      "number": "+34645353604",
+      "agent_id": 22436048,
+      "last_contact": null,
+      "attempts_since": 2,
+      "last_state": "Contestada"
+    },
+    {
+      "number": "+34683687439",
+      "agent_id": 22436048,
+      "last_contact": null,
+      "attempts_since": 2,
+      "last_state": "Contestada"
+    },
+    {
+      "number": "+34626536656",
+      "agent_id": 22436048,
+      "last_contact": null,
+      "attempts_since": 2,
+      "last_state": "Contestada"
+    },
+    {
+      "number": "+34646228924",
+      "agent_id": 22434628,
+      "last_contact": null,
+      "attempts_since": 1,
+      "last_state": "Cancelada"
+    },
+    {
+      "number": "+34661811697",
+      "agent_id": 24441781,
+      "last_contact": null,
+      "attempts_since": 3,
+      "last_state": "Contestada"
+    },
+    {
+      "number": "+34623145333",
+      "agent_id": 22166106,
+      "last_contact": null,
+      "attempts_since": 1,
+      "last_state": "Contestada"
+    },
+    {
+      "number": "+34646421927",
+      "agent_id": 22434628,
+      "last_contact": null,
+      "attempts_since": 1,
+      "last_state": "Cancelada"
+    },
+    {
+      "number": "+34624362242",
+      "agent_id": 23276168,
+      "last_contact": null,
+      "attempts_since": 2,
+      "last_state": "Cancelada"
+    },
+    {
+      "number": "+34659462220",
+      "agent_id": 23276168,
+      "last_contact": null,
+      "attempts_since": 2,
+      "last_state": "Contestada"
+    },
+    {
+      "number": "+34675352207",
+      "agent_id": 22436048,
+      "last_contact": null,
+      "attempts_since": 1,
+      "last_state": "Contestada"
+    },
+    {
+      "number": "+34689099956",
+      "agent_id": 22436048,
+      "last_contact": null,
+      "attempts_since": 1,
+      "last_state": "Cancelada"
+    },
+    {
+      "number": "+34616430552",
+      "agent_id": 22166106,
+      "last_contact": null,
+      "attempts_since": 1,
+      "last_state": "Contestada"
+    },
+    {
+      "number": "+34656852374",
+      "agent_id": 22166106,
+      "last_contact": null,
+      "attempts_since": 1,
+      "last_state": "Cancelada"
+    },
+    {
+      "number": "+34622765555",
+      "agent_id": 22436048,
+      "last_contact": null,
+      "attempts_since": 1,
+      "last_state": "Contestada"
+    },
+    {
+      "number": "+34648464798",
+      "agent_id": 22436048,
+      "last_contact": null,
+      "attempts_since": 1,
+      "last_state": "Contestada"
+    },
+    {
+      "number": "+34671308174",
+      "agent_id": 22436048,
+      "last_contact": null,
+      "attempts_since": 2,
+      "last_state": "Cancelada"
+    },
+    {
+      "number": "+34644078340",
+      "agent_id": 23276168,
+      "last_contact": null,
+      "attempts_since": 1,
+      "last_state": "Cancelada"
+    },
+    {
+      "number": "+34619388433",
+      "agent_id": 22166106,
+      "last_contact": null,
+      "attempts_since": 2,
+      "last_state": "Contestada"
+    },
+    {
+      "number": "+34623198189",
+      "agent_id": 22434628,
+      "last_contact": null,
+      "attempts_since": 2,
+      "last_state": "Cancelada"
+    },
+    {
+      "number": "+34613724790",
+      "agent_id": 22434628,
+      "last_contact": null,
+      "attempts_since": 1,
+      "last_state": "Cancelada"
+    },
+    {
+      "number": "+34609357256",
+      "agent_id": 22166106,
+      "last_contact": null,
+      "attempts_since": 1,
+      "last_state": "Contestada"
+    },
+    {
+      "number": "+34617824311",
+      "agent_id": 23276168,
+      "last_contact": null,
+      "attempts_since": 2,
+      "last_state": "Ocupado / fallida"
+    },
+    {
+      "number": "+34630565932",
+      "agent_id": 22166106,
+      "last_contact": null,
+      "attempts_since": 1,
+      "last_state": "Contestada"
+    },
+    {
+      "number": "+34630014507",
+      "agent_id": 22166106,
+      "last_contact": null,
+      "attempts_since": 1,
+      "last_state": "Contestada"
+    },
+    {
+      "number": "+34656657069",
+      "agent_id": 22166106,
+      "last_contact": null,
+      "attempts_since": 1,
+      "last_state": "Ocupado / fallida"
+    },
+    {
+      "number": "+34654116917",
+      "agent_id": 22434850,
+      "last_contact": null,
+      "attempts_since": 1,
+      "last_state": "Cancelada"
+    }
+  ]
 }
