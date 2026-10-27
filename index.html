@@ -318,7 +318,7 @@ function render(){
   if (!date){
     view.append(el("div",{class:"empty"},
       el("b",{text: state.loaded ? `Aún no hay informes de ${BASES[state.tab]}` : "Cargando informes guardados…"}),
-      state.loaded ? `Pulsa “Cargar informes” y sube el export de HubSpot de ${BASES[state.tab]}. Cada día queda guardado para poder compararlo.` : ""));
+      state.loaded ? `Pulsa "Cargar informes" y sube el export de HubSpot de ${BASES[state.tab]}. Cada día queda guardado para poder compararlo.` : ""));
     return;
   }
   const snap = state.snaps[state.tab][date];
@@ -443,8 +443,8 @@ function drawHeat(box, M){
     const tr = el("tr",null, el("td",{text:r.cs}));
     for (const c of cols){
       const v = r.blq.get(c)||0;
-      const td = el(“td”,{class: v? “c clickable”:”c z”, text: v||”·”});
-      if (v){ const a = .12 + .7*v/max; td.style.background = `rgba(var(--heat-rgb),${a.toFixed(2)})`; if(a>.5) td.style.color=”#fff”; bindTip(td, `${r.cs}: ${v} proyecto${v>1?”s”:””} con “${c}” — clic para filtrar`); td.addEventListener(“click”,()=>{ state.csFilter=r.cs; state.blqFilter=c; state.showAll=true; render(); document.querySelector(“.panel.full:last-of-type”)?.scrollIntoView({behavior:”smooth”}); }); }
+      const td = el("td",{class: v? "c clickable":"c z", text: v||"·"});
+      if(v){const a=.12+.7*v/max;td.style.background="rgba(var(--heat-rgb),"+a.toFixed(2)+")";if(a>.5)td.style.color="#fff";bindTip(td,r.cs+": "+v+" proyecto"+(v>1?"s":"")+" con \""+c+"\" - clic para filtrar");td.addEventListener("click",function(){state.csFilter=r.cs;state.blqFilter=c;state.showAll=true;render();var el2=document.querySelector(".panel.full:last-of-type");if(el2)el2.scrollIntoView({behavior:"smooth"});});}
       tr.append(td);
     }
     tr.append(el("td",{class:"rt",text:r.total}));
