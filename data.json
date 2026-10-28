@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-28T21:00:07.000059Z",
+  "generated": "2026-10-28T21:05:56.428627Z",
   "date": "2026-10-28",
   "hubspot": {
     "portal": "25808060",
@@ -6785,7 +6785,7 @@
     "mem1_2026-10-28": {
       "base": "mem1",
       "fecha": "2026-10-28",
-      "cargado": "2026-10-28T21:00:06.107986Z",
+      "cargado": "2026-10-28T21:05:55.740261Z",
       "total": 26,
       "rows": [
         {
@@ -7105,8 +7105,8 @@
     "mem2_2026-10-28": {
       "base": "mem2",
       "fecha": "2026-10-28",
-      "cargado": "2026-10-28T21:00:06.109390Z",
-      "total": 140,
+      "cargado": "2026-10-28T21:05:55.741100Z",
+      "total": 141,
       "rows": [
         {
           "id": "871047389",
@@ -7131,18 +7131,6 @@
           "pr": "Prioridad 3",
           "h": false,
           "u": "2026-10-21"
-        },
-        {
-          "id": "6375773152",
-          "p": "KD-SEO: LORO IDIOMAS SL",
-          "o": "María Johanna Díaz Quinceno",
-          "c": "28/10 MJ llamo cliente pero NC, le abro wsp                                                                          9/2 M: tenemos accesos, implementamos el seo ténico para presentar memoria 23/01 ah se le envia correo. ",
-          "b": [
-            "Sitio Web no Carga"
-          ],
-          "pr": "",
-          "h": true,
-          "u": "2026-10-28"
         },
         {
           "id": "20547652812",
@@ -7698,6 +7686,18 @@
           "u": "2026-10-28"
         },
         {
+          "id": "231586048224",
+          "p": "KD-SEO: LIBRES DEL SUR S.L",
+          "o": "Nataly molina",
+          "c": "28/10 NM llam 6.14pm nc web aun caida 27/10 NM llam 5:06pm se vencio su dom me dice q en unos minutos lo hace, envío correo por ahi confirma ERROR PLATAFORMA 26/2 M: problema plataforma, derivado a red.es 23/2 M: se envía mail pasos firma memoria 11/02 ah tenemos go implementación y credenciales",
+          "b": [
+            "Sitio Web no Carga"
+          ],
+          "pr": "",
+          "h": true,
+          "u": "2026-10-28"
+        },
+        {
           "id": "231668111547",
           "p": "KD-RRSS: NATALIA HINOJAL ARRATIA",
           "o": "Jose Luis Lopez Vargas",
@@ -8229,6 +8229,18 @@
           "pr": "Prioridad 2",
           "h": true,
           "u": "2026-10-28"
+        },
+        {
+          "id": "263718225094",
+          "p": "KD-SEO: FRANCISCO JAVIER ALONSO SAN ROMAN SL",
+          "o": "Nataly molina",
+          "c": "26/10 MJ Reviso y de acuerdo a comentario proyecto ya se encuentra desbloqueado                                                  06.07 Andrea. Accesos 24.06 Andrea. Llamé, NC, envío msj05/06 ah credenciales en una conversación con el bot, tengo que consultar el proyecto proactivamente para descubrirlo. Se avanza a prod.",
+          "b": [
+            "Falta Credenciales de Acceso."
+          ],
+          "pr": "Prioridad 2",
+          "h": false,
+          "u": "2026-10-26"
         },
         {
           "id": "263716629719",
