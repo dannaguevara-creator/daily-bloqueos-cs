@@ -187,6 +187,7 @@ table{border-collapse:collapse;width:100%;font-size:.9rem}
     <button class="tab" role="tab" data-tab="mem1" id="tab-mem1">Mem 1 <span class="n"></span></button>
     <button class="tab" role="tab" data-tab="mem2" id="tab-mem2">Base completa <span class="n"></span></button>
     <button class="tab" role="tab" data-tab="ringover" id="tab-ringover">Ringover <span class="n"></span></button>
+    <button class="tab" role="tab" data-tab="backlog" id="tab-backlog">Avance Backlog completo <span class="n"></span></button>
   </nav>
 
   <main id="view"></main>
@@ -208,8 +209,10 @@ const state = {
   pending:[],
   db:null, canWrite:true, loaded:false,
   hubspot:null,
-  ringover:null, rvDate:null, rvMode:"day", rvWeek:null
+  ringover:null, rvDate:null, rvMode:"day", rvWeek:null,
+  backlog:null, blDate:null, blMode:"day", blWeek:null, blStage:null
 };
+const EXTRA_TABS = ["ringover","backlog"];
 function hsLink(id){ if(!state.hubspot||!id) return null; const h=state.hubspot; return `https://${h.domain}/contacts/${h.portal}/record/${h.object}/${id}`; }
 const $ = s => document.querySelector(s);
 const el = (tag, attrs, ...kids) => {
@@ -353,7 +356,11 @@ function render(){
     if(state.ringover && state.rvDate){ rvN = (state.ringover.daily||[]).filter(x=>x.date===state.rvDate).reduce((a,x)=>a+(x.out_total||0),0); }
     rvTab.querySelector(".n").textContent = rvN || "";
   }
+  const blTab = $("#tab-backlog");
+  blTab.setAttribute("aria-selected", String(state.tab==="backlog"));
+  { const B=state.backlog, d=state.blDate; blTab.querySelector(".n").textContent = B&&d&&B.snapshots[d] ? B.snapshots[d].rows.length : ""; }
   if(state.tab==="ringover"){ renderRingover(); return; }
+  if(state.tab==="backlog"){ renderBacklog(); return; }
   // selector de día
   const dates = datesFor(state.tab);
   if (!state.date[state.tab] || !state.snaps[state.tab][state.date[state.tab]]) state.date[state.tab] = dates.slice(-1)[0] || null;
@@ -484,7 +491,7 @@ function hbars(box, rows, opts){
     }
     const lab = sv("text",{x:x+6,y:yy+rowH/2+1,"dominant-baseline":"middle","font-size":12.5,"font-weight":600}); lab.textContent = opts.right(r); g.append(lab);
     g.append(sv("rect",{x:0,y:yy,width:W,height:rowH,fill:"transparent"}));
-    g.addEventListener("click",()=>{ state.csFilter = state.csFilter===r.cs?null:r.cs; render(); });
+    g.addEventListener("click",()=>{ if(opts.click){ opts.click(r); return; } state.csFilter = state.csFilter===r.cs?null:r.cs; render(); });
     bindTip(g, opts.tip(r));
     svg.append(g);
   });
@@ -807,13 +814,229 @@ function drawRvStale(p, R){
   t.append(tb); p.append(el("div",{class:"scroll"},t));
 }
 
+/* ---------- Avance Backlog completo ---------- */
+const BL_PIPE_ORDER = ["137055727","384366811","384366814","384389314"];
+function blDates(){ return state.backlog ? Object.keys(state.backlog.snapshots||{}).sort() : []; }
+function blStageInfo(id){ const B=state.backlog, s=B&&B.stages[id]; return s ? {label:s.label, pipe:B.pipelines[s.pipeline]||"", pi:BL_PIPE_ORDER.indexOf(s.pipeline), order:s.order} : null; }
+function blStageName(id){ const s=blStageInfo(id); return s ? s.pipe+" · "+s.label : (id ? "Otro pipeline / stage" : "Sin stage"); }
+function blStageSort(a,b){ const x=blStageInfo(a)||{pi:99,order:99}, y=blStageInfo(b)||{pi:99,order:99}; return x.pi-y.pi || x.order-y.order; }
+function blRows(d){ return ((state.backlog.snapshots[d]||{}).rows||[]).map(r=>({id:r[0], p:r[1], o:r[2]||"Sin asignar", s:r[3]})); }
+// Compara dos fotos: salieron del backlog, avanzaron/retrocedieron de stage, nuevos
+function blCompare(baseD, curD){
+  const cur = blRows(curD), curMap = new Map(cur.map(r=>[r.id,r]));
+  const res = {cur, moves:[], byCS:new Map(), base:null};
+  const cs = name => { if(!res.byCS.has(name)) res.byCS.set(name,{cs:name, antes:0, hoy:0, salieron:0, avanzaron:0, retro:0, nuevos:0}); return res.byCS.get(name); };
+  cur.forEach(r=>cs(r.o).hoy++);
+  if(!baseD) return res;
+  const base = blRows(baseD), baseMap = new Map(base.map(r=>[r.id,r]));
+  res.base = base;
+  const exits = {};
+  blDates().filter(d=>d>baseD && d<=curD).forEach(d=>Object.assign(exits, state.backlog.snapshots[d].exits||{}));
+  base.forEach(r=>{
+    cs(r.o).antes++;
+    const now = curMap.get(r.id);
+    if(!now){ cs(r.o).salieron++; res.moves.push({type:"out", r, from:r.s, to:exits[r.id]||null}); return; }
+    if(now.s!==r.s){
+      const a=blStageInfo(r.s), b=blStageInfo(now.s);
+      const fwd = !a || !b || a.pi!==b.pi || b.order>a.order;
+      if(fwd){ cs(now.o).avanzaron++; res.moves.push({type:"fwd", r:now, from:r.s, to:now.s}); }
+      else { cs(now.o).retro++; res.moves.push({type:"back", r:now, from:r.s, to:now.s}); }
+    }
+  });
+  cur.forEach(r=>{ if(!baseMap.has(r.id)){ cs(r.o).nuevos++; res.moves.push({type:"new", r, from:null, to:r.s}); } });
+  return res;
+}
+function renderBacklog(){
+  const B = state.backlog, dates = blDates(), weekly = state.blMode==="week";
+  const sel = $("#dateSel"); sel.textContent="";
+  if(!dates.length){ sel.append(el("option",{text:"Sin datos"})); sel.disabled=true; }
+  else if(weekly){
+    const weeks=[...new Set(dates.map(weekStart))].sort();
+    if(!state.blWeek || weeks.indexOf(state.blWeek)<0) state.blWeek=weeks.slice(-1)[0];
+    for(const w of [...weeks].reverse()){ const o=el("option",{value:w,text:weekLabel(w)}); if(w===state.blWeek) o.selected=true; sel.append(o); }
+    sel.disabled=false;
+  } else {
+    if(!state.blDate || dates.indexOf(state.blDate)<0) state.blDate=dates.slice(-1)[0];
+    for(const d of [...dates].reverse()){ const o=el("option",{value:d,text:fmtDate(d,true)}); if(d===state.blDate) o.selected=true; sel.append(o); }
+    sel.disabled=false;
+  }
+  const view=$("#view"); view.textContent="";
+  if(!B || !dates.length){
+    view.append(el("div",{class:"empty"}, el("b",{text: state.loaded?"Aún no hay datos del backlog":"Cargando…"}),
+      state.loaded?"El script diario aún no ha publicado la primera foto del backlog.":""));
+    return;
+  }
+  const modeBtn=(mode,label)=>el("button",{class:"chip",type:"button","aria-pressed":String(state.blMode===mode),text:label,onclick:()=>{state.blMode=mode; render();}});
+  view.append(el("div",{class:"chips",style:"margin-bottom:16px"}, modeBtn("day","Por día"), modeBtn("week","Por semana")));
+
+  // Período: día → foto anterior vs día; semana → última foto antes de la semana (o la primera) vs última de la semana
+  let curD, baseD, periodDates, cmpTxt;
+  if(weekly){
+    periodDates = dates.filter(d=>weekStart(d)===state.blWeek);
+    curD = periodDates.slice(-1)[0];
+    baseD = dates.filter(d=>d<state.blWeek).slice(-1)[0] || (periodDates.length>1 ? periodDates[0] : null);
+    cmpTxt = baseD ? "del "+fmtDate(baseD)+" al "+fmtDate(curD) : null;
+  } else {
+    curD = state.blDate; baseD = dates[dates.indexOf(curD)-1] || null;
+    periodDates = dates; cmpTxt = baseD ? "frente al "+fmtDate(baseD) : null;
+  }
+  const C = blCompare(baseD, curD);
+  const salieron = C.moves.filter(m=>m.type==="out").length, fwd = C.moves.filter(m=>m.type==="fwd").length;
+  const nuevos = C.moves.filter(m=>m.type==="new").length, retro = C.moves.filter(m=>m.type==="back").length;
+  const sinAsig = C.cur.filter(r=>r.o==="Sin asignar").length;
+  $("#subtitle").textContent = "Avance Backlog completo · "+(weekly?weekLabel(state.blWeek):fmtDate(curD,true))+". Proyectos validados en FDK / ENTREGA de WEB, RRSS y SEO (sin implementación SEO hecha).";
+
+  const score = el("div",{class:"score"},
+    el("div",{class:"big"}, el("b",{text:C.cur.length}), el("span",{text:"proyectos en backlog"})),
+    el("div",{class:"k ok"}, el("b",{text: baseD? salieron : "—"}), el("span",{text:"salieron del backlog"})),
+    el("div",{class:"k ok"}, el("b",{text: baseD? fwd : "—"}), el("span",{text:"avanzaron de stage"})),
+    el("div",{class:"k pend"}, el("b",{text: baseD? nuevos : "—"}), el("span",{text:"entraron al backlog"})),
+    el("div",{class:"k danger"}, el("b",{text: baseD? retro : "—"}), el("span",{text:"retrocedieron de stage"})),
+    el("div",{class:"k"}, el("b",{text:sinAsig}), el("span",{text:"sin CS asignado"})),
+    el("div",{class:"delta",text: baseD
+      ? "Avance "+cmpTxt+": "+(salieron+fwd)+" proyectos avanzaron ("+salieron+" salieron del backlog + "+fwd+" pasaron a un stage siguiente). Neto: "+(C.cur.length-C.base.length>0?"+":"")+(C.cur.length-C.base.length)+" proyectos."
+      : "Primera foto registrada: la comparación de avance empieza con la siguiente actualización diaria."}));
+  const trend = el("div",{class:"panel"}, el("h2",{text:"Avance por día"}),
+    el("p",{class:"hint",text:"Proyectos en backlog cada día. Arriba de cada barra: cuántos avanzaron frente al día anterior. Toca un día para verlo."}),
+    legend([["var(--bar)","En backlog"],["var(--ok)","Avanzaron vs día anterior"]]));
+  const trendBox=el("div",{class:"scroll"}); trend.append(trendBox);
+  view.append(el("div",{class:"board"}, score, trend));
+  drawBlTrend(trendBox, weekly ? periodDates : dates, curD);
+
+  // Proyectos por CS + por stage
+  const pCS=el("div",{class:"panel"}, el("h2",{text:"Proyectos asignados por CS"}), el("p",{class:"hint",text:"Según C.S. Owner. Toca un CS para filtrar el detalle de abajo."}));
+  const pSt=el("div",{class:"panel"}, el("h2",{text:"Proyectos por stage"}), el("p",{class:"hint",text:"Cantidad actual en cada pipeline stage. Toca un stage para filtrar."}));
+  const bCS=el("div"), bSt=el("div"); pCS.append(bCS); pSt.append(bSt);
+  view.append(el("div",{class:"grid2"}, pCS, pSt));
+  const csRows=[...C.byCS.values()].filter(r=>r.hoy>0).map(r=>({cs:r.cs,total:r.hoy})).sort((a,b)=>b.total-a.total||a.cs.localeCompare(b.cs));
+  hbars(bCS, csRows, {label:"Proyectos por CS", segs:r=>[{v:r.total,c:"var(--heat)"}], right:r=>String(r.total), tip:r=>r.cs+": "+r.total+" proyectos ("+pct(r.total/C.cur.length)+" del backlog)"});
+  const stCount=new Map(); C.cur.forEach(r=>stCount.set(r.s,(stCount.get(r.s)||0)+1));
+  const stRows=[...stCount.keys()].sort(blStageSort).map(s=>({cs:blStageName(s), id:s, total:stCount.get(s)}));
+  hbars(bSt, stRows, {label:"Proyectos por stage", segs:r=>[{v:r.total,c: state.blStage===r.id?"var(--brand)":"var(--pend)"}], right:r=>String(r.total),
+    tip:r=>r.cs+": "+r.total+" proyectos", click:r=>{ state.blStage = state.blStage===r.id?null:r.id; render(); }});
+
+  // Avance por CS
+  const pAv=el("div",{class:"panel full"}, el("h2",{text:"Avance por CS "+(baseD?"("+cmpTxt+")":"")}),
+    el("p",{class:"hint",text:"Antes = proyectos que tenía al inicio; avanzaron = salieron del backlog o pasaron a un stage siguiente; pendientes = los que le quedan hoy."}),
+    legend([["var(--ok)","Avanzaron"],["var(--bar)","Pendientes hoy"]]));
+  const bAv=el("div"); pAv.append(bAv); view.append(pAv);
+  if(!baseD) bAv.append(el("div",{class:"empty",style:"padding:20px"}, el("b",{text:"Sin día anterior para comparar"}), "Desde la próxima actualización verás aquí cuántos proyectos avanzó cada CS."));
+  else {
+    const avRows=[...C.byCS.values()].map(r=>({cs:r.cs, adv:r.salieron+r.avanzaron, total:r.salieron+r.hoy, r}))
+      .filter(x=>x.r.antes||x.r.hoy).sort((a,b)=>b.adv-a.adv||b.r.hoy-a.r.hoy);
+    hbars(bAv, avRows, {label:"Avance por CS", rightW:220,
+      segs:x=>[{v:x.adv,c:"var(--ok)"},{v:Math.max(0,x.r.hoy-x.r.avanzaron),c:"var(--bar)"}],
+      right:x=>"antes "+x.r.antes+" → hoy "+x.r.hoy+" · "+x.adv+" avanzaron",
+      tip:x=>x.cs+": tenía "+x.r.antes+", hoy tiene "+x.r.hoy+". Salieron del backlog "+x.r.salieron+", avanzaron de stage "+x.r.avanzaron+", nuevos "+x.r.nuevos+(x.r.retro?", retrocedieron "+x.r.retro:"")+"."});
+  }
+
+  // Total por día en cada stage
+  const pHeat=el("div",{class:"panel full"}, el("h2",{text:"Total de proyectos por día en cada stage"}), el("p",{class:"hint",text:"Últimos 14 días registrados."}));
+  const bHeat=el("div",{class:"scroll"}); pHeat.append(bHeat); view.append(pHeat);
+  drawBlStageHeat(bHeat, (weekly?periodDates:dates.filter(d=>d<=curD)).slice(-14));
+
+  // Movimientos
+  if(baseD){
+    const pMv=el("div",{class:"panel full"}, el("h2",{text:"Proyectos que se movieron "+cmpTxt}));
+    view.append(pMv); drawBlMoves(pMv, C.moves);
+  }
+
+  // Pendientes por CS
+  const pList=el("div",{class:"panel full"}); view.append(pList);
+  drawBlList(pList, C.cur, curD);
+}
+function drawBlTrend(box, dates, current){
+  const W=Math.max(box.clientWidth||600,280), H=210, padL=8, padB=26, padT=30;
+  const all=blDates();
+  const data=dates.map(d=>{ const prev=all[all.indexOf(d)-1]; const c=blCompare(prev||null,d); return {d, total:c.cur.length, adv: prev ? c.moves.filter(m=>m.type==="out"||m.type==="fwd").length : null}; });
+  const max=Math.max(1,...data.map(x=>x.total))*1.05;
+  const slot=Math.min(70,(W-padL*2)/Math.max(data.length,1)), bw=Math.max(14,slot*0.62);
+  const svgW=Math.max(W,slot*data.length+padL*2);
+  const svg=sv("svg",{viewBox:"0 0 "+svgW+" "+H,width:"100%",role:"img","aria-label":"Avance por día"});
+  const hgt=v=>(H-padT-padB)*v/max;
+  data.forEach((x,i)=>{
+    const cx=padL+slot*i+(slot-bw)/2, g=sv("g",{class:"clickable",opacity:x.d===current?"1":"0.55"});
+    g.append(sv("rect",{x:cx,y:H-padB-hgt(x.total),width:bw,height:hgt(x.total),fill:"var(--bar)",rx:2}));
+    if(x.adv) g.append(sv("rect",{x:cx,y:H-padB-hgt(x.adv),width:bw,height:hgt(x.adv),fill:"var(--ok)",rx:2}));
+    const t=sv("text",{x:cx+bw/2,y:H-padB-hgt(x.total)-5,"text-anchor":"middle","font-size":12,"font-weight":700,fill:"var(--ink)"}); t.textContent=x.total; g.append(t);
+    if(x.adv!=null){ const a=sv("text",{x:cx+bw/2,y:H-padB-hgt(x.total)-19,"text-anchor":"middle","font-size":10.5,"font-weight":700,fill:"var(--ok)"}); a.textContent="▲"+x.adv; g.append(a); }
+    const l=sv("text",{x:cx+bw/2,y:H-8,"text-anchor":"middle","font-size":11,fill:"var(--muted)","font-weight":x.d===current?"700":"400"}); l.textContent=fmtDate(x.d); g.append(l);
+    g.append(sv("rect",{x:cx,y:padT,width:slot,height:H-padT-padB,fill:"transparent"}));
+    g.addEventListener("click",()=>{ state.blDate=x.d; state.blMode="day"; render(); });
+    bindTip(g, fmtDate(x.d,true)+": "+x.total+" en backlog"+(x.adv!=null?", "+x.adv+" avanzaron vs día anterior":" (primer día registrado)"));
+    svg.append(g);
+  });
+  box.append(svg);
+}
+function drawBlStageHeat(box, dates){
+  const counts=dates.map(d=>{ const m=new Map(); blRows(d).forEach(r=>m.set(r.s,(m.get(r.s)||0)+1)); return m; });
+  const stages=[...new Set(counts.flatMap(m=>[...m.keys()]))].sort(blStageSort);
+  const max=Math.max(1,...counts.flatMap(m=>[...m.values()]));
+  const t=el("table",{class:"heat"});
+  t.append(el("thead",null, el("tr",null, el("th",{text:"Stage"}), ...dates.map(d=>el("th",{text:fmtDate(d)})))));
+  const tb=el("tbody");
+  stages.forEach(s=>{
+    const tr=el("tr",null, el("td",{text:blStageName(s)}));
+    counts.forEach((m,i)=>{ const v=m.get(s)||0; const td=el("td",{class:v?"c":"c z",text:v||"·"});
+      if(v){ const a=.12+.7*v/max; td.style.background="rgba(var(--heat-rgb),"+a.toFixed(2)+")"; if(a>.5) td.style.color="#fff"; bindTip(td, blStageName(s)+" · "+fmtDate(dates[i],true)+": "+v+" proyectos"); }
+      tr.append(td); });
+    tb.append(tr);
+  });
+  tb.append(el("tr",{class:"tot"}, el("td",{text:"Total"}), ...counts.map(m=>el("td",{text:[...m.values()].reduce((a,b)=>a+b,0)}))));
+  t.append(tb); box.append(t);
+}
+function blProjCell(r){ const link=hsLink(r.id); return link ? el("td",{class:"p"}, el("a",{href:link,target:"_blank",rel:"noopener",text:r.p,style:"color:var(--focus);text-decoration:none;font-weight:500"})) : el("td",{class:"p",text:r.p}); }
+function drawBlMoves(p, moves){
+  const TYPES={out:["Salió del backlog","ok"], fwd:["Avanzó de stage","ok"], new:["Entró al backlog","pend"], back:["Retrocedió","pend"]};
+  const list=moves.filter(m=>!state.csFilter || m.r.o===state.csFilter);
+  if(!list.length){ p.append(el("div",{class:"empty",style:"padding:22px"}, el("b",{text:"Sin movimientos"}), state.csFilter? state.csFilter+" no tuvo movimientos en este período." : "Ningún proyecto cambió en este período.")); return; }
+  const order={out:0,fwd:1,new:2,back:3};
+  list.sort((a,b)=>order[a.type]-order[b.type] || a.r.o.localeCompare(b.r.o));
+  const t=el("table",{class:"list"});
+  t.append(el("thead",null, el("tr",null, ...["CS","Proyecto","Antes","Ahora","Movimiento"].map(h=>el("th",{text:h})))));
+  const tb=el("tbody");
+  list.forEach(m=>{
+    const now = m.type==="out" ? (m.to ? blStageName(m.to) : "Fuera del backlog") : blStageName(m.to);
+    tb.append(el("tr",null, el("td",{text:m.r.o}), blProjCell(m.r), el("td",{text:m.from?blStageName(m.from):"—"}), el("td",{text:now}),
+      el("td",null, el("span",{class:"tag "+TYPES[m.type][1],text:TYPES[m.type][0]}))));
+  });
+  t.append(tb); p.append(el("div",{class:"scroll"},t));
+}
+function drawBlList(p, cur, curD){
+  p.append(el("h2",{text:"Proyectos pendientes en el backlog"}),
+    el("p",{class:"hint",text:"Lo que le queda a cada CS. Días en backlog = días desde la primera foto en que aparece."}));
+  const counts=new Map(); cur.forEach(r=>counts.set(r.o,(counts.get(r.o)||0)+1));
+  const chips=el("div",{class:"chips"});
+  const mk=(cs,label)=>el("button",{class:"chip",type:"button","aria-pressed":String(state.csFilter===cs),text:label,onclick:()=>{state.csFilter=cs; render();}});
+  chips.append(mk(null,"Todos ("+cur.length+")"));
+  [...counts.keys()].sort((a,b)=>a.localeCompare(b)).forEach(cs=>chips.append(mk(cs, cs+" ("+counts.get(cs)+")")));
+  p.append(chips);
+  if(state.blStage) p.append(el("div",{style:"margin-bottom:10px;display:flex;gap:8px;align-items:center"}, el("span",{text:"Filtro stage: "+blStageName(state.blStage)}),
+    el("button",{class:"btn ghost small",type:"button",text:"Quitar filtro",onclick:()=>{state.blStage=null; render();}})));
+  const first={}; blDates().filter(d=>d<=curD).forEach(d=>blRows(d).forEach(r=>{ if(!(r.id in first)) first[r.id]=d; }));
+  const rows=cur.filter(r=>(!state.csFilter||r.o===state.csFilter) && (!state.blStage||r.s===state.blStage))
+    .sort((a,b)=>a.o.localeCompare(b.o) || blStageSort(a.s,b.s) || a.p.localeCompare(b.p));
+  if(!rows.length){ p.append(el("div",{class:"empty",style:"padding:22px"}, el("b",{text:"Sin proyectos"}), "No hay proyectos con este filtro.")); return; }
+  const t=el("table",{class:"list"});
+  t.append(el("thead",null, el("tr",null, ...["CS","Proyecto","Pipeline","Stage","Días en backlog"].map(h=>el("th",{text:h})))));
+  const tb=el("tbody");
+  rows.forEach(r=>{ const s=blStageInfo(r.s);
+    tb.append(el("tr",null, el("td",{text:r.o}), blProjCell(r), el("td",{text:s?s.pipe:"—"}), el("td",{text:s?s.label:"—"}),
+      el("td",null, el("span",{class:"days",text:daysBetween(first[r.id]||curD, curD)})))); });
+  t.append(tb); p.append(el("div",{class:"scroll"},t));
+}
+
 /* ---------- Navegación ---------- */
-document.querySelectorAll(".tab").forEach(t=>t.addEventListener("click",()=>{ state.tab=t.dataset.tab; state.csFilter=null; state.blqFilter=null; location.hash=state.tab; render(); }));
-$("#dateSel").addEventListener("change",e=>{ if(state.tab==="ringover"){ if(state.rvMode==="week") state.rvWeek=e.target.value; else state.rvDate=e.target.value; } else state.date[state.tab]=e.target.value; render(); });
-function fromHash(){ const h=location.hash.slice(1); if(BASES[h]||h==="ringover"){ state.tab=h; state.csFilter=null; render(); } }
+document.querySelectorAll(".tab").forEach(t=>t.addEventListener("click",()=>{ state.tab=t.dataset.tab; state.csFilter=null; state.blqFilter=null; state.blStage=null; location.hash=state.tab; render(); }));
+$("#dateSel").addEventListener("change",e=>{
+  if(state.tab==="ringover"){ if(state.rvMode==="week") state.rvWeek=e.target.value; else state.rvDate=e.target.value; }
+  else if(state.tab==="backlog"){ if(state.blMode==="week") state.blWeek=e.target.value; else state.blDate=e.target.value; }
+  else state.date[state.tab]=e.target.value;
+  render(); });
+function fromHash(){ const h=location.hash.slice(1); if(BASES[h]||EXTRA_TABS.includes(h)){ state.tab=h; state.csFilter=null; render(); } }
 addEventListener("hashchange", fromHash);
 let rz; addEventListener("resize",()=>{ clearTimeout(rz); rz=setTimeout(render,150); });
-{ const h=location.hash.slice(1); if(BASES[h]||h==="ringover") state.tab=h; }
+{ const h=location.hash.slice(1); if(BASES[h]||EXTRA_TABS.includes(h)) state.tab=h; }
 render();
 
 /* ---------- Almacenamiento ---------- */
@@ -824,6 +1047,9 @@ render();
   // Ringover siempre desde JSON estático (generado por Windmill -> GitHub)
   fetch("ringover.json").then(r=>r.ok?r.json():null).then(j=>{
     if(j){ state.ringover=j; const ds=[...new Set((j.daily||[]).map(x=>x.date))].sort(); if(!state.rvDate) state.rvDate=ds.slice(-1)[0]||null; render(); }
+  }).catch(()=>{});
+  fetch("backlog.json").then(r=>r.ok?r.json():null).then(j=>{
+    if(j){ state.backlog=j; if(!state.hubspot && j.hubspot) state.hubspot=j.hubspot; if(!state.blDate) state.blDate=blDates().slice(-1)[0]||null; render(); }
   }).catch(()=>{});
   if (!db){
     try {
