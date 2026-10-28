@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-28T18:06:21.648017Z",
+  "generated": "2026-10-28T21:00:07.000059Z",
   "date": "2026-10-28",
   "hubspot": {
     "portal": "25808060",
@@ -6785,7 +6785,7 @@
     "mem1_2026-10-28": {
       "base": "mem1",
       "fecha": "2026-10-28",
-      "cargado": "2026-10-28T18:06:20.994645Z",
+      "cargado": "2026-10-28T21:00:06.107986Z",
       "total": 26,
       "rows": [
         {
@@ -7105,8 +7105,8 @@
     "mem2_2026-10-28": {
       "base": "mem2",
       "fecha": "2026-10-28",
-      "cargado": "2026-10-28T18:06:20.995402Z",
-      "total": 134,
+      "cargado": "2026-10-28T21:00:06.109390Z",
+      "total": 140,
       "rows": [
         {
           "id": "871047389",
@@ -7131,6 +7131,18 @@
           "pr": "Prioridad 3",
           "h": false,
           "u": "2026-10-21"
+        },
+        {
+          "id": "6375773152",
+          "p": "KD-SEO: LORO IDIOMAS SL",
+          "o": "María Johanna Díaz Quinceno",
+          "c": "28/10 MJ llamo cliente pero NC, le abro wsp                                                                          9/2 M: tenemos accesos, implementamos el seo ténico para presentar memoria 23/01 ah se le envia correo. ",
+          "b": [
+            "Sitio Web no Carga"
+          ],
+          "pr": "",
+          "h": true,
+          "u": "2026-10-28"
         },
         {
           "id": "20547652812",
@@ -7230,10 +7242,20 @@
           "id": "117112493260",
           "p": "KD-RRSS: JOSE LUIS SOPESEN VERAMENDI",
           "o": "Nataly molina",
-          "c": "21.10 Andrea. Llamé, NC 08.10 Fran - Llamo al cliente nc, cliente no responde a llamadas, ni mensajes 02.10.26 Jose Luis: Envio correo desbloquear y avanzar // 27/04 Elena H: llamada por campaña de NPS próximo de recibir por el cliente > MUY MOLESTO/EXIGENTE > Llamada larga > No deja hablar y tampoco aclara \"qué quiere\" o cómo quiere que le ayudemos.",
+          "c": "28/10  NM videoconferencia agendada para mañana  21.10 Andrea. Llamé, NC 08.10 Fran - Llamo al cliente nc, cliente no responde a llamadas, ni mensajes 02.10.26 Jose Luis: Envio correo desbloquear y avanzar // 27/04 Elena H: llamada por campaña de NPS próximo de recibir por el cliente > MUY MOLESTO/EXIGENTE > Llamada larga > No deja hablar y tampoco aclara \"qué quiere\" o cómo quiere que le ayudemos.",
           "b": [
             "Falta Vincular a Metricool"
           ],
+          "pr": "Prioridad 1",
+          "h": true,
+          "u": "2026-10-28"
+        },
+        {
+          "id": "120052152559",
+          "p": "KD-RRSS: LUCIA GOMEZ NUÑEZ",
+          "o": "Victor Ortega",
+          "c": "21-10-26 V.Ortega: Sin contacto porque ya se ha avanzado. No existe bloqueo  22/09/26 dikci: se crea ticket para gestionar ultima peticion del cliente, se puede publicar despues de ese cambio. // 15/09/26 dikci: se crea cuenta para publicar - se vincula a metricool, falta el OK para publicar. Se agrega tag para modificar la memoria. // 14/09/26 DIKCI: NC cuando vuelvo a llamar - le envio email. // 14/09/26 dikci: CONTESTA - pero pide que la llame dentro de una hora... envio wsp // 27/08 NM llam ",
+          "b": [],
           "pr": "Prioridad 1",
           "h": false,
           "u": "2026-10-21"
@@ -7313,13 +7335,13 @@
           "id": "146453551304",
           "p": "KD-RRSS: LA GRADA ONLINE S.L",
           "o": "Nataly molina",
-          "c": "21/10 Mj llamo cliente pero no puede atender. puede el día de mañana en la mañana. Gestiono con mi TL para que lo puedan contactar                                              19/10 Mj llamo cliente NC                              13.10.26 Jose Luis: Envio WSP externo para intentar desbloquear // 8/10 MJ Llamo cliente NC. Dice que el numero no esta asignado. Le abro wsp                          07.10 Andrea. Llamé, NC 02.10.26 Jose Luis: Envio correo desbloquear y avanzar // 08/09 NM llam 3.42pm",
+          "c": "28/10 NM  llam 7.16pm cuelga no tiene tiempo 21/10 Mj llamo cliente pero no puede atender. puede el día de mañana en la mañana. Gestiono con mi TL para que lo puedan contactar                                              19/10 Mj llamo cliente NC                              13.10.26 Jose Luis: Envio WSP externo para intentar desbloquear // 8/10 MJ Llamo cliente NC. Dice que el numero no esta asignado. Le abro wsp                          07.10 Andrea. Llamé, NC 02.10.26 Jose Luis: Envio correo ",
           "b": [
             "Falta Vincular a Metricool"
           ],
           "pr": "Prioridad 3",
-          "h": false,
-          "u": "2026-10-21"
+          "h": true,
+          "u": "2026-10-28"
         },
         {
           "id": "147506947319",
@@ -7401,6 +7423,18 @@
           "u": "2026-10-23"
         },
         {
+          "id": "172061778160",
+          "p": "KD-WEB: LETICIA HERVAS GARRIDO",
+          "o": "Dikcibell Pantoja Toste",
+          "c": "7/10 MJ Cliente se contacta que le llegó mensaje de cambios por implementar. pero le indico que ya el proyecto esta en seguimiento. Adicional le notifico y le entrego información de la actividad del antivirus.                                                               05/08/26 dikci: solicita que se le entregue la web - le envio accesos // 16.04.26 Jose Luis: NC, envio email para conformidad // 15.04.26 Jose Luis: LLAMAR MAÑANA /// 13/11 elena- posible Baja, se contacta con ella ",
+          "b": [
+            "Falta Credenciales de Acceso."
+          ],
+          "pr": "Prioridad 1",
+          "h": false,
+          "u": "2026-10-07"
+        },
+        {
           "id": "173357843686",
           "p": "KD-WEB: INMACULADA SAENZ SOSA",
           "o": "Jose Luis Lopez Vargas",
@@ -7478,18 +7512,6 @@
           "c": "28/10 MJ Contactar a Jhon el día jueves al teléfono 661866204                                            27/10 MJ lamo cliente NC, a el se le había creado una red social pagina de Facebook pero la cuenta y no la tenemos, al final contesta y pide que se llame a este teléfono 661866204 se llama jhon // Llamo a jhon llamar el jueves   19.10 Fran - Llamo al cliente, nc, dejo mensaje en el mensaje de voz y mando WSP 08.06.26 Jose Luis: Envio email para presentar fase anual en busca de FDK o GO // 11/",
           "b": [],
           "pr": "Prioridad 3",
-          "h": true,
-          "u": "2026-10-28"
-        },
-        {
-          "id": "197607935174",
-          "p": "KD-SEO: DANIEL CALVIN CABRERA",
-          "o": "Victor Ortega",
-          "c": "28/10 NM escalo caso con Danna, cliente con solo 60 dias para data de seo, 21/10/26 DIKCI: CONTESTA - no tiene la web hecha porque la empresa que se la hace no la ha terminado, dice que no puede hacer nada y que intentemos nosotros hacer una landing o algo para poder hacer el proyecto. // 05.10.26 Jose Luis: Envio email y WSP para corroborar FDK o Conformidad01/10/26 dikci: envio email para que active web // 28/09/26 dikci: CONTESTA - va a enviar los accesos para hacer la implementación // 28/08",
-          "b": [
-            "Sitio Web no Carga"
-          ],
-          "pr": "Prioridad 1",
           "h": true,
           "u": "2026-10-28"
         },
@@ -7587,16 +7609,6 @@
           "u": "2026-10-28"
         },
         {
-          "id": "211743252697",
-          "p": "KD-SEO: JOSE MANUEL JAÑEZ MARTINEZ",
-          "o": "Andrea Giraldo Orejuela",
-          "c": "27.10 Andrea. Llamé, indica que los enviará mañana 21.10 Fran - Llamo al cliente, me dice que me enviará las credenciales para implementar 05.10.26 Jose Luis: Envio email y WSP para corroborar FDK o Conformidad12/06 ah mensaje implementa tu",
-          "b": [],
-          "pr": "Prioridad 3",
-          "h": false,
-          "u": "2026-10-27"
-        },
-        {
           "id": "212204045515",
           "p": "KD-WEB: NDP SPORTS S.L. ",
           "o": "Andrea Giraldo Orejuela",
@@ -7646,7 +7658,9 @@
           "p": "KD-RRSS: ANTONIO MORA GALLEGO",
           "o": "Jose Luis Lopez Vargas",
           "c": "28.10.26 Jose Luis: NO HAY BLOQUEO // 20.02 Andrea. OK para publicar 5/01 Tatiana: Se crea página de Facebook en el perfil de Aroha, por solicitud del cliente, Se vincula a metricool, se avanza.5/01 Tatiana: se llama cliente, solicita la creacion de la pagina de facebook 02/01 Tatiana: se envia correo  solicitando informacion. ",
-          "b": [],
+          "b": [
+            "Falta Vincular a Metricool"
+          ],
           "pr": "Prioridad 1",
           "h": true,
           "u": "2026-10-28"
@@ -7684,6 +7698,18 @@
           "u": "2026-10-28"
         },
         {
+          "id": "231668111547",
+          "p": "KD-RRSS: NATALIA HINOJAL ARRATIA",
+          "o": "Jose Luis Lopez Vargas",
+          "c": "28.10.26 Jose Luis: Facebook Vinculado, GO // 19/10 Mj Revinculada ok. Se desbloquea proyecto                                                  31/8 MJ se le da acceso a la pagina de Facebook a la cliente.                                                                                26/8 MJ Se revincula pagina de Facebook. Desbloqueado                                                                             15/01 Mariana: cliente quiere que le creen RRSS nuevas porque no tiene las contraseñas",
+          "b": [
+            "Falta Vincular a Metricool"
+          ],
+          "pr": "Prioridad 1",
+          "h": true,
+          "u": "2026-10-28"
+        },
+        {
           "id": "232182965452",
           "p": "KD-RRSS: DENTALDAY SL",
           "o": "Dikcibell Pantoja Toste",
@@ -7700,7 +7726,9 @@
           "p": "KD-RRSS: IMEXMASUR SL",
           "o": "Jose Luis Lopez Vargas",
           "c": "28.10.26 Jose Luis: NO TIENE BLOQUEO // 03/08 Irene: al cliente le interesaba el pc y la tarjeta amazon. Nos autorizó a crearle FB, avanzamos con la programación de la FA",
-          "b": [],
+          "b": [
+            "Falta Vincular a Metricool"
+          ],
           "pr": "Prioridad 1",
           "h": true,
           "u": "2026-10-28"
@@ -7780,6 +7808,18 @@
           "pr": "Prioridad 1",
           "h": false,
           "u": "2026-10-21"
+        },
+        {
+          "id": "235323221195",
+          "p": "KD-RRSS: UNAI ILLARRAMENDI ECHEVERRIA",
+          "o": "Victor Ortega",
+          "c": "01/10 Irene: revinculado de nuevo 30/09 Irene: revinculado ok",
+          "b": [
+            "Falta Vincular a Metricool"
+          ],
+          "pr": "Prioridad 1",
+          "h": false,
+          "u": "2026-10-01"
         },
         {
           "id": "235863055605",
@@ -7978,6 +8018,18 @@
           "pr": "Prioridad 1",
           "h": false,
           "u": "2026-10-21"
+        },
+        {
+          "id": "245657304298",
+          "p": "KD-RRSS: JOSE CARLOS MIGUEL MURCIA ",
+          "o": "María Johanna Díaz Quinceno",
+          "c": "13/07 Irene: cliente da go programación",
+          "b": [
+            "Falta Vincular a Metricool"
+          ],
+          "pr": "Prioridad 1",
+          "h": false,
+          "u": "2026-07-13"
         },
         {
           "id": "246333531346",
@@ -8215,6 +8267,18 @@
           "u": "2026-10-26"
         },
         {
+          "id": "264529082566",
+          "p": "KD-RRSS: MARCO  ESPOSITO",
+          "o": "Jose Luis Lopez Vargas",
+          "c": "28.10.26 Jose Luis: CONTESTA, no da autorizacion aun a publicar, quiere que lo llame mañana // 07/09 Irene: muevo a prod y quito tag de fuera de alcance. Diego autorizó rediseño y pidió a William que se trabaje la FI del proyecto y la FA desde la herramienta de IA del marketing center. Hilo en slack.",
+          "b": [
+            "Falta Vincular a Metricool"
+          ],
+          "pr": "Prioridad 1",
+          "h": true,
+          "u": "2026-10-28"
+        },
+        {
           "id": "266145842373",
           "p": "KD-WEB: MARIA NOEL SANCHEZ ALVAREZ",
           "o": "Jose Luis Lopez Vargas",
@@ -8328,11 +8392,13 @@
           "id": "271546981585",
           "p": "KD-RRSS: VICTOR PÉ DE LA RIVA",
           "o": "Nataly molina",
-          "c": "21/10 Aitor L: Llamo NC. Envío WP. 02.10.26 Jose Luis: Envio correo desbloquear y avanzar // 25/09/26 dikci: al final no es baja. Solicita trabajar en linkedin y que creemos la cuenta (se reactiva proyecto) // 18/05 Elena H: BAJA. Mem. 1 > En producciónMotivo Baja: cliente confirma que no desea proyecto de RRSS. Únicamente solicita la solución de factura electrónica. Proceder con la baja de los servicios relacionados con redes sociales y mantener únicamente la gestión vinculada a factura electró",
-          "b": [],
+          "c": "28/10 NM llam 7.20pm pendiente conversar con dick si ella creo y tiene acceso a ese mail 21/10 Aitor L: Llamo NC. Envío WP. 02.10.26 Jose Luis: Envio correo desbloquear y avanzar // 25/09/26 dikci: al final no es baja. Solicita trabajar en linkedin y que creemos la cuenta (se reactiva proyecto) // 18/05 Elena H: BAJA. Mem. 1 > En producciónMotivo Baja: cliente confirma que no desea proyecto de RRSS. Únicamente solicita la solución de factura electrónica. Proceder con la baja de los servicios rel",
+          "b": [
+            "Falta Vincular a Metricool"
+          ],
           "pr": "Prioridad 3",
-          "h": false,
-          "u": "2026-10-21"
+          "h": true,
+          "u": "2026-10-28"
         },
         {
           "id": "271764280544",
@@ -8384,13 +8450,13 @@
           "id": "276044854501",
           "p": "KD-RRSS: JUDITH ROMERO ALBERT",
           "o": "Nataly molina",
-          "c": "16/10 NM tk de recepción por pc Cliente muy molesta porque su bono se caducó. revisando, se derivó desde marzo a eComputer. Le aseguraron hace unos días que le iba a llegar el ordenador, al no recibirlo ella se comunica y le dicen que qué pena, que su bono caducó, que fue un error de comunicación. Le dijeron que olvidara que tenía que escalar un requerimiento, pero le indicó que nosotros solo tenemos sus redes sociales, que es importante que no se dé de baja. Se le indican las implicaciones. Hay",
+          "c": "28/10 NM llam 7.09pm Dice que ya nos había enviado en un mensaje las contraseñas, en un mensaje automático que nosotros enviamos. No lo encuentro, no sé si es a dónde lo hubiera enviado. Solicito nuevamente las credenciales. 16/10 NM tk de recepción por pc Cliente muy molesta porque su bono se caducó. revisando, se derivó desde marzo a eComputer. Le aseguraron hace unos días que le iba a llegar el ordenador, al no recibirlo ella se comunica y le dicen que qué pena, que su bono caducó, que fue un",
           "b": [
             "Falta Vincular a Metricool"
           ],
           "pr": "Prioridad 3",
-          "h": false,
-          "u": "2026-10-16"
+          "h": true,
+          "u": "2026-10-28"
         },
         {
           "id": "277500314873",
@@ -8571,6 +8637,18 @@
           "pr": "Prioridad 1",
           "h": false,
           "u": "2026-10-27"
+        },
+        {
+          "id": "340891068628",
+          "p": "KD-RRSS: Rafael Muñoz Bertomeu",
+          "o": "Andrea Giraldo Orejuela",
+          "c": "28.10 Andrea. Se estan publicando27.10 Andrea. Ya esta en seguimiento 03.06.26 Jose Luis: GO fase anual // 20/03 Lizeth: Cliente cuelga llamada                                20.02 Alberto - wpp push por enlace de cuenta   19.02 Alberto - wpp push por enlace rrss 13/2 MJ llamo cliente NC  ",
+          "b": [
+            "Falta Vincular a Metricool"
+          ],
+          "pr": "Prioridad 2",
+          "h": true,
+          "u": "2026-10-28"
         },
         {
           "id": "354992170190",
