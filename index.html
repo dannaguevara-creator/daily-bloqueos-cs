@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -164,7 +164,7 @@ table{border-collapse:collapse;width:100%;font-size:.9rem}
       <p class="sub" id="subtitle">Seguimiento de llamadas a partir del campo Comentario CS</p>
     </div>
     <div class="controls">
-      <label for="dateSel">Día
+      <label for="dateSel"><span id="dateLbl">Día</span>
         <select id="dateSel" aria-label="Día del informe"></select>
       </label>
       <button class="btn" id="uploadBtn" type="button">Cargar informes</button>
@@ -185,9 +185,11 @@ table{border-collapse:collapse;width:100%;font-size:.9rem}
 
   <nav class="tabs" role="tablist">
     <button class="tab" role="tab" data-tab="mem1" id="tab-mem1">Mem 1 <span class="n"></span></button>
-    <button class="tab" role="tab" data-tab="mem2" id="tab-mem2">Base completa <span class="n"></span></button>
+    <button class="tab" role="tab" data-tab="mem2" id="tab-mem2">Mem 2 <span class="n"></span></button>
     <button class="tab" role="tab" data-tab="ringover" id="tab-ringover">Ringover <span class="n"></span></button>
     <button class="tab" role="tab" data-tab="backlog" id="tab-backlog">Avance Backlog completo <span class="n"></span></button>
+    <button class="tab" role="tab" data-tab="bajas" id="tab-bajas">Bajas <span class="n"></span></button>
+    <button class="tab" role="tab" data-tab="agenda" id="tab-agenda">Agenda <span class="n"></span></button>
   </nav>
 
   <main id="view"></main>
@@ -198,7 +200,7 @@ table{border-collapse:collapse;width:100%;font-size:.9rem}
 <script>
 (function(){
 "use strict";
-const BASES = {mem1:"Mem 1", mem2:"Base completa"};
+const BASES = {mem1:"Mem 1", mem2:"Mem 2"};
 const state = {
   snaps:{mem1:{},mem2:{}},   // base -> date -> snapshot
   tab:"mem1",
@@ -210,9 +212,11 @@ const state = {
   db:null, canWrite:true, loaded:false,
   hubspot:null,
   ringover:null, rvDate:null, rvMode:"day", rvWeek:null,
-  backlog:null, blDate:null, blMode:"day", blWeek:null, blStage:null
+  backlog:null, blDate:null, blMode:"day", blWeek:null, blStage:null,
+  bajas:null, bjDate:null, bjMode:"day", bjWeek:null, bjMonth:null,
+  agenda:null, agDate:null, agMode:"day", agWeek:null
 };
-const EXTRA_TABS = ["ringover","backlog"];
+const EXTRA_TABS = ["ringover","backlog","bajas","agenda"];
 function hsLink(id){ if(!state.hubspot||!id) return null; const h=state.hubspot; return `https://${h.domain}/contacts/${h.portal}/record/${h.object}/${id}`; }
 const $ = s => document.querySelector(s);
 const el = (tag, attrs, ...kids) => {
@@ -343,6 +347,10 @@ const pct = v => Math.round(v*100) + "%";
 /* ---------- Render ---------- */
 function datesFor(base){ return Object.keys(state.snaps[base]).sort(); }
 function render(){
+  // etiqueta del selector según el modo de la pestaña (día, semana o mes)
+  { const mode = {ringover:state.rvMode, backlog:state.blMode, bajas:state.bjMode, agenda:state.agMode}[state.tab] || "day";
+    const lbl = {day:"Día", week:"Semana", month:"Mes"}[mode] || "Día";
+    $("#dateLbl").textContent = lbl; $("#dateSel").setAttribute("aria-label", lbl+" del informe"); }
   // pestañas
   for (const b of Object.keys(BASES)){
     const t = $("#tab-"+b); t.setAttribute("aria-selected", String(state.tab===b));
@@ -359,8 +367,16 @@ function render(){
   const blTab = $("#tab-backlog");
   blTab.setAttribute("aria-selected", String(state.tab==="backlog"));
   { const B=state.backlog, d=state.blDate; blTab.querySelector(".n").textContent = B&&d&&B.snapshots[d] ? B.snapshots[d].rows.length : ""; }
+  const bjTab = $("#tab-bajas");
+  bjTab.setAttribute("aria-selected", String(state.tab==="bajas"));
+  bjTab.querySelector(".n").textContent = state.bajas ? (state.bajas.abiertas||[]).reduce((a,x)=>a+x.n,0) : "";
+  const agTab = $("#tab-agenda");
+  agTab.setAttribute("aria-selected", String(state.tab==="agenda"));
+  agTab.querySelector(".n").textContent = state.agenda ? (state.agenda.daily||[]).filter(x=>x.date===agToday()).reduce((a,x)=>a+agTotal(x),0) : "";
   if(state.tab==="ringover"){ renderRingover(); return; }
   if(state.tab==="backlog"){ renderBacklog(); return; }
+  if(state.tab==="bajas"){ renderBajas(); return; }
+  if(state.tab==="agenda"){ renderAgenda(); return; }
   // selector de día
   const dates = datesFor(state.tab);
   if (!state.date[state.tab] || !state.snaps[state.tab][state.date[state.tab]]) state.date[state.tab] = dates.slice(-1)[0] || null;
@@ -1027,10 +1043,255 @@ function drawBlList(p, cur, curD){
 }
 
 /* ---------- Navegación ---------- */
+/* ---------- Bajas (tickets del pipeline BAJAS, bajas.json) ---------- */
+const BJ_STAGE_COLORS = ["var(--bar)","var(--brand)","var(--blocked)","var(--danger)"];
+function monthLabel(m){ return fmtDate(m+"-01",true).replace(/^1 de /,""); }
+function isoAddDays(iso,n){ const [y,m,d]=iso.split("-").map(Number); return new Date(Date.UTC(y,m-1,d+n)).toISOString().slice(0,10); }
+function bjDates(){
+  const B=state.bajas; if(!B||!B.generated_at) return [];
+  const end=B.generated_at.slice(0,10), min=isoAddDays(end,-89);
+  let d=(B.cierres||[]).map(x=>x.date).filter(x=>x<=end).sort()[0]||end; if(d<min) d=min;
+  const out=[]; while(d<=end){ out.push(d); d=isoAddDays(d,1); }
+  return out;
+}
+function bjSum(inPeriod){
+  const by=new Map(); let def=0, salv=0;
+  for(const x of (state.bajas.cierres||[])){
+    if(!inPeriod(x.date)) continue;
+    def+=x.definitivas; salv+=x.salvadas;
+    const r=by.get(x.gestor)||{cs:x.gestor,def:0,salv:0}; r.def+=x.definitivas; r.salv+=x.salvadas; by.set(x.gestor,r);
+  }
+  return {def, salv, by};
+}
+function renderBajas(){
+  const B=state.bajas, dates=bjDates(), weekly=state.bjMode==="week", monthly=state.bjMode==="month";
+  const weeks=[...new Set(dates.map(weekStart))].sort(), months=[...new Set(dates.map(d=>d.slice(0,7)))].sort();
+  const sel=$("#dateSel"); sel.textContent="";
+  if(!dates.length){ sel.append(el("option",{text:"Sin datos"})); sel.disabled=true; }
+  else if(monthly){
+    if(!state.bjMonth || months.indexOf(state.bjMonth)<0) state.bjMonth=months.slice(-1)[0];
+    for(const m of [...months].reverse()){ const o=el("option",{value:m,text:monthLabel(m)}); if(m===state.bjMonth) o.selected=true; sel.append(o); }
+    sel.disabled=false;
+  }
+  else if(weekly){
+    if(!state.bjWeek || weeks.indexOf(state.bjWeek)<0) state.bjWeek=weeks.slice(-1)[0];
+    for(const w of [...weeks].reverse()){ const o=el("option",{value:w,text:weekLabel(w)}); if(w===state.bjWeek) o.selected=true; sel.append(o); }
+    sel.disabled=false;
+  } else {
+    if(!state.bjDate || dates.indexOf(state.bjDate)<0) state.bjDate=dates.slice(-1)[0];
+    for(const d of [...dates].reverse()){ const o=el("option",{value:d,text:fmtDate(d,true)}); if(d===state.bjDate) o.selected=true; sel.append(o); }
+    sel.disabled=false;
+  }
+  const view=$("#view"); view.textContent="";
+  if(!B || !dates.length){
+    view.append(el("div",{class:"empty"}, el("b",{text: state.loaded?"Aún no hay datos de bajas":"Cargando…"}),
+      state.loaded?"El script diario aún no ha publicado la primera foto de bajas.":""));
+    return;
+  }
+  const modeBtn=(mode,label)=>el("button",{class:"chip",type:"button","aria-pressed":String(state.bjMode===mode),text:label,onclick:()=>{state.bjMode=mode; render();}});
+  view.append(el("div",{class:"chips",style:"margin-bottom:16px"}, modeBtn("day","Por día"), modeBtn("week","Por semana"), modeBtn("month","Por mes")));
+
+  const inPeriod = monthly ? (d=>d.slice(0,7)===state.bjMonth) : weekly ? (d=>weekStart(d)===state.bjWeek) : (d=>d===state.bjDate);
+  const periodTxt = monthly ? monthLabel(state.bjMonth) : weekly ? "la "+weekLabel(state.bjWeek).toLowerCase() : "el "+fmtDate(state.bjDate,true);
+  const S=bjSum(inPeriod), cerradas=S.def+S.salv;
+  const stages=(B.stages||[]).filter(s=>s.open).sort((a,b)=>a.order-b.order);
+  const ab=new Map(); let abTotal=0;
+  for(const x of (B.abiertas||[])){ const r=ab.get(x.gestor)||{cs:x.gestor,total:0,st:{}}; r.st[x.stage]=(r.st[x.stage]||0)+x.n; r.total+=x.n; ab.set(x.gestor,r); abTotal+=x.n; }
+  const sinGestor=(ab.get("Sin gestor")||{total:0}).total, hora=B.generated_at.slice(11,16);
+  $("#subtitle").textContent="Bajas · "+(monthly?monthLabel(state.bjMonth):weekly?weekLabel(state.bjWeek):fmtDate(state.bjDate,true))+". Tickets del pipeline BAJAS de HubSpot: Won = baja salvada, Lost = baja definitiva.";
+
+  const score=el("div",{class:"score"},
+    el("div",{class:"big"}, el("b",{text:abTotal}), el("span",{text:"bajas abiertas"})),
+    el("div",{class:"k ok"}, el("b",{text:S.salv}), el("span",{text:"bajas salvadas"})),
+    el("div",{class:"k danger"}, el("b",{text:S.def}), el("span",{text:"bajas definitivas"})),
+    el("div",{class:"k pend"}, el("b",{text: cerradas ? pct(S.salv/cerradas) : "—"}), el("span",{text:"salvadas sobre cerradas"})),
+    el("div",{class:"k"}, el("b",{text:sinGestor}), el("span",{text:"abiertas sin gestor"})),
+    el("div",{class:"delta",text:"En "+periodTxt+": "+cerradas+" bajas cerradas ("+S.salv+" salvadas y "+S.def+" definitivas). Las abiertas son las de la última actualización ("+fmtDate(B.generated_at.slice(0,10))+(hora?" a las "+hora:"")+")."}));
+  const trend=el("div",{class:"panel"}, el("h2",{text: monthly?"Bajas cerradas por mes":weekly?"Bajas cerradas por semana":"Bajas cerradas por día"}),
+    el("p",{class:"hint",text:"Salvadas y definitivas según el día de cierre (Descartado no cuenta). Toca una barra para verla."}),
+    legend([["var(--ok)","Salvadas"],["var(--danger)","Definitivas"]]));
+  const trendBox=el("div",{class:"scroll"}); trend.append(trendBox);
+  view.append(el("div",{class:"board"}, score, trend));
+  const buckets = monthly
+    ? months.filter(m=>m<=state.bjMonth).slice(-12).map(m=>{ const s=bjSum(d=>d.slice(0,7)===m); return {key:m, label:MESES[+m.slice(5)-1]+" "+m.slice(2,4), tip:monthLabel(m), def:s.def, salv:s.salv}; })
+    : weekly
+    ? weeks.filter(w=>w<=state.bjWeek).slice(-12).map(w=>{ const s=bjSum(d=>weekStart(d)===w); return {key:w, label:fmtDate(w), tip:weekLabel(w), def:s.def, salv:s.salv}; })
+    : dates.filter(d=>d<=state.bjDate).slice(-14).map(d=>{ const s=bjSum(x=>x===d); return {key:d, label:fmtDate(d), tip:fmtDate(d,true), def:s.def, salv:s.salv}; });
+  drawBjTrend(trendBox, buckets, monthly?state.bjMonth:weekly?state.bjWeek:state.bjDate, k=>{ if(monthly) state.bjMonth=k; else if(weekly) state.bjWeek=k; else state.bjDate=k; render(); });
+
+  const pAb=el("div",{class:"panel"}, el("h2",{text:"Bajas asignadas por gestor"}),
+    el("p",{class:"hint",text:"Tickets abiertos según BAJA - Gestor de baja, por stage. Foto de la última actualización."}),
+    legend(stages.map((s,i)=>[BJ_STAGE_COLORS[i%BJ_STAGE_COLORS.length], s.label])));
+  const pCi=el("div",{class:"panel"}, el("h2",{text:"Cierres por gestor"}),
+    el("p",{class:"hint",text:"Bajas salvadas y definitivas en "+periodTxt+"."}),
+    legend([["var(--ok)","Salvadas"],["var(--danger)","Definitivas"]]));
+  const bAb=el("div"), bCi=el("div"); pAb.append(bAb); pCi.append(bCi);
+  view.append(el("div",{class:"grid2"}, pAb, pCi));
+  const abRows=[...ab.values()].sort((a,b)=>b.total-a.total||a.cs.localeCompare(b.cs));
+  if(abRows.length) hbars(bAb, abRows, {label:"Bajas abiertas por gestor", click:()=>{},
+    segs:r=>stages.map((s,i)=>({v:r.st[s.id]||0, c:BJ_STAGE_COLORS[i%BJ_STAGE_COLORS.length]})),
+    right:r=>String(r.total),
+    tip:r=>r.cs+": "+r.total+" abiertas ("+stages.filter(s=>r.st[s.id]).map(s=>s.label+" "+r.st[s.id]).join(", ")+")"});
+  else bAb.append(el("div",{class:"empty",style:"padding:20px"}, el("b",{text:"Sin bajas abiertas"})));
+  const ciRows=[...S.by.values()].map(r=>({cs:r.cs, def:r.def, salv:r.salv, total:r.def+r.salv})).sort((a,b)=>b.total-a.total||a.cs.localeCompare(b.cs));
+  if(ciRows.length) hbars(bCi, ciRows, {label:"Cierres por gestor", rightW:150, click:()=>{},
+    segs:r=>[{v:r.salv,c:"var(--ok)"},{v:r.def,c:"var(--danger)"}],
+    right:r=>r.salv+" salv. · "+r.def+" def.",
+    tip:r=>r.cs+": "+r.salv+" salvadas y "+r.def+" definitivas"});
+  else bCi.append(el("div",{class:"empty",style:"padding:20px"}, el("b",{text:"Sin cierres"}), "No se cerró ninguna baja en "+periodTxt+"."));
+}
+function drawBjTrend(box, buckets, current, onPick){
+  const W=Math.max(box.clientWidth||600,280), H=210, padL=8, padB=26, padT=22;
+  const max=Math.max(1,...buckets.map(x=>x.def+x.salv))*1.08;
+  const slot=Math.min(70,(W-padL*2)/Math.max(buckets.length,1)), bw=Math.max(14,slot*0.62);
+  const svgW=Math.max(W,slot*buckets.length+padL*2);
+  const svg=sv("svg",{viewBox:"0 0 "+svgW+" "+H,width:"100%",role:"img","aria-label":"Bajas cerradas"});
+  const hgt=v=>(H-padT-padB)*v/max;
+  buckets.forEach((x,i)=>{
+    const cx=padL+slot*i+(slot-bw)/2, tot=x.def+x.salv, g=sv("g",{class:"clickable",opacity:x.key===current?"1":"0.55"});
+    if(x.salv) g.append(sv("rect",{x:cx,y:H-padB-hgt(x.salv),width:bw,height:hgt(x.salv),fill:"var(--ok)",rx:2}));
+    if(x.def) g.append(sv("rect",{x:cx,y:H-padB-hgt(tot),width:bw,height:hgt(x.def),fill:"var(--danger)",rx:2}));
+    const t=sv("text",{x:cx+bw/2,y:H-padB-hgt(tot)-5,"text-anchor":"middle","font-size":12,"font-weight":700,fill:"var(--ink)"}); t.textContent=tot; g.append(t);
+    const l=sv("text",{x:cx+bw/2,y:H-8,"text-anchor":"middle","font-size":11,fill:"var(--muted)","font-weight":x.key===current?"700":"400"}); l.textContent=x.label; g.append(l);
+    g.append(sv("rect",{x:cx,y:padT,width:slot,height:H-padT-padB,fill:"transparent"}));
+    g.addEventListener("click",()=>onPick(x.key));
+    bindTip(g, x.tip+": "+x.salv+" salvadas, "+x.def+" definitivas");
+    svg.append(g);
+  });
+  box.append(svg);
+}
+/* ---------- Agenda (reuniones de CS en HubSpot Meetings, agenda.json) ---------- */
+const AG_TIPOS = [["asesor","Llamada con tu asesor","var(--brand)"],["presentacion","Presentación del proyecto","var(--lime)"],["otra","Otras reuniones","var(--bar)"]];
+function agDates(){
+  const A=state.agenda; if(!A||!A.from||!A.to) return [];
+  const out=[]; let d=A.from; while(d<=A.to){ out.push(d); d=isoAddDays(d,1); }
+  return out;
+}
+function agToday(){ return state.agenda && state.agenda.generated_at ? state.agenda.generated_at.slice(0,10) : null; }
+function agTotal(x){ return (x.asesor||0)+(x.presentacion||0)+(x.otra||0); }
+function agSum(inPeriod){
+  const by=new Map((state.agenda.cs||[]).map(cs=>[cs,{cs,asesor:0,presentacion:0,otra:0,canceladas:0,total:0}]));
+  const T={asesor:0,presentacion:0,otra:0,canceladas:0,total:0};
+  for(const x of (state.agenda.daily||[])){
+    if(!inPeriod(x.date)) continue;
+    const r=by.get(x.cs)||{cs:x.cs,asesor:0,presentacion:0,otra:0,canceladas:0,total:0};
+    for(const k of ["asesor","presentacion","otra","canceladas"]){ r[k]+=x[k]||0; T[k]+=x[k]||0; }
+    r.total+=agTotal(x); T.total+=agTotal(x); by.set(x.cs,r);
+  }
+  return {T, by};
+}
+function renderAgenda(){
+  const A=state.agenda, dates=agDates(), weekly=state.agMode==="week", today=agToday();
+  const weeks=[...new Set(dates.map(weekStart))].sort();
+  const sel=$("#dateSel"); sel.textContent="";
+  if(!dates.length){ sel.append(el("option",{text:"Sin datos"})); sel.disabled=true; }
+  else if(weekly){
+    if(!state.agWeek || weeks.indexOf(state.agWeek)<0) state.agWeek = today && weeks.indexOf(weekStart(today))>=0 ? weekStart(today) : weeks.slice(-1)[0];
+    for(const w of [...weeks].reverse()){ const o=el("option",{value:w,text:weekLabel(w)}); if(w===state.agWeek) o.selected=true; sel.append(o); }
+    sel.disabled=false;
+  } else {
+    if(!state.agDate || dates.indexOf(state.agDate)<0) state.agDate = today && dates.indexOf(today)>=0 ? today : dates.slice(-1)[0];
+    for(const d of [...dates].reverse()){ const o=el("option",{value:d,text:fmtDate(d,true)+(d===today?" (hoy)":"")}); if(d===state.agDate) o.selected=true; sel.append(o); }
+    sel.disabled=false;
+  }
+  const view=$("#view"); view.textContent="";
+  if(!A || !dates.length){
+    view.append(el("div",{class:"empty"}, el("b",{text: state.loaded?"Aún no hay datos de agenda":"Cargando…"}),
+      state.loaded?"El script diario aún no ha publicado la primera foto de la agenda.":""));
+    return;
+  }
+  const modeBtn=(mode,label)=>el("button",{class:"chip",type:"button","aria-pressed":String(state.agMode===mode),text:label,onclick:()=>{state.agMode=mode; render();}});
+  view.append(el("div",{class:"chips",style:"margin-bottom:16px"}, modeBtn("day","Por día"), modeBtn("week","Por semana")));
+
+  const ws = weekly ? state.agWeek : weekStart(state.agDate);
+  const inPeriod = weekly ? (d=>weekStart(d)===state.agWeek) : (d=>d===state.agDate);
+  const periodTxt = weekly ? "la "+weekLabel(state.agWeek).toLowerCase() : "el "+fmtDate(state.agDate,true);
+  const S=agSum(inPeriod), conAgenda=[...S.by.values()].filter(r=>r.total>0).length, futuro=weekly ? isoAddDays(ws,6)>=today : state.agDate>=today;
+  const hora=(A.generated_at||"").slice(11,16);
+  $("#subtitle").textContent="Agenda de CS · "+(weekly?weekLabel(state.agWeek):fmtDate(state.agDate,true))+". Reuniones con clientes según los Meetings de HubSpot (reservas y calendario de Google sincronizado).";
+
+  const score=el("div",{class:"score"},
+    el("div",{class:"big"}, el("b",{text:S.T.total}), el("span",{text:"reuniones"})),
+    el("div",{class:"k pend"}, el("b",{text:S.T.asesor}), el("span",{text:"llamadas con tu asesor"})),
+    el("div",{class:"k ok"}, el("b",{text:S.T.presentacion}), el("span",{text:"presentaciones del proyecto"})),
+    el("div",{class:"k"}, el("b",{text:S.T.otra}), el("span",{text:"otras reuniones"})),
+    el("div",{class:"k"}, el("b",{text:conAgenda+"/"+S.by.size}), el("span",{text:"CS con agenda"})),
+    el("div",{class:"k danger"}, el("b",{text:S.T.canceladas}), el("span",{text:"canceladas o no asistió"})),
+    el("div",{class:"delta",text:"En "+periodTxt+": "+S.T.total+" reuniones de "+conAgenda+" CS."+(futuro?" Incluye las ya agendadas que aún no han pasado; pueden cambiar hasta el día.":"")+" Actualizado el "+fmtDate(today)+(hora?" a las "+hora:"")+"."}));
+  const trend=el("div",{class:"panel"}, el("h2",{text: weekly?"Reuniones por semana":"Reuniones por día"}),
+    el("p",{class:"hint",text:"Todo el equipo, por tipo. Las canceladas no cuentan. Toca una barra para verla."}),
+    legend(AG_TIPOS.map(t=>[t[2],t[1]])));
+  const trendBox=el("div",{class:"scroll"}); trend.append(trendBox);
+  view.append(el("div",{class:"board"}, score, trend));
+  const buckets = weekly
+    ? weeks.filter(w=>w>=isoAddDays(state.agWeek,-7*8) && w<=isoAddDays(state.agWeek,7*3)).map(w=>({key:w, label:fmtDate(w), tip:weekLabel(w), ...agSum(d=>weekStart(d)===w).T}))
+    : dates.filter(d=>d>=isoAddDays(state.agDate,-9) && d<=isoAddDays(state.agDate,4)).map(d=>({key:d, label:fmtDate(d), tip:fmtDate(d,true), ...agSum(x=>x===d).T}));
+  drawAgTrend(trendBox, buckets, weekly?state.agWeek:state.agDate, today, k=>{ if(weekly) state.agWeek=k; else state.agDate=k; render(); });
+
+  const pCS=el("div",{class:"panel full"}, el("h2",{text:"Reuniones por CS"}),
+    el("p",{class:"hint",text:"Reuniones de cada CS en "+periodTxt+", por tipo. Salen todos los CS, también los que no tienen ninguna."}),
+    legend(AG_TIPOS.map(t=>[t[2],t[1]])));
+  const bCS=el("div"); pCS.append(bCS); view.append(pCS);
+  const csRows=[...S.by.values()].sort((a,b)=>b.total-a.total||a.cs.localeCompare(b.cs));
+  hbars(bCS, csRows, {label:"Reuniones por CS", rightW:120, click:()=>{},
+    segs:r=>AG_TIPOS.map(t=>({v:r[t[0]], c:t[2]})),
+    right:r=>r.total+(r.canceladas?" · "+r.canceladas+" canc.":""),
+    tip:r=>r.cs+": "+r.total+" reuniones ("+AG_TIPOS.map(t=>t[1].toLowerCase()+" "+r[t[0]]).join(", ")+")"+(r.canceladas?", "+r.canceladas+" canceladas":"")});
+
+  const pWk=el("div",{class:"panel full"}, el("h2",{text:"Reuniones por CS y día · "+weekLabel(ws)}),
+    el("p",{class:"hint",text:"Cada celda es el número de reuniones de ese CS ese día."}));
+  const bWk=el("div",{class:"scroll"}); pWk.append(bWk); view.append(pWk);
+  drawAgWeek(bWk, ws, weekly?null:state.agDate, today);
+}
+function drawAgTrend(box, buckets, current, today, onPick){
+  const W=Math.max(box.clientWidth||600,280), H=210, padL=8, padB=26, padT=22;
+  const max=Math.max(1,...buckets.map(x=>x.total))*1.08;
+  const slot=Math.min(70,(W-padL*2)/Math.max(buckets.length,1)), bw=Math.max(14,slot*0.62);
+  const svgW=Math.max(W,slot*buckets.length+padL*2);
+  const svg=sv("svg",{viewBox:"0 0 "+svgW+" "+H,width:"100%",role:"img","aria-label":"Reuniones"});
+  const hgt=v=>(H-padT-padB)*v/max;
+  buckets.forEach((x,i)=>{
+    const cx=padL+slot*i+(slot-bw)/2, g=sv("g",{class:"clickable",opacity:x.key===current?"1":"0.55"});
+    let y=H-padB;
+    for(const t of AG_TIPOS){ const v=x[t[0]]; if(!v) continue; y-=hgt(v); g.append(sv("rect",{x:cx,y,width:bw,height:hgt(v),fill:t[2],rx:2})); }
+    const tt=sv("text",{x:cx+bw/2,y:H-padB-hgt(x.total)-5,"text-anchor":"middle","font-size":12,"font-weight":700,fill:"var(--ink)"}); tt.textContent=x.total; g.append(tt);
+    const isToday = today && (x.key===today || (x.key.length===10 && x.key===weekStart(today) && x.tip.startsWith("Semana")));
+    const l=sv("text",{x:cx+bw/2,y:H-8,"text-anchor":"middle","font-size":11,fill:isToday?"var(--brand)":"var(--muted)","font-weight":x.key===current||isToday?"700":"400"}); l.textContent=x.label; g.append(l);
+    g.append(sv("rect",{x:cx,y:padT,width:slot,height:H-padT-padB,fill:"transparent"}));
+    g.addEventListener("click",()=>onPick(x.key));
+    bindTip(g, x.tip+": "+x.total+" reuniones ("+AG_TIPOS.map(t=>t[1].toLowerCase()+" "+x[t[0]]).join(", ")+")"+(x.canceladas?", "+x.canceladas+" canceladas":""));
+    svg.append(g);
+  });
+  box.append(svg);
+}
+function drawAgWeek(box, ws, selDay, today){
+  const days=[0,1,2,3,4,5,6].map(i=>isoAddDays(ws,i));
+  const DIAS=["lun","mar","mié","jue","vie","sáb","dom"];
+  const css=state.agenda.cs||[];
+  const cell=new Map(); for(const x of (state.agenda.daily||[])) cell.set(x.cs+"|"+x.date, x);
+  const max=Math.max(1,...css.flatMap(cs=>days.map(d=>{ const x=cell.get(cs+"|"+d); return x?agTotal(x):0; })));
+  const t=el("table",{class:"heat"});
+  t.append(el("thead",null, el("tr",null, el("th",{text:"CS"}), ...days.map((d,i)=>el("th",{text:DIAS[i]+" "+fmtDate(d),style:(d===selDay?"color:var(--brand);":"")+(d===today?"text-decoration:underline;":"")})), el("th",{text:"Semana"}))));
+  const tb=el("tbody");
+  const rows=css.map(cs=>({cs, vals:days.map(d=>{ const x=cell.get(cs+"|"+d); return x?agTotal(x):0; })})).map(r=>({...r, tot:r.vals.reduce((a,b)=>a+b,0)})).sort((a,b)=>b.tot-a.tot||a.cs.localeCompare(b.cs));
+  rows.forEach(r=>{
+    const tr=el("tr",null, el("td",{text:r.cs}));
+    r.vals.forEach((v,i)=>{ const td=el("td",{class:v?"c":"c z",text:v||"·"});
+      if(v){ const a=.12+.7*v/max; td.style.background="rgba(var(--heat-rgb),"+a.toFixed(2)+")"; if(a>.5) td.style.color="#fff"; bindTip(td, r.cs+" · "+fmtDate(days[i],true)+": "+v+" reuniones"); }
+      tr.append(td); });
+    tr.append(el("td",{class:"c",text:r.tot,style:"font-weight:700"}));
+    tb.append(tr);
+  });
+  const colTot=days.map((_,i)=>rows.reduce((a,r)=>a+r.vals[i],0));
+  tb.append(el("tr",{class:"tot"}, el("td",{text:"Total"}), ...colTot.map(v=>el("td",{text:v})), el("td",{text:colTot.reduce((a,b)=>a+b,0)})));
+  t.append(tb); box.append(t);
+}
 document.querySelectorAll(".tab").forEach(t=>t.addEventListener("click",()=>{ state.tab=t.dataset.tab; state.csFilter=null; state.blqFilter=null; state.blStage=null; location.hash=state.tab; render(); }));
 $("#dateSel").addEventListener("change",e=>{
   if(state.tab==="ringover"){ if(state.rvMode==="week") state.rvWeek=e.target.value; else state.rvDate=e.target.value; }
   else if(state.tab==="backlog"){ if(state.blMode==="week") state.blWeek=e.target.value; else state.blDate=e.target.value; }
+  else if(state.tab==="bajas"){ if(state.bjMode==="month") state.bjMonth=e.target.value; else if(state.bjMode==="week") state.bjWeek=e.target.value; else state.bjDate=e.target.value; }
+  else if(state.tab==="agenda"){ if(state.agMode==="week") state.agWeek=e.target.value; else state.agDate=e.target.value; }
   else state.date[state.tab]=e.target.value;
   render(); });
 function fromHash(){ const h=location.hash.slice(1); if(BASES[h]||EXTRA_TABS.includes(h)){ state.tab=h; state.csFilter=null; render(); } }
@@ -1048,6 +1309,8 @@ render();
   fetch("ringover.json").then(r=>r.ok?r.json():null).then(j=>{
     if(j){ state.ringover=j; const ds=[...new Set((j.daily||[]).map(x=>x.date))].sort(); if(!state.rvDate) state.rvDate=ds.slice(-1)[0]||null; render(); }
   }).catch(()=>{});
+  fetch("bajas.json").then(r=>r.ok?r.json():null).then(j=>{ if(j){ state.bajas=j; render(); } }).catch(()=>{});
+  fetch("agenda.json").then(r=>r.ok?r.json():null).then(j=>{ if(j){ state.agenda=j; render(); } }).catch(()=>{});
   fetch("backlog.json").then(r=>r.ok?r.json():null).then(j=>{
     if(j){ state.backlog=j; if(!state.hubspot && j.hubspot) state.hubspot=j.hubspot; if(!state.blDate) state.blDate=blDates().slice(-1)[0]||null; render(); }
   }).catch(()=>{});
