@@ -1,0 +1,231 @@
+{
+  "generated_at": "2026-11-02T00:52:21+01:00",
+  "tz": "Europe/Madrid",
+  "stages": [
+    {
+      "id": "6139991230",
+      "label": "Backlog",
+      "order": 0,
+      "open": true
+    },
+    {
+      "id": "6139991240",
+      "label": "Negociación - CS",
+      "order": 1,
+      "open": true
+    },
+    {
+      "id": "6139968726",
+      "label": "Gestión Escalada",
+      "order": 2,
+      "open": true
+    },
+    {
+      "id": "6139968727",
+      "label": "Negociación - Legal",
+      "order": 3,
+      "open": true
+    },
+    {
+      "id": "6139968728",
+      "label": "Won",
+      "order": 4,
+      "open": false
+    },
+    {
+      "id": "6139991231",
+      "label": "Lost",
+      "order": 5,
+      "open": false
+    },
+    {
+      "id": "6256895174",
+      "label": "Descartado",
+      "order": 6,
+      "open": false
+    }
+  ],
+  "abiertas": [
+    {
+      "gestor": "Andrea Giraldo Orejuela",
+      "stage": "6139991240",
+      "n": 4
+    },
+    {
+      "gestor": "Dikcibell Pantoja Toste",
+      "stage": "6139991240",
+      "n": 5
+    },
+    {
+      "gestor": "Fran González",
+      "stage": "6139991240",
+      "n": 2
+    },
+    {
+      "gestor": "Jose Luis Lopez Vargas",
+      "stage": "6139991240",
+      "n": 2
+    },
+    {
+      "gestor": "María Johanna Díaz Quinceno",
+      "stage": "6139968727",
+      "n": 3
+    },
+    {
+      "gestor": "María Johanna Díaz Quinceno",
+      "stage": "6139991240",
+      "n": 1
+    },
+    {
+      "gestor": "Nataly molina",
+      "stage": "6139968727",
+      "n": 1
+    },
+    {
+      "gestor": "Nataly molina",
+      "stage": "6139991240",
+      "n": 1
+    }
+  ],
+  "cierres": [
+    {
+      "date": "2026-10-14",
+      "gestor": "María Johanna Díaz Quinceno",
+      "definitivas": 1,
+      "salvadas": 1
+    },
+    {
+      "date": "2026-10-15",
+      "gestor": "Dikcibell Pantoja Toste",
+      "definitivas": 1,
+      "salvadas": 0
+    },
+    {
+      "date": "2026-10-15",
+      "gestor": "Sin gestor",
+      "definitivas": 12,
+      "salvadas": 0
+    },
+    {
+      "date": "2026-10-16",
+      "gestor": "Aitor Lahoz",
+      "definitivas": 0,
+      "salvadas": 1
+    },
+    {
+      "date": "2026-10-16",
+      "gestor": "Dikcibell Pantoja Toste",
+      "definitivas": 1,
+      "salvadas": 0
+    },
+    {
+      "date": "2026-10-16",
+      "gestor": "Jose Luis Lopez Vargas",
+      "definitivas": 1,
+      "salvadas": 1
+    },
+    {
+      "date": "2026-10-16",
+      "gestor": "Sin gestor",
+      "definitivas": 34,
+      "salvadas": 0
+    },
+    {
+      "date": "2026-10-20",
+      "gestor": "Dikcibell Pantoja Toste",
+      "definitivas": 1,
+      "salvadas": 0
+    },
+    {
+      "date": "2026-10-21",
+      "gestor": "Dikcibell Pantoja Toste",
+      "definitivas": 1,
+      "salvadas": 0
+    },
+    {
+      "date": "2026-10-21",
+      "gestor": "María Johanna Díaz Quinceno",
+      "definitivas": 1,
+      "salvadas": 0
+    },
+    {
+      "date": "2026-10-22",
+      "gestor": "Andrea Giraldo Orejuela",
+      "definitivas": 1,
+      "salvadas": 0
+    },
+    {
+      "date": "2026-10-22",
+      "gestor": "Fran González",
+      "definitivas": 0,
+      "salvadas": 1
+    },
+    {
+      "date": "2026-10-22",
+      "gestor": "Jose Luis Lopez Vargas",
+      "definitivas": 0,
+      "salvadas": 1
+    },
+    {
+      "date": "2026-10-23",
+      "gestor": "Andrea Giraldo Orejuela",
+      "definitivas": 0,
+      "salvadas": 1
+    },
+    {
+      "date": "2026-10-26",
+      "gestor": "Andrea Giraldo Orejuela",
+      "definitivas": 1,
+      "salvadas": 0
+    },
+    {
+      "date": "2026-10-26",
+      "gestor": "Jose Luis Lopez Vargas",
+      "definitivas": 0,
+      "salvadas": 1
+    },
+    {
+      "date": "2026-10-27",
+      "gestor": "Dikcibell Pantoja Toste",
+      "definitivas": 2,
+      "salvadas": 0
+    },
+    {
+      "date": "2026-10-29",
+      "gestor": "Dikcibell Pantoja Toste",
+      "definitivas": 1,
+      "salvadas": 0
+    },
+    {
+      "date": "2026-10-29",
+      "gestor": "Fran González",
+      "definitivas": 2,
+      "salvadas": 0
+    },
+    {
+      "date": "2026-10-29",
+      "gestor": "Jose Luis Lopez Vargas",
+      "definitivas": 3,
+      "salvadas": 0
+    },
+    {
+      "date": "2026-10-29",
+      "gestor": "Nataly molina",
+      "definitivas": 1,
+      "salvadas": 0
+    },
+    {
+      "date": "2026-10-30",
+      "gestor": "María Johanna Díaz Quinceno",
+      "definitivas": 1,
+      "salvadas": 0
+    },
+    {
+      "date": "2026-10-30",
+      "gestor": "Nataly molina",
+      "definitivas": 2,
+      "salvadas": 1
+    }
+  ],
+  "sin_fecha": 0
+}
