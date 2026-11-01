@@ -1,0 +1,1480 @@
+{
+  "generated_at": "2026-11-02T00:52:25+01:00",
+  "tz": "Europe/Madrid",
+  "cs": [
+    "Andrea Giraldo",
+    "Dikcibell Pantoja",
+    "Fran González",
+    "Johanna Diaz",
+    "Jose Luis Lopez",
+    "Nataly Molina"
+  ],
+  "from": "2026-09-07",
+  "to": "2026-11-22",
+  "daily": [
+    {
+      "date": "2026-09-07",
+      "cs": "Andrea Giraldo",
+      "asesor": 1,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-07",
+      "cs": "Dikcibell Pantoja",
+      "asesor": 2,
+      "presentacion": 2,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-07",
+      "cs": "Fran González",
+      "asesor": 1,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-07",
+      "cs": "Johanna Diaz",
+      "asesor": 1,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-07",
+      "cs": "Jose Luis Lopez",
+      "asesor": 1,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-08",
+      "cs": "Andrea Giraldo",
+      "asesor": 0,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-08",
+      "cs": "Dikcibell Pantoja",
+      "asesor": 2,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-08",
+      "cs": "Fran González",
+      "asesor": 2,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-08",
+      "cs": "Johanna Diaz",
+      "asesor": 1,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-08",
+      "cs": "Jose Luis Lopez",
+      "asesor": 2,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-09",
+      "cs": "Dikcibell Pantoja",
+      "asesor": 1,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-09",
+      "cs": "Fran González",
+      "asesor": 2,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-09",
+      "cs": "Johanna Diaz",
+      "asesor": 1,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-09",
+      "cs": "Jose Luis Lopez",
+      "asesor": 2,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-09",
+      "cs": "Nataly Molina",
+      "asesor": 1,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-10",
+      "cs": "Andrea Giraldo",
+      "asesor": 0,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-10",
+      "cs": "Fran González",
+      "asesor": 0,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-10",
+      "cs": "Nataly Molina",
+      "asesor": 0,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-11",
+      "cs": "Fran González",
+      "asesor": 3,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-11",
+      "cs": "Johanna Diaz",
+      "asesor": 2,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-14",
+      "cs": "Dikcibell Pantoja",
+      "asesor": 1,
+      "presentacion": 2,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-14",
+      "cs": "Fran González",
+      "asesor": 1,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-15",
+      "cs": "Dikcibell Pantoja",
+      "asesor": 1,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 1
+    },
+    {
+      "date": "2026-09-15",
+      "cs": "Fran González",
+      "asesor": 1,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-15",
+      "cs": "Jose Luis Lopez",
+      "asesor": 4,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-15",
+      "cs": "Nataly Molina",
+      "asesor": 1,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-16",
+      "cs": "Andrea Giraldo",
+      "asesor": 1,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-16",
+      "cs": "Dikcibell Pantoja",
+      "asesor": 2,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-16",
+      "cs": "Fran González",
+      "asesor": 0,
+      "presentacion": 0,
+      "otra": 1,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-16",
+      "cs": "Jose Luis Lopez",
+      "asesor": 2,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-17",
+      "cs": "Andrea Giraldo",
+      "asesor": 2,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-17",
+      "cs": "Dikcibell Pantoja",
+      "asesor": 2,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-17",
+      "cs": "Fran González",
+      "asesor": 1,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-17",
+      "cs": "Jose Luis Lopez",
+      "asesor": 1,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-17",
+      "cs": "Nataly Molina",
+      "asesor": 1,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-18",
+      "cs": "Andrea Giraldo",
+      "asesor": 0,
+      "presentacion": 2,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-18",
+      "cs": "Dikcibell Pantoja",
+      "asesor": 1,
+      "presentacion": 2,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-18",
+      "cs": "Fran González",
+      "asesor": 1,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-18",
+      "cs": "Jose Luis Lopez",
+      "asesor": 1,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-18",
+      "cs": "Nataly Molina",
+      "asesor": 1,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-21",
+      "cs": "Andrea Giraldo",
+      "asesor": 1,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-21",
+      "cs": "Dikcibell Pantoja",
+      "asesor": 1,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-21",
+      "cs": "Jose Luis Lopez",
+      "asesor": 1,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-22",
+      "cs": "Andrea Giraldo",
+      "asesor": 2,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-22",
+      "cs": "Dikcibell Pantoja",
+      "asesor": 1,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-22",
+      "cs": "Fran González",
+      "asesor": 1,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-22",
+      "cs": "Jose Luis Lopez",
+      "asesor": 1,
+      "presentacion": 2,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-22",
+      "cs": "Nataly Molina",
+      "asesor": 0,
+      "presentacion": 2,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-23",
+      "cs": "Andrea Giraldo",
+      "asesor": 1,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-23",
+      "cs": "Fran González",
+      "asesor": 1,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-23",
+      "cs": "Johanna Diaz",
+      "asesor": 2,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-23",
+      "cs": "Jose Luis Lopez",
+      "asesor": 1,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-23",
+      "cs": "Nataly Molina",
+      "asesor": 1,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-24",
+      "cs": "Andrea Giraldo",
+      "asesor": 2,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-24",
+      "cs": "Dikcibell Pantoja",
+      "asesor": 1,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-24",
+      "cs": "Fran González",
+      "asesor": 2,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-24",
+      "cs": "Johanna Diaz",
+      "asesor": 1,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-24",
+      "cs": "Jose Luis Lopez",
+      "asesor": 4,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-24",
+      "cs": "Nataly Molina",
+      "asesor": 0,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-25",
+      "cs": "Andrea Giraldo",
+      "asesor": 1,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-25",
+      "cs": "Dikcibell Pantoja",
+      "asesor": 0,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 2
+    },
+    {
+      "date": "2026-09-25",
+      "cs": "Johanna Diaz",
+      "asesor": 3,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-25",
+      "cs": "Jose Luis Lopez",
+      "asesor": 1,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 1
+    },
+    {
+      "date": "2026-09-28",
+      "cs": "Andrea Giraldo",
+      "asesor": 2,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-28",
+      "cs": "Dikcibell Pantoja",
+      "asesor": 0,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-28",
+      "cs": "Johanna Diaz",
+      "asesor": 3,
+      "presentacion": 1,
+      "otra": 1,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-28",
+      "cs": "Jose Luis Lopez",
+      "asesor": 2,
+      "presentacion": 2,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-28",
+      "cs": "Nataly Molina",
+      "asesor": 1,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-29",
+      "cs": "Dikcibell Pantoja",
+      "asesor": 0,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-29",
+      "cs": "Fran González",
+      "asesor": 1,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-29",
+      "cs": "Johanna Diaz",
+      "asesor": 2,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-29",
+      "cs": "Jose Luis Lopez",
+      "asesor": 1,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-30",
+      "cs": "Dikcibell Pantoja",
+      "asesor": 1,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-30",
+      "cs": "Jose Luis Lopez",
+      "asesor": 2,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-09-30",
+      "cs": "Nataly Molina",
+      "asesor": 0,
+      "presentacion": 0,
+      "otra": 1,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-01",
+      "cs": "Dikcibell Pantoja",
+      "asesor": 0,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-01",
+      "cs": "Fran González",
+      "asesor": 1,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-01",
+      "cs": "Johanna Diaz",
+      "asesor": 0,
+      "presentacion": 0,
+      "otra": 1,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-01",
+      "cs": "Jose Luis Lopez",
+      "asesor": 1,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-02",
+      "cs": "Andrea Giraldo",
+      "asesor": 2,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-02",
+      "cs": "Dikcibell Pantoja",
+      "asesor": 2,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-02",
+      "cs": "Johanna Diaz",
+      "asesor": 0,
+      "presentacion": 0,
+      "otra": 1,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-02",
+      "cs": "Nataly Molina",
+      "asesor": 2,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-05",
+      "cs": "Dikcibell Pantoja",
+      "asesor": 1,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-05",
+      "cs": "Fran González",
+      "asesor": 2,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-05",
+      "cs": "Johanna Diaz",
+      "asesor": 3,
+      "presentacion": 0,
+      "otra": 1,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-05",
+      "cs": "Jose Luis Lopez",
+      "asesor": 0,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-05",
+      "cs": "Nataly Molina",
+      "asesor": 1,
+      "presentacion": 2,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-06",
+      "cs": "Jose Luis Lopez",
+      "asesor": 1,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-06",
+      "cs": "Nataly Molina",
+      "asesor": 0,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-07",
+      "cs": "Johanna Diaz",
+      "asesor": 0,
+      "presentacion": 0,
+      "otra": 1,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-07",
+      "cs": "Nataly Molina",
+      "asesor": 1,
+      "presentacion": 2,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-08",
+      "cs": "Johanna Diaz",
+      "asesor": 0,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-08",
+      "cs": "Jose Luis Lopez",
+      "asesor": 1,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-08",
+      "cs": "Nataly Molina",
+      "asesor": 2,
+      "presentacion": 0,
+      "otra": 1,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-09",
+      "cs": "Andrea Giraldo",
+      "asesor": 1,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-09",
+      "cs": "Fran González",
+      "asesor": 0,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-09",
+      "cs": "Jose Luis Lopez",
+      "asesor": 5,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-12",
+      "cs": "Andrea Giraldo",
+      "asesor": 1,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-12",
+      "cs": "Dikcibell Pantoja",
+      "asesor": 1,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-12",
+      "cs": "Jose Luis Lopez",
+      "asesor": 1,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-13",
+      "cs": "Dikcibell Pantoja",
+      "asesor": 3,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-13",
+      "cs": "Fran González",
+      "asesor": 2,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-13",
+      "cs": "Jose Luis Lopez",
+      "asesor": 4,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-13",
+      "cs": "Nataly Molina",
+      "asesor": 0,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-14",
+      "cs": "Dikcibell Pantoja",
+      "asesor": 2,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-14",
+      "cs": "Fran González",
+      "asesor": 0,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-14",
+      "cs": "Johanna Diaz",
+      "asesor": 0,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-14",
+      "cs": "Jose Luis Lopez",
+      "asesor": 2,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-14",
+      "cs": "Nataly Molina",
+      "asesor": 0,
+      "presentacion": 0,
+      "otra": 1,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-15",
+      "cs": "Dikcibell Pantoja",
+      "asesor": 0,
+      "presentacion": 3,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-15",
+      "cs": "Fran González",
+      "asesor": 0,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-15",
+      "cs": "Johanna Diaz",
+      "asesor": 0,
+      "presentacion": 0,
+      "otra": 1,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-15",
+      "cs": "Jose Luis Lopez",
+      "asesor": 1,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-15",
+      "cs": "Nataly Molina",
+      "asesor": 0,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-16",
+      "cs": "Dikcibell Pantoja",
+      "asesor": 0,
+      "presentacion": 3,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-16",
+      "cs": "Fran González",
+      "asesor": 0,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 1
+    },
+    {
+      "date": "2026-10-16",
+      "cs": "Johanna Diaz",
+      "asesor": 0,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-16",
+      "cs": "Nataly Molina",
+      "asesor": 0,
+      "presentacion": 3,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-19",
+      "cs": "Dikcibell Pantoja",
+      "asesor": 3,
+      "presentacion": 2,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-19",
+      "cs": "Fran González",
+      "asesor": 3,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-19",
+      "cs": "Johanna Diaz",
+      "asesor": 3,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-19",
+      "cs": "Jose Luis Lopez",
+      "asesor": 4,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-19",
+      "cs": "Nataly Molina",
+      "asesor": 3,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-20",
+      "cs": "Dikcibell Pantoja",
+      "asesor": 0,
+      "presentacion": 2,
+      "otra": 1,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-20",
+      "cs": "Fran González",
+      "asesor": 2,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-20",
+      "cs": "Johanna Diaz",
+      "asesor": 1,
+      "presentacion": 2,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-20",
+      "cs": "Jose Luis Lopez",
+      "asesor": 1,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-20",
+      "cs": "Nataly Molina",
+      "asesor": 0,
+      "presentacion": 1,
+      "otra": 1,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-21",
+      "cs": "Andrea Giraldo",
+      "asesor": 3,
+      "presentacion": 2,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-21",
+      "cs": "Dikcibell Pantoja",
+      "asesor": 2,
+      "presentacion": 2,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-21",
+      "cs": "Fran González",
+      "asesor": 4,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-21",
+      "cs": "Johanna Diaz",
+      "asesor": 1,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-21",
+      "cs": "Jose Luis Lopez",
+      "asesor": 0,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-21",
+      "cs": "Nataly Molina",
+      "asesor": 0,
+      "presentacion": 2,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-22",
+      "cs": "Andrea Giraldo",
+      "asesor": 3,
+      "presentacion": 3,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-22",
+      "cs": "Dikcibell Pantoja",
+      "asesor": 2,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-22",
+      "cs": "Fran González",
+      "asesor": 0,
+      "presentacion": 3,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-22",
+      "cs": "Johanna Diaz",
+      "asesor": 0,
+      "presentacion": 1,
+      "otra": 1,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-22",
+      "cs": "Jose Luis Lopez",
+      "asesor": 1,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-22",
+      "cs": "Nataly Molina",
+      "asesor": 1,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-23",
+      "cs": "Andrea Giraldo",
+      "asesor": 4,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-23",
+      "cs": "Fran González",
+      "asesor": 0,
+      "presentacion": 0,
+      "otra": 1,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-23",
+      "cs": "Nataly Molina",
+      "asesor": 0,
+      "presentacion": 3,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-26",
+      "cs": "Andrea Giraldo",
+      "asesor": 5,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-26",
+      "cs": "Dikcibell Pantoja",
+      "asesor": 1,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-26",
+      "cs": "Fran González",
+      "asesor": 1,
+      "presentacion": 1,
+      "otra": 1,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-26",
+      "cs": "Jose Luis Lopez",
+      "asesor": 2,
+      "presentacion": 2,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-26",
+      "cs": "Nataly Molina",
+      "asesor": 1,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-27",
+      "cs": "Andrea Giraldo",
+      "asesor": 2,
+      "presentacion": 2,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-27",
+      "cs": "Dikcibell Pantoja",
+      "asesor": 2,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-27",
+      "cs": "Fran González",
+      "asesor": 0,
+      "presentacion": 0,
+      "otra": 1,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-27",
+      "cs": "Johanna Diaz",
+      "asesor": 0,
+      "presentacion": 2,
+      "otra": 1,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-27",
+      "cs": "Jose Luis Lopez",
+      "asesor": 3,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-27",
+      "cs": "Nataly Molina",
+      "asesor": 0,
+      "presentacion": 0,
+      "otra": 3,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-28",
+      "cs": "Andrea Giraldo",
+      "asesor": 0,
+      "presentacion": 1,
+      "otra": 1,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-28",
+      "cs": "Dikcibell Pantoja",
+      "asesor": 2,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-28",
+      "cs": "Fran González",
+      "asesor": 1,
+      "presentacion": 1,
+      "otra": 2,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-28",
+      "cs": "Johanna Diaz",
+      "asesor": 0,
+      "presentacion": 2,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-29",
+      "cs": "Andrea Giraldo",
+      "asesor": 0,
+      "presentacion": 0,
+      "otra": 1,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-29",
+      "cs": "Dikcibell Pantoja",
+      "asesor": 3,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-29",
+      "cs": "Fran González",
+      "asesor": 0,
+      "presentacion": 0,
+      "otra": 1,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-29",
+      "cs": "Johanna Diaz",
+      "asesor": 1,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-29",
+      "cs": "Jose Luis Lopez",
+      "asesor": 2,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-29",
+      "cs": "Nataly Molina",
+      "asesor": 1,
+      "presentacion": 0,
+      "otra": 2,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-30",
+      "cs": "Andrea Giraldo",
+      "asesor": 0,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 1
+    },
+    {
+      "date": "2026-10-30",
+      "cs": "Dikcibell Pantoja",
+      "asesor": 1,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-30",
+      "cs": "Fran González",
+      "asesor": 0,
+      "presentacion": 0,
+      "otra": 1,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-30",
+      "cs": "Johanna Diaz",
+      "asesor": 0,
+      "presentacion": 1,
+      "otra": 1,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-30",
+      "cs": "Jose Luis Lopez",
+      "asesor": 2,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-10-30",
+      "cs": "Nataly Molina",
+      "asesor": 0,
+      "presentacion": 0,
+      "otra": 2,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-11-02",
+      "cs": "Jose Luis Lopez",
+      "asesor": 2,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-11-03",
+      "cs": "Andrea Giraldo",
+      "asesor": 0,
+      "presentacion": 2,
+      "otra": 1,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-11-03",
+      "cs": "Dikcibell Pantoja",
+      "asesor": 2,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-11-03",
+      "cs": "Fran González",
+      "asesor": 0,
+      "presentacion": 0,
+      "otra": 1,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-11-03",
+      "cs": "Johanna Diaz",
+      "asesor": 0,
+      "presentacion": 0,
+      "otra": 1,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-11-03",
+      "cs": "Jose Luis Lopez",
+      "asesor": 1,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-11-04",
+      "cs": "Johanna Diaz",
+      "asesor": 0,
+      "presentacion": 0,
+      "otra": 1,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-11-06",
+      "cs": "Dikcibell Pantoja",
+      "asesor": 0,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-11-06",
+      "cs": "Nataly Molina",
+      "asesor": 1,
+      "presentacion": 0,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-11-11",
+      "cs": "Fran González",
+      "asesor": 0,
+      "presentacion": 0,
+      "otra": 1,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-11-13",
+      "cs": "Nataly Molina",
+      "asesor": 0,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    },
+    {
+      "date": "2026-11-18",
+      "cs": "Johanna Diaz",
+      "asesor": 0,
+      "presentacion": 1,
+      "otra": 0,
+      "canceladas": 0
+    }
+  ]
+}
