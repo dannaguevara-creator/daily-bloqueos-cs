@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-02T07:00:08.467627Z",
+  "generated": "2026-11-02T09:00:03.835141Z",
   "date": "2026-11-02",
   "hubspot": {
     "portal": "25808060",
@@ -16212,7 +16212,7 @@
     "mem1_2026-11-02": {
       "base": "mem1",
       "fecha": "2026-11-02",
-      "cargado": "2026-11-02T07:00:07.724009Z",
+      "cargado": "2026-11-02T09:00:02.670290Z",
       "total": 23,
       "rows": [
         {
@@ -16495,8 +16495,8 @@
     "mem2_2026-11-02": {
       "base": "mem2",
       "fecha": "2026-11-02",
-      "cargado": "2026-11-02T07:00:07.725220Z",
-      "total": 141,
+      "cargado": "2026-11-02T09:00:02.673294Z",
+      "total": 140,
       "rows": [
         {
           "id": "871047389",
@@ -16509,6 +16509,18 @@
           "pr": "Prioridad 1",
           "h": false,
           "u": "2026-07-30"
+        },
+        {
+          "id": "4041719011",
+          "p": "KD-SEO: GABRIEL GORGOVSCHI",
+          "o": "María Johanna Díaz Quinceno",
+          "c": "28/10 MJ aun se encentra revisando lo de su Web para indicarme. Requiere s ele contacte l aproxima semana para que me de una razón          27/10 MJ Llamo cliente le explico que nosotros nos encargamos de la implementación mas no de la Web y que esta debe de estar activa para así poder acceder e implementar. Le abro wsp ya que va habar con la persona que lleva a web        22/9 cliente contactado, daré seguimiento",
+          "b": [
+            "Sitio Web no Carga"
+          ],
+          "pr": "Prioridad 1",
+          "h": false,
+          "u": "2026-10-28"
         },
         {
           "id": "6097441501",
@@ -16673,18 +16685,6 @@
           "pr": "Prioridad 1",
           "h": false,
           "u": "2026-10-30"
-        },
-        {
-          "id": "130090840274",
-          "p": "KD-RRSS: T'Ajudem Serveis Per La Llar S.L",
-          "o": "Jose Luis Lopez Vargas",
-          "c": "08.10 Fran - Llamo al cliente, nc, cliente no responde a los mensajes, ni llamadas 07.10 Andrea. Llamé, NC 6/10 Mj llamo cliente NC. Le abro wsp            02.10.26 Jose Luis: Envio correo desbloquear y avanzar // 07/09 NM ok vinculada a metri envio presentación, se demorara unos 15 dias en revisarla y comentar 03/09 NM llam 7.40pm marco 2 veces pero nc",
-          "b": [
-            "GO Programación"
-          ],
-          "pr": "Prioridad 3",
-          "h": false,
-          "u": "2026-10-08"
         },
         {
           "id": "134442825924",
@@ -16888,6 +16888,16 @@
           "u": "2026-10-29"
         },
         {
+          "id": "204565760217",
+          "p": "KD-RRSS: PURE MATCHA S.L",
+          "o": "Fran González",
+          "c": "21.10 Fran - Llamo al cliente, nc, dejo buzón de voz y mando WSP19.10 Fran - Se revincula Metricool 08.10 Fran - Contacto con el cliente por llamada, quiere un reunión ya que comenta que los camios no han sido aplicados. Le mando WSP para seguimiento 02.10.26 Jose Luis: Envio correo desbloquear y avanzar // 13.07 Fran - Comentarios en la presentación 08.06 Fran - Se envía correo para poder avanzar con su proyecto 14/05 Elena H: recuerdo que seguimos pendientes de FDK. ",
+          "b": [],
+          "pr": "Prioridad 2",
+          "h": false,
+          "u": "2026-10-21"
+        },
+        {
           "id": "205200316653",
           "p": "KD-WEB: CARDIOVET SERVICIOS SL",
           "o": "Fran González",
@@ -16948,16 +16958,6 @@
           "pr": "Prioridad 3",
           "h": false,
           "u": "2026-10-29"
-        },
-        {
-          "id": "219644042436",
-          "p": "KD-RRSS: DANIEL CASTAÑO NIETO",
-          "o": "Jose Luis Lopez Vargas",
-          "c": "17.09 Andrea. Envía FDK17.09 Andrea. Envía FDK 11/09/26 dikci: envio email con ppt // 02/09/26 dikci: se reactiva el proyecto - todavia se puede presentar la memoria. ",
-          "b": [],
-          "pr": "Prioridad 3",
-          "h": false,
-          "u": "2026-09-17"
         },
         {
           "id": "220483468491",
@@ -17034,6 +17034,16 @@
           "u": "2026-10-30"
         },
         {
+          "id": "229722874087",
+          "p": "KD-SEO: REMEDIOS RUBIO GARCIA",
+          "o": "Fran González",
+          "c": "08.07 Andrea. Implementó el SEO él mismo 25.06 Andrea. Llamé, NC, envío msj 11/2 M: se envía mail con proyecto",
+          "b": [],
+          "pr": "Prioridad 3",
+          "h": false,
+          "u": "2026-07-08"
+        },
+        {
           "id": "230334594239",
           "p": "KD-WEB: MGJ MEDIACION SOCIEDAD LIMITADA.",
           "o": "Nataly molina",
@@ -17067,18 +17077,6 @@
           "pr": "Prioridad 1",
           "h": false,
           "u": "2026-10-30"
-        },
-        {
-          "id": "231586048224",
-          "p": "KD-SEO: LIBRES DEL SUR S.L",
-          "o": "Nataly molina",
-          "c": "28/10 NM llam 6.14pm nc web aun caida 27/10 NM llam 5:06pm se vencio su dom me dice q en unos minutos lo hace, envío correo por ahi confirma ERROR PLATAFORMA 26/2 M: problema plataforma, derivado a red.es 23/2 M: se envía mail pasos firma memoria 11/02 ah tenemos go implementación y credenciales",
-          "b": [
-            "Sitio Web no Carga"
-          ],
-          "pr": "Prioridad 1",
-          "h": false,
-          "u": "2026-10-28"
         },
         {
           "id": "232182965452",
@@ -17733,16 +17731,6 @@
           "pr": "Prioridad 3",
           "h": false,
           "u": "2026-10-30"
-        },
-        {
-          "id": "269104438499",
-          "p": "KD-RRSS: CARLOS ANDRES DEL RIO INGELMO",
-          "o": "Andrea Giraldo Orejuela",
-          "c": "22/10 Irene: llamo y NC21/10 Irene: llamo y está reunido, me pide que lo llame por la tarde. Llamo y me pide que lo llame mañana por la mañana 6/10 Irene: envío proyecto para fdk. Lo llamo por la tarde y me dice que lo llame mañana por la mañana.  6/10 Irene: envío proyecto para fdk 02.10.26 Jose Luis: Envio correo desbloquear y avanzar // 14.09 Andrea. Llamé, me da la red social https://www.linkedin.com/in/carlos-del-r%C3%ADo-81417558/ 08/09 Irene: llamo y me pide que lo llame por la tarde. Lo ",
-          "b": [],
-          "pr": "Prioridad 3",
-          "h": false,
-          "u": "2026-10-22"
         },
         {
           "id": "269560372423",
