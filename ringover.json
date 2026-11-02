@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-01T22:00:31+01:00",
+  "generated_at": "2026-11-02T08:00:23+01:00",
   "tz": "Europe/Madrid",
   "agents": [
     {
@@ -10,11 +10,6 @@
     {
       "id": 23276168,
       "name": "Jose Luis Lopez",
-      "group": "CSWEB"
-    },
-    {
-      "id": 24441781,
-      "name": "Victor Ortega",
       "group": "CSWEB"
     },
     {
